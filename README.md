@@ -1,6 +1,3 @@
-# electronics
-Electronic designs, code and simulations, organized by component category
-
 # ⚡ Electronics
 
 Designs, code and simulations of electronic components and circuits.
