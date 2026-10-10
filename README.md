@@ -1,2 +1,24 @@
 # electronics
 Electronic designs, code and simulations, organized by component category
+
+# ⚡ Electronics
+
+Designs, code and simulations of electronic components and circuits.
+
+## Structure
+
+Components are grouped by category. Each component has its own folder
+with one or more simulations inside, and each simulation has its own plots.
+Models are shared and live in a single folder.
+
+## Categories
+
+Categories will appear here as components are added.
+
+## Tools
+
+LTspice, ngspice
+
+## License
+
+Each component folder states its own license. Until stated, nothing here is licensed for reuse.
