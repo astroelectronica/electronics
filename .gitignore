@@ -1,0 +1,10 @@
+# Simulation output (regenerated each run)
+*.raw
+*.log
+*.bak
+*.fra
+
+# System files
+.DS_Store
+Thumbs.db
+*~
