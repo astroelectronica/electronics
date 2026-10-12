@@ -12,7 +12,7 @@ Models are shared and live in a single folder.
 
 | ID | Family |
 |---|---|
-| AE01 | current sensors |
+| AE01001 | current sensors |
 
 ## Tools
 
