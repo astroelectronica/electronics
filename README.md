@@ -10,7 +10,9 @@ Models are shared and live in a single folder.
 
 ## Categories
 
-Categories will appear here as components are added.
+| ID | Family |
+|---|---|
+| AE01 | current sensors |
 
 ## Tools
 
