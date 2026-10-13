@@ -22,6 +22,6 @@
 *.dc V1 0 {VSOURCE} .01
 *
 *transient response
-.tran 0 51u .01u startup
+*.tran 0 51u .01u startup
 *
 *.backanno

@@ -1,17 +1,17 @@
 .title KiCad schematic
-.include /home/astroelectronica/electronics/models/C2012CH2W101J060AA_p.mod
-.include /home/astroelectronica/electronics/models/C2012X7R2A104K125AA_p.mod
-.include /home/astroelectronica/electronics/models/C2012X7R2E103K125AA_p.mod
-.include /home/astroelectronica/electronics/models/ZXCT1080.spice.txt
-V1 /PWR_IN 0 DC {VSOURCE}
-R2 /PWR_IN /PWR_OUT {RSENSE}
+.include "/home/astroelectronica/electronics/_models/C2012CH2W101J060AA_p.mod"
+.include "/home/astroelectronica/electronics/_models/C2012X7R2A104K125AA_p.mod"
+.include "/home/astroelectronica/electronics/_models/C2012X7R2E103K125AA_p.mod"
+.include "/home/astroelectronica/electronics/_models/ZXCT1080.spice.txt"
+R3 /PWR_OUT /SN {RN}
+I1 /PWR_OUT 0 DC {ILOAD} 
+XU2 VDD 0 C2012X7R2A104K125AA_p
+V1 /PWR_IN 0 DC {VSOURCE} 
 R4 /VOCM /OUT {RF}
 XU1 0 VDD /PWR_IN /SN /VOCM ZXCT1080
 XU3 /PWR_IN /SN C2012CH2W101J060AA_p
-R3 /PWR_OUT /SN {RN}
-I1 /PWR_OUT 0 DC {ILOAD}
-XU2 VDD 0 C2012X7R2A104K125AA_p
+R2 /PWR_IN /PWR_OUT {RSENSE}
 R1 /PWR_IN /PWR_OUT {RSENSE}
+V2 VDD 0 DC {VSUPPLY} 
 XU4 /OUT 0 C2012X7R2E103K125AA_p
-V2 VDD 0 DC {VSUPPLY}
 .end
