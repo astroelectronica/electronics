@@ -1848,7 +1848,7 @@
 				)
 			)
 		)
-		(property "Sim.Library" "electronics\\models\\C2012CH2W101J060AA_p.mod"
+		(property "Sim.Library" "/home/astroelectronica/electronics/_models/C2012CH2W101J060AA_p.mod"
 			(at 106.68 90.17 0)
 			(hide yes)
 			(show_name no)
@@ -1974,7 +1974,7 @@
 				)
 			)
 		)
-		(property "Sim.Library" "electronics\\models\\C2012X7R2A104K125AA_p.mod"
+		(property "Sim.Library" "/home/astroelectronica/electronics/_models/C2012X7R2A104K125AA_p.mod"
 			(at 95.25 106.68 0)
 			(hide yes)
 			(show_name no)
@@ -2099,7 +2099,7 @@
 				)
 			)
 		)
-		(property "Sim.Library" "electronics\\models\\C2012X7R2E103K125AA_p.mod"
+		(property "Sim.Library" "/home/astroelectronica/electronics/_models/C2012X7R2E103K125AA_p.mod"
 			(at 133.35 106.68 0)
 			(hide yes)
 			(show_name no)
@@ -2891,7 +2891,7 @@
 				)
 			)
 		)
-		(property "Sim.Library" "/home/astroelectronica/electronics/models/ZXCT1080.spice.txt"
+		(property "Sim.Library" "/home/astroelectronica/electronics/_models/ZXCT1080.spice.txt"
 			(at 106.68 97.79 0)
 			(hide yes)
 			(show_name no)
