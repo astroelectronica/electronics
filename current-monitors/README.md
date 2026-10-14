@@ -1,6 +1,6 @@
 # Current Monitors
 
-Electronic device or system component that detects and measures the flow of electric current through a conductor and converts it into a usable signal. Unlike
+Electronic device or system component that detects and measures the flow of electric current through a conductor and converts it into a usable signal.
 
 ## Parts
 
