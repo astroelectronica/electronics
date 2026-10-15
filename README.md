@@ -13,6 +13,7 @@ Models are shared and live in a single folder.
 | ID | Family |
 |---|---|
 | AE01001 | [Current Monitors](https://github.com/astroelectronica/electronics/tree/main/current-monitors) |
+| AE01005 | [Linear Regulators](https://github.com/astroelectronica/electronics/tree/main/linear-regulators) |
 
 ## Tools
 
