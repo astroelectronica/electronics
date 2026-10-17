@@ -1,0 +1,25 @@
+*LTspice
+*
+*LM317
+*1.5-A, 40-V, adjustable linear voltage regulator
+*AE01005317
+*
+*netlist
+.include LM317_reg.cir
+*
+*params
+.param RADJ=470
+.param RREF=1.5K
+*
+*load regulation
+*.param VSOURCE=9
+*.param ILOAD=1
+*.dc I1 0 {ILOAD} 1m
+*
+*line regulation
+.param VSOURCE=12
+.param ILOAD=0.1
+.dc V1 7 {VSOURCE} 0.5
+*
+.backanno
+.op
