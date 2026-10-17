@@ -10,3 +10,4 @@ Pending to define.
 | AE01005317 | [LM317](https://github.com/astroelectronica/electronics/tree/main/linear-regulators/LM317) | 1.5-A, 40-V, adjustable linear voltage regulator |
 | AE01005762 | [LT1762](https://github.com/astroelectronica/electronics/tree/main/linear-regulators/LT1762) | 150mA, Low Noise, LDO Micropower Regulators |
 | AE01005763 | [LT1763](https://github.com/astroelectronica/electronics/tree/main/linear-regulators/LT1763) | 500mA, Low Noise, LDO Micropower Regulators |
+| AE01005764 | [LT1764](https://github.com/astroelectronica/electronics/tree/main/linear-regulators/LT1764) | 3A, Fast Transient Response, Low Noise, LDO Regulators |
