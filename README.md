@@ -17,7 +17,7 @@ Models are shared and live in a single folder.
 
 ## Tools
 
-LTspice, ngspice
+LTspice, Ngspice, Qspice
 
 ## License
 
