@@ -1,0 +1,41 @@
+*
+*Zetex ZXCT1080 Spice Model v2.0 Last Revised 28/04/08
+*
+.SUBCKT ZXCT1080 1 2 3 4 5
+* 
+*Pins = Gnd, Vcc, S+, S-, Vout
+*
+R1 2 1 1E6
+R2 4 1 1E8
+R3 13 14 1000
+R4 15 5 Rmod1 3.5
+R5 16 12 9
+R6 12 1 Rmod2 1
+R7 3 1 1E6
+R8 21 22 Rmod3 1
+C1 14 1 3E-10
+E1 16 1 value={((V(3)-V(4))*100)+(V(3)/466*(V(3)-V(4))+((V(2)-5)/100)+0.025+(V(21)*10))}
+E2 13 1 value={V(12)-((V(12)-V(2))*(TANH((V(12)-V(2))*110)+1)/2)}
+E3 15 1 value={V(14)*((TANH(V(14)*100)+1)/2)}
+I1 1 21 1
+V1 1 22 1
+.MODEL Rmod1 RES (TC1=6e-3 )
+.MODEL Rmod2 RES (TC1=5e-6 )
+.MODEL Rmod3 RES (TC1=5e-5 )
+.ENDS ZXCT1080
+*
+*$
+*
+*                (c)  2008 Diodes Incorporated
+*
+*   The copyright in these models  and  the designs embodied belong
+*   to Diodes Incorporated (" Diodes ").  They  are  supplied
+*   free of charge by Diodes for the purpose of research and design
+*   and may be used or copied intact  (including this notice)  for
+*   that purpose only.  All other rights are reserved. The models
+*   are believed accurate but  no condition  or warranty  as to their
+*   merchantability or fitness for purpose is given and no liability
+*   in respect of any use is accepted by Diodes Incorporated, its distributors
+*   or agents.
+*
+*   Diodes Incorporated, 1566 N. Dallas Parkway, Suite 850, Dallas, TX 75248, USA
