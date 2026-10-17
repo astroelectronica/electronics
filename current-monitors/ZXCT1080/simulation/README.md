@@ -1,7 +1,5 @@
 # Simulations
 
-## Load Regulation
-
-## Line Regulation
-
-## Transient Response
+Load regulation
+Line regulation
+Startup transient response
