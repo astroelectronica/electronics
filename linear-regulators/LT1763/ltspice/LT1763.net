@@ -1,0 +1,32 @@
+*LTspice
+*
+*LT1763
+*500mA, low noise, LDO micropower regulator
+*AE01005763
+*
+*netlist
+.include LT1763.cir
+*
+*line regulation
+*.param RADJU=422k
+*.param RADJB=249k
+*.param VSOURCE=20
+*.param ILOAD=200m
+*.dc V1 5 {VSOURCE} 1m
+*
+*load regulation
+*.param RADJU=422k
+*.param RADJB=249k
+*.param VSOURCE=5
+*.param ILOAD=400m
+*.dc I1 0 {ILOAD} 1m
+*
+*out regulation
+.step param RADJU list 0.1 56.2k 118k 261k 365k 422k 768k
+.param RADJB=249k
+.param VSOURCE=9
+.param ILOAD=400m
+.dc V1 2 {VSOURCE} 1m
+*
+.option noopiter
+.backanno
