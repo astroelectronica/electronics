@@ -1,0 +1,22 @@
+*load regulation
+*
+*load
+.meas iload_max max I(I1)
+.meas vload_iload_max find V(/vout) when I(I1)=iload_max
+.meas pload_iload_max param (vload_iload_max*iload_max)
+*
+.meas vload_max max V(/vout)
+.meas vload_min min V(/vout)
+.meas vload_variation param (vload_max-vload_min)
+*
+*source
+.meas vsource_max max V(/vin)
+.meas isource_max max -I(V1)
+.meas psource_max param (vsource_max*isource_max)
+*
+*power ldo regulator
+.meas pldo_max param ((vsource_max-vload_iload_max)*iload_max)
+*
+*efficience
+.meas eff_max param (V(/vout)*-Ix(u1:5))/(V(/vin)*Ix(u1:1))*100
+*

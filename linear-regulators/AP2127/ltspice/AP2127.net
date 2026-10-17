@@ -1,0 +1,22 @@
+*LTspice
+*
+*AP2127
+*Standard linear regulator
+*AE01005127
+*
+*netlist
+.inc AP2127.cir
+*
+*params
+.param VSOURCE=5
+.param ILOAD=300m
+*
+.param RADJ=56.2K
+.param RREF=18K
+.param REN=100K
+*
+*load regulation
+.dc I1 10m {ILOAD} 1m
+*
+.backanno
+.op

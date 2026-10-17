@@ -1,0 +1,14 @@
+.title KiCad schematic
+.include "C:/AE/AP2127/_models/AP2127.spice.txt"
+.include "C:/AE/AP2127/_models/c2012x7r1h105k125ae_p.mod"
+.include "C:/AE/AP2127/_models/cga3e2c0g1h391j080aa_p.mod"
+XU1 /VIN 0 /EN /ADJ /VOUT AP2127_ADJ
+R3 /VIN /EN {REN}
+XU2 /VIN 0 C2012X7R1H105K125AE_p
+V1 /VIN 0 {VSOURCE}
+R1 /VOUT /ADJ {RADJ}
+XU3 /VOUT /ADJ CGA3E2C0G1H391J080AA_p
+R2 /ADJ 0 {RREF}
+I1 /VOUT 0 {ILOAD}
+XU4 /VOUT 0 C2012X7R1H105K125AE_p
+.end
