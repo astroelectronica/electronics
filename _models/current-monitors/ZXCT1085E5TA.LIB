@@ -1,0 +1,88 @@
+*****************************************************************************************************
+*****************************************************************************************************
+*
+* DEVICE        : ZXCT1085E5TA - Diodes Incorporated
+* DATE          : 15AUG2019
+* SIMULATOR     : PSPICE 16.6
+* MODEL VERSION : 1.0
+*
+******************************************************************************************************
+******************************************************************************************************
+*
+*DISCLAIMER: This spice model is PSPICE compatible, developed in ALLEGRO version 16.6.
+*			 If this spice model is simulated in any other spice tool and any error is
+*			 encountered, please contact our support team at the link below:
+*			 https://www.diodes.com/about/contact-us/technical-support/
+*
+******************************************************************************************************
+******************************************************************************************************
+*
+* DEVICE NOTES:
+* Following features have been modelled:
+* 	1. Transient Response
+* 	2. Frequency Response
+* 	3. Input bias current
+* 	4. VOUTH LIMIT
+* 	5. PSRR
+* 	6. CMRR
+******************************************************************************************************
+******************************************************************************************************
+.SUBCKT ZXCT1085E5TA OUT GND S+ S- VCC  
+E_ABM2         N75951 0 VALUE { if(V(S+)>2.7 & V(VCC)>2.7,V(N21601),0)    }
+R_R6         GND OUT  125k TC=0,0 
+C_C3         GND N27631  1.5n  TC=0,0 
+E_E5         N21601 GND N27631 GND 25
+E_E4         N27665 GND N40468 N46569 1
+L_L2         N27665 N21445  16u  
+R_R5         N75465 N21445  110 TC=0,0 
+X_U2         N27631 N27627 DIOde 
+R_R13         N27627 N27665  100 TC=0,0 
+X_U3         N75465 N27631 DIOde 
+R_R14         N27665 N27631  140 TC=0,0 
+R_R15         N40468 N40451  1k TC=0,0 
+G_G1         N40468 N40451 PSSR 0 -1m
+R_R22         N46757 N46749  1k TC=0,0 
+G_G2         N46757 N46749 N47683 GND -1m
+E_E13         N47683 GND N47236 GND 31000
+E_E12         N47218 GND S+ GND 25u
+V_V1         N46749 N76463 -115.9u
+G_ABM2I1         S+ GND VALUE { if(V(S+) <2.7 | V(VCC)<2.7,0,1.7u)    }
+G_ABM2I2         S- GND VALUE { if(V(VCC) <2.7 | V(S+)<2.7,0,1.7u)    }
+R_R26         N76463 S+  5K TC=0,0 
+R_R27         N46569 S-  5K TC=0,0 
+R_R28         N40451 N46757  1m TC=0,0 
+E_ABM3         OUT 0 VALUE { Limit(V(N75951),0,V(S-)-0.8)    }
+E_E15         N89445 GND N89401 GND 1
+C_C12         GND N89719  1u  TC=0,0 
+R_R29         N89485 N89445  0.7958 TC=0,0 
+E_E14         PSSR GND N89397 GND 4200
+R_R31         N89719 N89679  0.7958 TC=0,0 
+C_C13         GND N89401  1u  TC=0,0 
+E_E19         N89907 GND N89897 GND 1
+C_C11         GND N89397  1u  TC=0,0 
+E_E16         N89559 GND N89485 GND 1
+E_E18         N89787 GND N89719 GND 1
+R_R30         N89397 N89559  0.7958 TC=0,0 
+R_R32         N89401 N89787  0.7958 TC=0,0 
+R_R33         N89647 N89907  0.7958 TC=0,0 
+C_C10         GND N89485  1u  TC=0,0 
+C_C14         GND N89647  1u  TC=0,0 
+E_E17         N89679 GND N89647 GND 1
+R_R35         N89897 GND  0.2 TC=0,0 
+R_R34         N89897 N91577  1k TC=0,0 
+C_C15         N89897 N91577  1u  TC=0,0 
+E_E20         N91577 GND VCC GND 450n
+R_R38         N93690 N47218  1.5k TC=0,0 
+E_E21         N93626 GND N93690 GND 1
+C_C17         N93690 N47218  1u  TC=0,0 
+R_R36         N47236 N93626  53.052 TC=0,0 
+R_R37         N47236 GND  12.3228 TC=0,0 
+C_C16         N47236 N93626  1u  TC=0,0 
+R_R39         N93690 GND  0.1 TC=0,0 
+.ENDS ZXCT1085E5TA
+*$
+.SUBCKT DIOde  1 2 
+D1 1 2 IDEAL 
+.MODEL IDEAL D N=10m IS=1E-15
+.ENDS DIOde
+*$
