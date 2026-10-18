@@ -1,0 +1,27 @@
+*LTspice
+*
+*ZXCT1085
+*Voltage output current monitor
+*AE01001085
+*
+*netlist
+.include ZXCT1085.cir
+*
+*params
+.param VSOURCE=27
+.param ILOAD=1
+.param VSUPPLY=5
+.param RSNS=0.4
+.param RN=1K
+.param RPD=100K
+*
+*load regulation
+.dc I1 0 {ILOAD} 1m
+*
+*line regulation
+*.dc V1 0 {VSOURCE} 1
+*
+*transient response
+*.tran 0 51u .01u startup
+*
+*.backanno

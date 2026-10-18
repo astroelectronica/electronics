@@ -1,0 +1,25 @@
+*load regulation
+*
+*load
+*
+*max current of load
+.meas iload_max max I(I1)
+*max voltage of load
+.meas vload_max max v(/vout)
+*max power of load
+.meas pload_max param (iload_max*vload_max)
+*
+*sense resistors
+*
+*max voltage sense resistors
+.meas vsense_max max v(/vin,/vout)
+*max current 1 sense resistor
+.meas isense_max max i(r1)
+*max power 1 sense resistor
+.meas psense_max param (isense_max*vsense_max)
+*
+*Out Monitor
+*
+*max voltage out monitor
+.meas vout_max max V(/vocm)
+*
