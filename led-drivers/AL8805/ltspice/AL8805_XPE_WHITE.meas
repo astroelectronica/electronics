@@ -1,0 +1,38 @@
+*time reference
+.meas tref1 find time when V(/a,/k)=V(/sw) cross=3241
+.meas tref2 find time when V(/a,/k)=V(/sw) cross=3242
+.meas tref3 find time when V(/a,/k)=V(/sw) cross=3243
+*
+*sw frequency and duty time
+.meas t_duty param tref2-tref1
+.meas t_cycle param tref3-tref1
+.meas f_sw param 1/t_cycle
+*
+*load voltage
+.meas Vload_rms rms V(/a,/k) from=tref1 to=tref3
+.meas Iload_rms rms I(D2) from=tref1 to=tref3
+.meas Pload_rms param (Vload_rms*Iload_rms)
+;.meas Vload_max max V(/a,/k) from=tref1 to=tref3
+;.meas Vload_min min V(/a,/k) from=tref1 to=tref3
+*
+*coil current
+.meas Icoil_rms rms Ix(u5:1) from=tref1 to=tref3
+.meas Icoil_max max Ix(u5:1) from=tref1 to=tref3
+.meas Icoil_min min Ix(u5:1) from=tref1 to=tref3
+*
+*shunt resistor (R1)
+.meas Vshunt_rms rms V(vcc,/a) from=tref1 to=tref3
+.meas Ishunt_rms rms I(R1) from=tref1 to=tref3
+.meas Pshunt_rms rms V(vcc,/a)*I(R1) from=tref1 to=tref3
+*
+*freewheel diode
+.meas Idiode_max max -I(D1) from=tref1 to=tref3
+*
+*voltage source
+.meas Isource_max max -I(V2) from=tref1 to=tref3
+.meas Psource_max param (Isource_max*V(vcc)); from=tref1 to=tref3
+.meas Isource_rms rms -I(V2) from=tref1 to=tref3
+.meas Psource_rms param (Isource_rms*V(vcc)); from=tref1 to=tref3
+*
+*efficiency
+.meas eff param ((Pload_rms/Psource_rms)*100)
