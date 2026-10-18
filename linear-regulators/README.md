@@ -1,6 +1,6 @@
 # Linear Regulators
 
-Pending to define.
+Integrated circuit that maintains a steady, constant DC output voltage despite changes in the input voltage or connected load current.
 
 ## Parts
 
