@@ -1,0 +1,32 @@
+*LTspice
+*
+*AL8806
+*High efficiency 36V/1.5A buck led driver. XB-D white.
+*AE01003806
+*
+*netlist
+.include AL8806_XBD_WHITE.cir
+*
+*params
+*
+.param VSOURCE=24
+.param VPUL=5
+.param RSET=0.5
+.param RCTRL=1K
+*
+.param FREQ=500
+.param PERCENT=80
+.param DELAY=0
+.param REPEAT=2
+.param TR=100n
+.param TF=100n
+*
+.param CYCLE=1/FREQ
+.param X_BASE=(CYCLE*REPEAT)+DELAY
+.param DUTY=(PERCENT/100)*CYCLE
+*
+*transient response
+.tran 0 {X_BASE} 0 uic startup
+*
+.backanno
+.end
