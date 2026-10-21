@@ -1,0 +1,133 @@
+*TITLE=AL8807 MACROMODEL
+*ORIGIN=DZSL_AG_GS
+*SIMULATOR=DIODES, SIMETRIX and PSPICE
+*DATE=17th Jan 2013
+*VERSION=1
+*PIN_ORDER   1:SW, 2:GND, 3:CTRL, 4:SET, 5:VIN
+*
+* This model is intended for feasibility study of application
+* design.  It is expected that it will not accurately represent
+* the device real performance.  However some important features
+* of the device are modelled approximately.
+* The model does not include effects of temperature or self-heating.
+* Testing of prototype hardware and optimisation on the bench
+* is always required before production build.
+*
+* NOTE:  set RELTOL=1E-5 for clean switching waveform
+*
+.subckt AL8807   10   26   13  20   18  
+* Connections    SW  GND  CTRL SET  VIN
+* pins   SOT23   1   2    3    4    5
+*                   
+* Block 1: Vref Generator *  input is V(18)-V(26)
+*required input parameters
+.param  VIL1=0.7  VIH1=3.5  VOL1=0 VOH1=2.5  ; low and high limits of input and output  
+.param  MUL1=0.1  MUH1=0.05  ; low and high curve error
+*calculations
+.param KL1={MUL1*tanh((VIH1-VIL1)/MUL1)}  KH1={MUH1*tanh((VIH1-VIL1)/MUH1)}
+.param SL1={(VOH1-VOL1)/(VIH1-VIL1-KL1-KH1)}  ;gain slope
+E11 14 26 value={min(max(VOL1+SL1*(V(18)-V(26)-VIL1-MUL1*tanh((V(18)-V(26)-VIL1)/MUL1)
++ -MUH1*tanh((V(18)-V(26)-VIH1)/MUH1)-KH1),VOL1),VOH1)}
+R4         14 13  50k  
+
+* Block 2: CTRL limiter
+* tanh limiter, type 1, input nodes 13 and 26, outputs 12 and 26
+.param  VIH2=2.5  VOH2=2.5  ;high limits of input and output  
+.param  MU2=0.001  ; curve error
+.param SL2={VOH2/VIH2}  ;gain slope
+E21  12  26  value={SL2*min(V(13)-V(26)-MU2*(1+tanh((V(13)-V(26)-VIH2-MU2)/MU2)),VOH2)}
+
+* Block 3: CTRL lockout with hysteresis *
+R8         12 adj_lockout  1000  
+I1         12 adj_lockout 100uA  
+R31        adj_lockout 31  1k
+C31        31 26 10p
+S4   adj_lockout 12 31 26  S_4          
+.model   S_4   VSWITCH Roff=10e6 Ron=1 Voff=505mV Von=495mV
+
+S5       21 26 31 26  S_5 
+.MODEL  S_5   VSWITCH Roff=10e6 Ron=100 Voff=501mV Von=499mV
+
+* Block 4: UVLO with hysteresis*
+E41       41 26 value={0.5*(1+tanh(1e3*(V(43)-V(18)+5.7)))}
+R41       41 42 1k
+C41       42 26 20p
+R42       42 43 800k
+R43       43 26 200k
+S41       21 26 42 26   S_41 
+.MODEL   S_41   VSWITCH Roff=1e6 Ron=100 Voff=0.4 Von=0.6
+
+* Block 5: Current Sense Comparator*
+G51        26 8 18 20 1m  ;  input amplifier
+C51         26 20  3p      ;  input capacitance
+* SET input current; asymptote input nodes 20 and 26, outputs 20 and 26
+.param  xx5=5  yy5=16u  nn5=32;input corner, output limit, asymptote power
+.param  aa5={xx5**nn5}
+G52  20  26  value={yy5*(V(20)-V(26))/(aa5+(V(20)-V(26))**nn5)**(1/nn5)}
+R51        26 9  10.417k  
+R52        9 8  20.833k  
+S51        9 26 23 26   S_51 
+.MODEL     S_51  VSWITCH Roff=10e6 Ron=1.0 Voff=2.5V Von=2.8V
+C52        8  26 0.5p
+G53        21 26 value={0.01*tanh(100*(V(8)-V(12)))} ;comparator
+C54        21 26 1f  
+V3         24 26 700mV
+D8         24 21 Dclamp
+V4         22 26 8V
+D9         21 22 Dclamp
+
+* Block 6: Comp Delay and gate driver*
+R64        21 63  10Meg    ;  input filter with C61 
+C61        63 26  0.0015p   ;  
+G4         61 25  Value={0.1*(max(V(63)-V(25)-0.5,0))**2*(V(61)-V(25))}
+G5         25 62  Value={0.1*(max(V(25)-V(63)-0.5,0))**2*(V(25)-V(62))}
+R66        61 25 10meg
+R67        25 62 10meg
+R61        18 61  1.2
+R62        62 26  1.2
+R63        25 26  10k
+
+R65        25 64  1        ;  driver current sense
+R13        23 64  330        ;  output resistance-1 ohm
+C6         26 23  25f  
+
+* Block 7: Output NMOS *
+S8       11 71 23 71 S_8 
+.MODEL     S_8 VSWITCH Roff=10e6 Ron=0.25 Voff=2.5V Von=2.8V
+R72        11 10  50m     ; on resistance = R72 + R73 + Ron(S8) 
+R73        71 26  50m
+C5         11 71  100p
+C71        23 71  40p
+C72        11 23  15p
+ 
+* Block 8: Supply Current *
+G81         18 26 Value={(300u*(V(14)-V(26))/VOH1)+0.6u*(V(18)-V(26))}
+
+* Block 9: Protection diodes
+D91  26 10 D_1     ;SW
+D92  26 18 D_1     ;VIN
+D93  26 13 D_2     ;CTRL
+D94  18 20  D_2    ;SET forward
+D95  20 18  D_2    ;SET reverse
+
+.model Dclamp  D Is=2.682n N=1.836 Rs=.5664 Ikf=44.17m Cjo=4p M=.3333 Vj=.5
+.model D_1  D  IS=1e-14 BV=40
+.model D_2  D  IS=1e-14 BV=6.5
+
+.ends AL8807
+*  =====================================================================
+*
+*                (c)  2013 Diodes Incorporated
+*
+*   The copyright in these models  and  the designs embodied belong
+*   to Diodes Incorporated (" Diodes ").  They  are  supplied
+*   free of charge by Diodes for the purpose of research and design
+*   and may be used or copied intact  (including this notice)  for
+*   that purpose only.  All other rights are reserved.  The models
+*   are believed accurate but no condition or warranty as to their
+*   merchantability or fitness for purpose is given and no liability
+*   in respect of any use is accepted by Diodes Incorporated, its distributors
+*   or agents.
+*
+*   Diodes Incorporated, 4949 Hedgcoxe Road, Suite 200, Plano, TX 75024, USA
+*
