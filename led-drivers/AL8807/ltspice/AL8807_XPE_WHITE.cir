@@ -1,0 +1,26 @@
+.title KiCad schematic
+.include "C:/AE/AL8807/_models/AL8807.lib"
+.include "C:/AE/AL8807/_models/C2012X5R1H475K125AB_p.mod"
+.include "C:/AE/AL8807/_models/C2012X7R2A104K125AE_p.mod"
+.include "C:/AE/AL8807/_models/C3225X7T2J104M160AC_p.mod"
+.include "C:/AE/AL8807/_models/DFLS240L.spice.txt"
+.include "C:/AE/AL8807/_models/TPC_1028_744065330_33u.lib"
+.include "C:/AE/AL8807/_models/XPE_SPICE.lib"
+XU3 VCC 0 C2012X7R2A104K125AE_p
+XU2 VCC 0 C2012X5R1H475K125AB_p
+V1 /PWM 0 PULSE(0 {VPUL} {DELAY} {TR} {TF} {DUTY} {CYCLE})
+R3 /PWM /CTRL {RCTRL}
+D1 /SW VCC DI_DFLS240L
+D6 /B4 /B5 XLampXPEwhite
+D4 /B2 /B3 XLampXPEwhite
+XU5 /K /SW TPC_1028_744065330_33u
+D2 /A /B1 XLampXPEwhite
+XU4 /A /K C3225X7T2J104M160AC_p
+D3 /B1 /B2 XLampXPEwhite
+D5 /B3 /B4 XLampXPEwhite
+D7 /B5 /K XLampXPEwhite
+R2 VCC /A {RSENSE2}
+R1 VCC /A {RSENSE1}
+XU1 /SW 0 /CTRL /A VCC AL8807
+V2 VCC 0 {VSOURCE}
+.end

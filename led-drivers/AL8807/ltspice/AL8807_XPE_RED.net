@@ -1,0 +1,32 @@
+*LTspice
+*
+*AL8807
+*Led driver. XP-E RED
+*AE01003807
+*
+*netlist
+.include AL8807_XPE_RED.cir
+*
+*params
+.param VSOURCE=28
+.param VPUL=5
+.param RSENSE1=0.3
+.param RSENSE2=0.3
+.param RCTRL=1K
+*
+.param FREQ=500
+.param PERCENT=80
+.param DELAY=0.5m
+.param REPEAT=2
+.param TR=50n
+.param TF=50n
+*
+.param CYCLE=1/FREQ
+.param X_BASE=(CYCLE*REPEAT)+DELAY
+.param DUTY=(PERCENT/100)*CYCLE
+*
+*transient response
+.tran 0 {X_BASE} 0 uic startup
+*
+*.backanno
+*.op

@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "AL8807")(type "KiCad")(uri "C:/AE/AL8807/_lib/AL8807.kicad_sym")(options "")(descr ""))
+)
