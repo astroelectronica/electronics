@@ -1,0 +1,119 @@
+* OrCAD Model Editor - Version 9.1
+
+*******************VERSION HISTORY*************************************
+*version 1.0 - 	09/04/09: 	Created by Duane Pionilla from specifications of Sho Sai.
+*version 1.1 -	10/14/09:	Modified by Duane Pionilla. Removed all connection to 0
+*					and connected to GND. Created GND pin to comp1 and comp2
+*					subcircuit. Removed connection to "Global 0".
+*    		- 	10/14/09:	Add Revision History
+*		-	02/01/10:	Modified IDD current characteristics using equations and less devices.
+*					Previous characterization causes a small current even 0volts supply.
+*					Added another module (OR gate)
+*$
+
+*******************comp1 block*****************************************
+*                      VDD
+*                   out |
+*                in2 |  |
+*             in1 |  |  |
+*              |  |  |  |
+.subckt comp1 11 10 18 17 GND
+.model DZ D(Is=0.05n rs=0.001 bv=10 Ibv=1)
+E1 12 GND 11 10 10k
+R1 12 13 100k
+C1 13 GND 100p
+D1 GND 13 DZ
+M4 18 13 17 17 PMOS2 l=.6u w=8000u
+Rpd 18 GND 30k
+***vto is set for the computation of VOLP=0.7V
+***gate voltage swings from -0.5V to 10V
+.MODEL PMOS2 PMOS (level=1 vto=-1.476)
+.ends comp1
+*$
+*******************comp2 block*****************************************
+*                      VDD
+*                   out |
+*                in2 |  |
+*             in1 |  |  |
+*              |  |  |  |
+.subckt comp2 11 10 18 17 GND
+* in1 in2 out VDD
+.model DZ D(Is=0.05n rs=0.001 bv=11 Ibv=1)
+E1 12 GND 11 10 100k
+R1 12 13 100k
+C1 13 GND 100p
+D1 GND 13 DZ
+M6 18 13 17 17 PMOS20 l=1u w=10000u
+M7 18 13 GND GND NMOS20 l=1u w=10000u
+.MODEL PMOS20 PMOS (level=1 vto=0)
+.MODEL NMOS20 NMOS (level=1 vto=0)
+.ends comp2
+*$
+*******************orgate block*****************************************
+*                      VDD
+*                   out |
+*                in2 |  |
+*             in1 |  |  |
+*              |  |  |  |
+.subckt orgate 1  2  3  4 GND
+* in1 in2 out VDD
+.model SWVCR1 VSWITCH roff=1000meg ron=0.001 von=0.5
+.model SWVCR2 VSWITCH roff=0.001 ron=1000meg von=0.5
+S1 4 3 1 GND SWVCR1
+S2 4 3 2 GND SWVCR1
+S3 3 5 1 GND SWVCR2
+S4 5 GND 2 GND SWVCR2
+.ends orgate
+*$
+.subckt BD52E42G VOUT VDD GND NC CT
+****************VDET, Hysteresis and Release Block*********************
+X1 11 10 18 29 GND comp2
+Vref 10 GND 1
+R1b 29 11 20meg
+R100 11 16 5.86510meg
+R101 16 GND 0.38490meg
+M3 16 18 GND GND NMOS2 l=1u w=1000u
+.MODEL NMOS2 NMOS (level=1 vto=.1)
+.MODEL PMOS1 PMOS (level=1)
+.MODEL NMOS1 NMOS (level=1)
+*****************TPLH delay block***************************************
+M6 15 18 29 29 PMOS22 l=1u w=10000u
+M7 14 18 GND GND NMOS22 l=1u w=10000u
+.MODEL PMOS22 PMOS (level=1 vto=0)
+.MODEL NMOS22 NMOS (level=1 vto=0)
+Rct 15 14 8.997923meg
+Rct3 14 CT 2.076667k
+Cct CT GND 43.9233864p
+****VCTH circuit****
+Rdet1 29 19 11meg
+Rdet2 19 GND 9meg
+*****************TPHL delay block***************************************
+X52 CT 19 20 29 GND comp1
+T1 20 GND 222 GND Z0=1meg TD=32.0u
+R500 222 GND 1meg
+E500 333 GND poly(2) 20 GND 222 GND 0 0 0 0 2
+*****************driver stage block************************************
+Mdrv 29 333 334 GND NMOS10 l=1u w=8000u
+Rdrv 334 GND 100k
+.MODEL NMOS10 NMOS (level=1 vto=0)
+******************Open drain NMOS output block*************************
+Mout VOUT 334 GND GND NMOS3 l=10u w=3006.4u
+.MODEL NMOS3 NMOS (level=1 vto=.5)
+**circuit current
+M1cc 65 65 VDD VDD PMOS10 l=10u w=100u
+R2cc VDD 65 5meg
+D1ccA GND 67 DZ2A
+D1ccB GND 68 DZ2B
+R1cc 65 GND 14.6872266666667meg
+.model DZ2A D(Is=0.87702779384946u)
+.model DZ2B D(Is=0.604904140861543u)
+.MODEL PMOS10 PMOS (level=1 vto=-0.9)
+.model SWVCR1 VSWITCH roff=10000meg ron=0.001
+.model SWVCR2 VSWITCH roff=0.001 ron=10000meg
+S1 65 67 401 GND SWVCR1
+S2 65 68 401 GND SWVCR2
+E1 400 GND poly(1) 29 GND 0.951 -1
+X53 334 400 401 29 GND orgate
+Evdd 29 GND VDD GND 1
+.ends BD52E42G 
+*$
