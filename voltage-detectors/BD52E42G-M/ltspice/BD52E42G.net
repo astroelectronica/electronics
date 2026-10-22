@@ -1,0 +1,18 @@
+*LTspice
+*
+*BD52E42G
+*Voltage detector
+*AE01002242
+*
+*netlist
+.include BD52E42G.cir
+*
+*params
+.param VSUPPLY=5
+.param RPU=100K
+*
+*Line regulation. Falling voltage.
+.dc V1 {VSUPPLY} 0 0.001
+*
+*.backanno
+*.op
