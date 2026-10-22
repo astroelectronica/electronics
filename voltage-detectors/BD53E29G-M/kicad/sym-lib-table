@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "BD53E29G")(type "KiCad")(uri "${KIPRJMOD}/BD53E29G.kicad_sym")(options "")(descr ""))
+)

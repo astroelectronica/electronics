@@ -1,0 +1,17 @@
+*LTspice
+*
+*BD53E29G
+*Voltage detector
+*AE01002329
+*
+*netlist
+.include BD53E29G.cir
+*
+*params
+.param VSUPPLY=5
+*
+*Line regulation. Falling voltage.
+.dc V1 {VSUPPLY} 0 0.001
+*
+*.backanno
+*.op
