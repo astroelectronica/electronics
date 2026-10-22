@@ -19,7 +19,7 @@ Models are shared and live in a single folder.
 
 ## Tools
 
-LTspice, Ngspice, Qspice
+Kicad, LTspice, Ngspice, Qspice
 
 ## License
 
