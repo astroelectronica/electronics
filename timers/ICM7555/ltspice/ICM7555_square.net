@@ -1,0 +1,21 @@
+*LTspice
+*
+*ICM7555
+*Square wave generator
+*AE01004555
+*
+*netlist
+.include ICM7555_square.cir
+*
+*params
+.param VSUPPLY=5
+.param CTRIGG=0.1u
+.param RDISC=3.16k
+.param RTRIGG=12.7k
+.param RLOAD=10k
+*
+*trasient response
+.tran 0 30m 0 uic startup
+*
+*.backanno
+*.op

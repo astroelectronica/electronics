@@ -1,0 +1,10 @@
+*frequency regulation
+*
+.meas tref1 find time when V(/trigg)=V(/out) cross=19
+.meas tref2 find time when V(/trigg)=V(/out) cross=20
+.meas tref3 find time when V(/trigg)=V(/out) cross=21
+*
+.meas frec_out param (1/(tref3-tref1))
+.meas time_cycle param (1/frec_out)
+.meas duty_out param (tref2-tref1)
+.meas duty_% param ((duty_out*100)/time_cycle)
