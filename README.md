@@ -15,6 +15,7 @@ Models are shared and live in a single folder.
 | AE01001 | [Current Monitors](https://github.com/astroelectronica/electronics/tree/main/current-monitors) |
 | AE01002 | [Voltage Detectors](https://github.com/astroelectronica/electronics/tree/main/voltage-detectors) |
 | AE01003 | [Led Drivers](https://github.com/astroelectronica/electronics/tree/main/led-drivers) |
+| AE01004 | [Timers](https://github.com/astroelectronica/electronics/tree/main/timers) |
 | AE01005 | [Linear Regulators](https://github.com/astroelectronica/electronics/tree/main/linear-regulators) |
 
 ## Tools
