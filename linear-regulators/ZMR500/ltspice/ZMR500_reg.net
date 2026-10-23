@@ -1,0 +1,23 @@
+*LTspice
+*
+*ZMR500
+*50mA 5V Linear Regulator
+*AE01005500
+*
+*netlist
+.include ZMR500_reg.cir
+*
+*params
+*
+*load regulation
+*.param VSOURCE=8
+*.param ILOAD=0.05
+*.dc I1 0 {ILOAD} 100n
+*
+*line regulation
+.param VSOURCE=25
+.param ILOAD=0.01
+.dc V1 8 {VSOURCE} 0.001
+*
+.backanno
+.op

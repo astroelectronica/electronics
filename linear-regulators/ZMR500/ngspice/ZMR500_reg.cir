@@ -1,0 +1,32 @@
+.title KiCad schematic
+.include "C:/AE/ZMR500/_models/C2012X7R2A104K125AA_p.mod"
+.include "C:/AE/ZMR500/_models/C3216X5R1C106M160AA_p.mod"
+.include "C:/AE/ZMR500/_models/C3216X7R2A105M160AA_p.mod"
+.include "C:/AE/ZMR500/_models/ZMR500.spice.txt"
+*
+*ngspice
+*
+*ZMR500
+*50mA 5V Linear Regulator
+*AE01005500
+*
+*params
+*
+*load regulation
+*.param VSOURCE=8
+*.param ILOAD=0.05
+*.dc I1 0 {ILOAD} 100n
+*
+*line regulation
+.param VSOURCE=25
+.param ILOAD=0.01
+.dc V1 8 {VSOURCE} 0.001
+*
+XU5 /VOUT 0 C2012X7R2A104K125AA_p
+XU1 /VIN 0 /VOUT ZMR500
+XU3 /VIN 0 C2012X7R2A104K125AA_p
+I1 /VOUT 0 {ILOAD}
+XU4 /VOUT 0 C3216X5R1C106M160AA_p
+XU2 /VIN 0 C3216X7R2A105M160AA_p
+V1 /VIN 0 {VSOURCE}
+.end
