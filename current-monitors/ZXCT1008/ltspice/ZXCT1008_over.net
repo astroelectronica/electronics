@@ -1,0 +1,25 @@
+*LTspice
+*
+*ZXCT1008
+*Current output current monitor
+*AE01001008
+*
+*netlist
+.include ZXCT1008_over.cir
+*
+*params
+.param VSOURCE=30
+.param ILOAD=5
+.param RSET1=4.99K
+.param RSET2=4.99K
+.param RLIM=10K
+.param RBASE=1.5Meg
+.param RSENSE1=0.04
+.param RSENSE2=0.04
+.param RFILTER=100
+*
+*load regulation
+.dc I1 0 {ILOAD} 0.001
+*
+.backanno
+

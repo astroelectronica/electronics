@@ -1,0 +1,37 @@
+*load regulation
+*
+*load
+.meas i_load_max max I(I1)
+.meas v_load_max max V(/pwr_out)
+.meas p_load_max param (i_load_max*v_load_max)
+*
+*sense resistors
+.meas v_sense_max max V(/pwr_in,/pwr_out)
+.meas i_sense_max max I(R3)
+.meas p_sense_max param (i_sense_max*v_sense_max)
+*
+*conversion
+.meas v_out_max max V(/out)
+.meas i_out_max max -Ix(u2:3)
+*
+*bjt
+.meas vce_max max V(/cocm,/filter)
+.meas vbe_max max -V(/base,/cocm)
+.meas ic_max max -Ic(Q1)
+.meas ib_max max -Ib(Q1)
+.meas p_bjt param (vce_max*ic_max)
+*
+*zener
+.meas vz_max max V(/pwr_in,/base)
+.meas iz_max max Ix(u1:2)
+.meas pz_max param (vz_max*iz_max)
+*
+*base resistor
+.meas v_rb_max max V(/base)
+.meas i_rb_max max I(R1)
+.meas p_rb_max param (v_rb_max*i_rb_max)
+*
+*collector resistor
+.meas v_rc_max max V(/filter)
+.meas i_rc_max max I(R5)
+.meas p_rc_max param (v_rc_max*i_rc_max)
