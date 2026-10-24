@@ -1,0 +1,34 @@
+*LTspice
+*
+*ZXCT1009
+*Current output current monitor
+*AE01001009
+*
+*netlist
+.include ZXCT1009_over.cir
+*
+*params
+.param VSOURCE=30
+.param ILOAD=5
+.param RSET1=4.99K
+.param RSET2=4.99K
+.param RLIM=100
+.param RBASE=1.5Meg
+.param RSENSE1=0.04
+.param RSENSE2=0.04
+.param RFILTER=100
+.param RTRAN=604K
+*
+*transient response
+.param TR=5n
+.param TF=5n
+.param TDELAY=0
+.param FREQ=1K
+.param CYCLE=1/FREQ
+.param NCYCLE=2
+.param X_BASE=(CYCLE*NCYCLE)+TDELAY
+.param PERCENT=50
+.param DUTY=(PERCENT/100)*CYCLE
+.tran 0 {X_BASE} 0 ;uic startup
+*
+
