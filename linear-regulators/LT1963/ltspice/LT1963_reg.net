@@ -1,0 +1,32 @@
+*LTspice
+*
+*LT1963
+*1.5A, low noise, fast transient response LDO regulator
+*AE01005963
+*
+*netlist
+.include LT1963_reg.cir
+*
+*line regulation
+*.param RADJU=6.98k
+*.param RADJB=4.12k
+*.param VSOURCE=20
+*.param ILOAD=0.5
+*.dc V1 5 {VSOURCE} 1m
+*
+*load regulation
+*.param RADJU=6.98k
+*.param RADJB=4.12k
+*.param VSOURCE=5
+*.param ILOAD=1.2
+*.dc I1 0 {ILOAD} 1m
+*
+*out regulation
+.step param RADJU list 0.1 976 2k 4.32k 6.98k
+.param RADJB=4.12k
+.param VSOURCE=12
+.param ILOAD=1.2
+.dc V1 2 {VSOURCE} .001
+*
+.option noopiter
+.backanno
