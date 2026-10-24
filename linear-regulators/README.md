@@ -12,4 +12,5 @@ Integrated circuit that maintains a steady, constant DC output voltage despite c
 | AE01005763 | [LT1763](https://github.com/astroelectronica/electronics/tree/main/linear-regulators/LT1763) | 500mA, Low Noise, LDO Micropower Regulators |
 | AE01005764 | [LT1764](https://github.com/astroelectronica/electronics/tree/main/linear-regulators/LT1764) | 3A, Fast Transient Response, Low Noise, LDO Regulators |
 | AE01005962 | [LT1962](https://github.com/astroelectronica/electronics/tree/main/linear-regulators/LT1962) | 300mA, Low Noise, LDO Micropower Regulators |
+| AE01005963 | [LT1963](https://github.com/astroelectronica/electronics/tree/main/linear-regulators/LT1963) | 1.5A, Low Noise, LDO Micropower Regulators |
 | AE01005500 | [ZMR500](https://github.com/astroelectronica/electronics/tree/main/linear-regulators/ZMR500) | 50mA 5V Linear Regulator |
