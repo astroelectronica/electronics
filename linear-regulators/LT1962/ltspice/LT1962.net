@@ -1,0 +1,32 @@
+*LTspice
+*
+*LT1962
+*300mA, low noise, micropower LDO regulator
+*AE01005962
+*
+*netlist
+.include LT1962.cir
+*
+*line regulation
+*.param RADJU=422k
+*.param RADJB=249k
+*.param VSOURCE=20
+*.param ILOAD=150m
+*.dc V1 5 {VSOURCE} 1m
+*
+*load regulation
+*.param RADJU=422k
+*.param RADJB=249k
+*.param VSOURCE=5
+*.param ILOAD=300m
+*.dc I1 100m {ILOAD} 1m
+*
+*out regulation
+.step param RADJU list 0.1 261k 365k 422k 768k
+.param RADJB=249k
+.param VSOURCE=12
+.param ILOAD=150m
+.dc V1 2 {VSOURCE} 1m
+*
+.option noopiter
+.backanno
