@@ -7,6 +7,7 @@ Electronic device or system component that detects and measures the flow of elec
 | ID | MPN | Description |
 |---|---|---|
 | AE01001210 | [ZXCT210](https://github.com/astroelectronica/electronics/tree/main/current-monitors/ZXCT210) | 26V, Zero-Drift, High-Precision Current Monitor. 200V/V |
+| AE01001211 | [ZXCT211](https://github.com/astroelectronica/electronics/tree/main/current-monitors/ZXCT211) | 26V, Zero-Drift, High-Precision Current Monitor. 500V/V |
 | AE01001215 | [ZXCT215](https://github.com/astroelectronica/electronics/tree/main/current-monitors/ZXCT215) | 26V, Zero-Drift, High-Precision Current Monitor. 75V/V |
 | AE01001008 | [ZXCT1008](https://github.com/astroelectronica/electronics/tree/main/current-monitors/ZXCT1008) | High-Side Current Monitors |
 | AE01001009 | [ZXCT1009](https://github.com/astroelectronica/electronics/tree/main/current-monitors/ZXCT1009) | Micro-Power High-Side Current Monitor |
