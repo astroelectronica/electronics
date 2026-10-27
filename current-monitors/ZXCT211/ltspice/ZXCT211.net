@@ -1,0 +1,32 @@
+*
+*LTspice
+*
+*ZXCT211
+*26V, Zero-Drift, High-Precision Current Monitor. 500V/V.
+*AE01001211
+*
+*netlist
+.include ZXCT211.cir
+*
+*params
+.param VIN=12
+.param VREF=2.5
+.param VSUPPLY=5
+.param RSNS=0.005
+.param ROUT=100
+.param ILOAD=1
+.param AC=0
+.param TAMB=25
+.param VERSION=1
+*
+*load regulation
+.dc I1 0 {ILOAD} 100m
+*
+*line regulation
+*.dc V1 5 {VIN} .01
+*
+*transient response
+*.tran 0 51u .01u startup
+*
+*.backanno
+*VOUT = ((ILOAD * RSENSE)* GAIN) + VREF
