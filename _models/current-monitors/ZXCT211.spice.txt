@@ -1,0 +1,201 @@
+*$
+******************************************************************************************************************************
+******************************************************************************************************************************
+*
+* DEVICE                   : ZXCT211 - Diodes Incorporated
+* PACKAGE                  : SOT363
+* DATE                     : 15MARCH2024
+* SIMULATOR                : PSPICE 17.4
+* MODEL TYPE               : TRANSIENT/AC
+* DATASHEET NUMBER         : DS45449 Rev. 2 - 2
+* APPLICATION NUMBER       : NA
+* APPLICATION ORDER NUMBER : NA
+* MODEL VERSION            : 1.0
+*
+******************************************************************************************************************************
+******************************************************************************************************************************
+*
+*DISCLAIMER: This spice model is PSPICE compatible, developed in ALLEGRO version 17.4.
+*            If this spice model is simulated in any other spice tool and any error is
+*            encountered, please contact our support team at the link below:
+*            https://www.diodes.com/about/contact-us/technical-support/
+*
+******************************************************************************************************************************
+******************************************************************************************************************************
+*
+* DEVICE NOTES:
+* Following features have been modelled:
+* 	1. Zero-Drift Performance
+*   2. Common Mode rejection Raio
+*   3. Power Supply rejection Raio
+*   4. Gain Error
+*   5. Bias Current
+*   6. Quiescent current
+*   7. Offset voltage
+*   8. Temperature variation
+*
+* Following global parameters are included in the model: 
+*   1. TAMB- Ambient temperature in °C
+*   2. AC- Set AC=1 for running ac simulation and AC=0 for transients.
+*   3. Version- Use VERSION=1 for ZXCT211A, VERSION=2 for ZXCT211B, VERSION=3 for ZXCT211C model.
+*
+*******************************************************************************************************************************
+*******************************************************************************************************************************
+.SUBCKT ZXCT211 REF GND V+ IN+ IN- OUT PARAMS: AC=0 VERSION=1 TAMB=25
+E_ABM3         N253327 0 VALUE {
++  LIMIT(V(N253209),V(GND)+V(VOUT_LOW_CLAMP),V(V+)-V(VOUT_UP_CLAMP))    }
+G_ABM2I3         IB_H 0 VALUE { IF(V(REF)<1m,V(N254911)-1.99u,V(N254911))    }
+E_ABM37         N253209 0 VALUE { IF( V(V+)>2.4,V(OUT1),0 )    }
+X_H1    N253389 OUT IOUT 0 ZXCT211_H1 
+R_R32         IB_L OUT  1MEG  
+X_S2    AC 0 PIN3 PIN4 ZXCT211_S2 
+X_U3         N252899 N252905 diode 
+E_E4         OUT2 0 PIN4 IB_L 100k
+E_ABM9         N255355 0 VALUE { (12.6+V(IN+)*0.2)    }
+E_E21         VOUT_LOW_CLAMP 0 TABLE { V(IOUT, 0) } 
++ ((-18m,5.25)(-17m,3.65)(-16m,3)(-15m,2.6)(-14m,2.25)(-13m,2)(-12m,1.75)(-11m,1.6)(-10m,1.45)
++ (-9m,1.25)(-8m,1.05)(-7m,0.9)(-6m,0.75)(-5m,0.6)(-4m,0.5)(-3m,0.4)(-2m,0.25)(-1m,0.15)(0,0))
+R_R36         N253015 N252905  10  
+R_R28         PIN3 PIN2  1m  
+X_U2         N253015 OUT2 diode 
+E_ABM14         N255185 0 VALUE { IF( (V(IN+)-V(IN-))<10m &
++  V(V+)>2.6,2.45u+V(IB_ON)*0.5u,IF( (V(IN+)-V(IN-))<10m &
++  V(V+)<2.6,2.5u+V(IB_ON)*0.02u,28u))    }
+R_R38         IN+ IN-  2.5k  
+R_R29         IN+ IB_H  2000  
+R_R31         IN- IB_L  2000  
+G_ABM2I4         IB_L 0 VALUE { IF(V(REF)<1m,V(N255185)+1u,V(N255185))    }
+C_C6         IB_H 0  12p   
+E_ABM13         N254911 0 VALUE { IF( (V(IN+)-V(IN-))<10m &
++  V(V+)>2.6,2.45u+V(IB_ON)*0.5u,IF( (V(IN+)-V(IN-))<10m &
++  V(V+)<2.6,2.5u+V(IB_ON)*0.02u,28u))    }
+G_G1         PIN4 PIN3 PSRR 0 -1m
+E_E20         VOUT_UP_CLAMP 0 TABLE { V(IOUT, 0) } 
++ ((0,5m)(2.5m,0.2)(5m,0.4)(7.5m,0.65)(10m,0.9)(12.5m,1.15)(15m,1.5)(17.5m,1.9)(18.75m,2.25)(20m,2.5)(20.5m,5))
+E_E5         OUT1 0 N252905 0 1
+E_ABM4         N253389 0 VALUE { IF(V(AC)>0.5,V(OUT1),V(N253327))    }
+C_C7         IB_L 0  12p   
+E_ABM12         IB_ON 0 VALUE { IF( V(IN+)<3,V(IN+),V(N255355))    }
+V_V2         AC 0 {AC}
+R_R30         IB_H REF  1MEG  
+R_R37         N252899 OUT2  10  
+X_S1    AC 0 PIN1 PIN2 ZXCT211_S1 
+G_G2         PIN2 PIN1 CMRR_OUT 0 -1u
+E_CMRR_E18         CMRR_N306450 0 CMRR_N306442 0 900
+E_CMRR_E17         CMRR_N306432 0 CMRR_N306424 0 1
+E_CMRR_E16         CMRR_N306416 0 CMRR_N306408 0 1
+R_CMRR_R41         CMRR_N306442 0  0.613  
+E_CMRR_E15         CMRR_N306400 0 CMRR_N306392 0 1
+E_CMRR_E20         CMRR_GM 0 TABLE { V(CMRR_N331229, 0) } 
++ ( (-40,200m)(-10,170m)(25,140m)(50,130m)(80,130m)(125,165m) )
+C_CMRR_C17         CMRR_N306450 CMRR_OUT  1u   
+R_CMRR_R38         CMRR_N306392 0  19.70  
+E_CMRR_E14         CMRR_N306384 0 CMRR_N306376 0 1
+R_CMRR_R35         CMRR_N306450 CMRR_OUT  0.227  
+C_CMRR_C16         CMRR_N306432 CMRR_N306442  1u   
+E_CMRR_E13         CMRR_N306368 0 CMRR_N306360 0 1
+R_CMRR_R34         CMRR_N306432 CMRR_N306442  0.636  
+C_CMRR_C15         CMRR_N306416 CMRR_N306424  1u   
+R_CMRR_R42         CMRR_OUT 0  0.223  
+C_CMRR_C14         CMRR_N306400 CMRR_N306408  1u   
+R_CMRR_R33         CMRR_N306416 CMRR_N306424  0.530  
+R_CMRR_R32         CMRR_N306400 CMRR_N306408  0.7961  
+C_CMRR_C13         CMRR_N306384 CMRR_N306392  1u   
+C_CMRR_C12         CMRR_N306368 CMRR_N306376  1u   
+R_CMRR_R39         CMRR_N306408 0  0.7510  
+R_CMRR_R31         CMRR_N306384 CMRR_N306392  147.05  
+C_CMRR_C1         CMRR_N306352 CMRR_N306360  1u   
+R_CMRR_R30         CMRR_N306368 CMRR_N306376  1592.35  
+V_CMRR_V4         CMRR_AC 0 {AC}
+V_CMRR_V3         CMRR_N331229 0 {TAMB}
+R_CMRR_R29         CMRR_N306352 CMRR_N306360  3968.25  
+R_CMRR_R36         CMRR_N306360 0  15.86  
+E_CMRR_ABM1         CMRR_N306352 0 VALUE { (V(IB_H) * V(CMRR_GM))/2.5    }
+R_CMRR_R40         CMRR_N306424 0  0.505  
+R_CMRR_R37         CMRR_N306376 0  800.17  
+R_PSRR_R37         PSRR_N262847 0  348.95  
+E_PSRR_E11         PSRR_10K 0 PSRR_N262911 0 1
+R_PSRR_R19         PSRR_1K PSRR_N262879  159.13  
+C_PSRR_C13         PSRR_5K PSRR_N262911  1u   
+R_PSRR_R22         PSRR_N262943 0  1.1  
+E_PSRR_E18         PSRR_N262839 0 PSRR_N262831 0 1
+C_PSRR_C16         PSRR_N262887 PSRR_N262895  1u   
+C_PSRR_C10         PSRR_1K PSRR_N262879  1u   
+R_PSRR_R24         PSRR_N262863 0  138.96  
+R_PSRR_R23         PSRR_500 PSRR_N262863  318.2  
+C_PSRR_C12         PSRR_500 PSRR_N262863  1u   
+E_PSRR_E19         PSRR_300 0 PSRR_N262815 0 1
+C_PSRR_C18         PSRR_N262839 PSRR_N262847  1u   
+R_PSRR_R21         PSRR_10K PSRR_N262943  15.92  
+C_PSRR_C19         PSRR_300 PSRR_N262831  1u   
+R_PSRR_R20         PSRR_N262879 0  68.9  
+E_PSRR_E13         PSRR_5K 0 PSRR_N262895 0 1
+R_PSRR_R36         PSRR_N262839 PSRR_N262847  795.57  
+C_PSRR_C4         PSRR_60 PSRR_N262815  1u   
+R_PSRR_R35         PSRR 0  0.5  
+E_PSRR_E4         PSRR_60 0 V+ 0 0.35
+R_PSRR_R32         PSRR_N262895 0  5  
+E_PSRR_E16         PSRR_N262887 0 PSRR_N262879 0 1
+R_PSRR_R38         PSRR_300 PSRR_N262831  530.78  
+R_PSRR_R34         PSRR_N262815 0  1769.28  
+E_PSRR_E17         PSRR_30K 0 PSRR_N262943 0 1
+R_PSRR_R25         PSRR_5K PSRR_N262911  31.82  
+R_PSRR_R26         PSRR_N262911 0  1.51  
+E_PSRR_E10         PSRR_1K 0 PSRR_N262863 0 1
+R_PSRR_R7         PSRR_60 PSRR_N262815  2653.92  
+C_PSRR_C17         PSRR_30K PSRR  1u   
+R_PSRR_R39         PSRR_N262831 0  20.4  
+R_PSRR_R31         PSRR_N262887 PSRR_N262895  159.13  
+E_PSRR_E12         PSRR_500 0 PSRR_N262847 0 1
+C_PSRR_C11         PSRR_10K PSRR_N262943  1u   
+R_PSRR_R33         PSRR_30K PSRR  5.30  
+V_V3         N269330 0 {TAMB}
+G_ABMII1         V+ 0 VALUE {
++  (0.0000005u*(V(N269330)**3)+0.00005u*(V(N269330)**2)-0.0318u*V(N269330)+59.884u)}
+E_ABM43         N274307 0 VALUE {
++  ((3.87*10**-5)*(V(N273080)**3)-(1.85*10**-3)*(V(N273080)**2)+0.1124*V(N273080)+16.887)*1u}
+E_ABM42         N274322 0 VALUE { V(N273090)+V(N274307)    }
+E_ABM40         N273090 0 VALUE {
++  ((1.80*10**-11)*(V(N273080)**6)-(3.38*10**-9)*(V(N273080)**5)-(8.38*10**-8)*(V(N273080)**4))*1u}
+V_V4         N273080 0 {TAMB}
+V_V5         N328836 0 {VERSION}
+E_ABM44         N329082 0 VALUE { IF(V(N328836)>0.5 &
++  V(N328836)<1.5,V(N274322)-5.952m,V(N274322)-5.957m)     }
+R_R40         OUT2 N252905  10k  
+C_C9         0 N252905  1u   
+E_E22         PIN1 IB_H VOS 0 1
+E_ABM45         VOS 0 VALUE { IF(V(IN+)<1m & V(REF)<1m & V(V+)>1m,V(N329082),0)}
+.ENDS ZXCT211
+*$
+.subckt ZXCT211_H1 1 2 3 4  
+H_H1         3 4 VH_H1 1
+VH_H1         1 2 0V
+.ends ZXCT211_H1
+*$
+.subckt ZXCT211_S2 1 2 3 4  
+S_S2         3 4 1 2 _S2
+RS_S2         1 2 1G
+.MODEL         _S2 VSWITCH Roff=40 Ron=1k Voff=0.2 Von=0.8
+.ends ZXCT211_S2
+*$
+.subckt ZXCT211_S1 1 2 3 4  
+S_S1         3 4 1 2 _S1
+RS_S1         1 2 1G
+.MODEL         _S1 VSWITCH Roff=40 Ron=1k Voff=0.2 Von=0.8
+.ends ZXCT211_S1
+*$
+.subckt diode  1 2 
+d1 1 2 ideal 
+.model ideal d
++ n=0.01
++ is=1e-015
++ t_abs=27
++ tt=1e-011
++ rs=0.01
+.ends diode
+*$
+.model D_D1 d
++ is=1e-015
++ n=0.01
++ tt=1e-011
+*$
