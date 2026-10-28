@@ -1,0 +1,32 @@
+*LTspice
+*
+*ZXCT1030
+*Current limiter
+*AE01001030
+*
+*netlist
+.include ZXCT1030_ilim.cir
+*
+*params
+.param VSOURCE=20
+.param VSUPPLY=5
+*
+.param RADJ=9.76K
+.param RREF=8.66K
+.param RPU=10K
+.param RSENSE1=0.47
+.param RSENSE2=0.47
+.param RGN=10
+.param RGP=4.7K
+.param RLIM=10K
+.param RLPF=120
+.param RLOAD=40
+.param ROL=25
+*
+.model SWITCH SW(Ron=1 Roff=10Meg Vt=.5 Vh=-.4)
+*
+.param x_base=2m
+.tran 0 {x_base} 0 startup
+*
+.op
+.backanno

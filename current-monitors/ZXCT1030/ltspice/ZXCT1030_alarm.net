@@ -1,0 +1,27 @@
+*LTspice
+*
+*ZXCT1030
+*Overcurrent alarm
+*AE01001030
+*
+*netlist
+.include ZXCT1030_alarm.cir
+*
+*params
+.param VSOURCE=20
+.param VSUPPLY=5
+.param ILOAD=2
+*
+.param RADJ=9.76K
+.param RREF=8.66K
+.param RPU=10K
+.param RSENSE1=0.47
+.param RSENSE2=0.47
+.param RLIM=10K
+.param RLPF=100
+*
+*load regulation
+.dc I1 0 {ILOAD} 1m
+*
+.backanno
+.op
