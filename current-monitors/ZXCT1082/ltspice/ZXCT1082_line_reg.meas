@@ -1,0 +1,13 @@
+*line regulation
+*
+*out monitor
+*
+*max voltage out monitor
+.meas vout_min min V(/OUT)
+.meas vout_max max V(/OUT)
+.meas vout_variation param (vout_max-vout_min)
+*
+*max current out monitor
+.meas iout_min min -Ix(u1:OUT)
+.meas iout_max max -Ix(u1:OUT)
+.meas iout_variation param (iout_max-iout_min)

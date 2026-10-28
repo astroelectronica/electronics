@@ -1,0 +1,27 @@
+*LTspice
+*
+*ZXCT1082
+*Current output current monitor
+*AE01001082
+*
+*netlist
+.include ZXCT1082.cir
+*
+*params
+.param VSOURCE=60
+.param ILOAD=1
+.param VSUPPLY=5
+.param Rsense=0.1
+.param RGT=2.74K
+.param RG=68.1K
+.param RLPF=100
+*
+*load regulation
+*.dc I1 0.1 {ILOAD} 1m
+*
+*line regulation
+.dc V1 3 {VSOURCE} 1m
+*
+.backanno
+.op
+
