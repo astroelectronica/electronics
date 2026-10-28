@@ -15,6 +15,7 @@ Electronic device or system component that detects and measures the flow of elec
 | AE01001008 | [ZXCT1008](https://github.com/astroelectronica/electronics/tree/main/current-monitors/ZXCT1008) | High-Side Current Monitors |
 | AE01001009 | [ZXCT1009](https://github.com/astroelectronica/electronics/tree/main/current-monitors/ZXCT1009) | Micro-Power High-Side Current Monitor |
 | AE01001010 | [ZXCT1010](https://github.com/astroelectronica/electronics/tree/main/current-monitors/ZXCT1010) | Micro-Power High-Side Current Monitor Portable Equip |
+| AE01001030 | [ZXCT1030](https://github.com/astroelectronica/electronics/tree/main/current-monitors/ZXCT1030) | Voltage Output w/ Internal Reference and Comparator |
 | AE01001080 | [ZXCT1080](https://github.com/astroelectronica/electronics/tree/main/current-monitors/ZXCT1080) | AEC-Q100 High Voltage High-Side Current Monitor |
 | AE01001082 | [ZXCT1082](https://github.com/astroelectronica/electronics/tree/main/current-monitors/ZXCT1082) | 60V Current Output Current Monitor |
 | AE01001085 | [ZXCT1085](https://github.com/astroelectronica/electronics/tree/main/current-monitors/ZXCT1085) | Precision High Voltage High-Side Current Monitor |
