@@ -1,0 +1,21 @@
+*LTspice
+*
+*MAX4080S
+*76V, High-Side, Current-Sense Amplifiers with Voltage Output
+*AE01001468
+*
+*netlist
+.include MAX4080S.cir
+*
+*params
+.param ILOAD=15
+.param VSOURCE=76
+.param RSNS=0.01
+.param RLIM=20
+.param RLPF=100
+*
+*load regulation
+.dc I1 0 {ILOAD} 0.001
+*
+.backanno
+.op
