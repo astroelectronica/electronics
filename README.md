@@ -17,6 +17,7 @@ Models are shared and live in a single folder.
 | AE01003 | [Led Drivers](https://github.com/astroelectronica/electronics/tree/main/led-drivers) |
 | AE01004 | [Timers](https://github.com/astroelectronica/electronics/tree/main/timers) |
 | AE01005 | [Linear Regulators](https://github.com/astroelectronica/electronics/tree/main/linear-regulators) |
+| AE01015 | [Current Limiters](https://github.com/astroelectronica/electronics/tree/main/current-limiters) |
 
 ## Tools
 
