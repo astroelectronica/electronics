@@ -1,0 +1,38 @@
+.title KiCad schematic
+.include "C:/AE/MAX15006A/_models/C2012X7R2A104K125AA_p.mod"
+.include "C:/AE/MAX15006A/_models/C3216X5R1C106M160AA_p.mod"
+.include "C:/AE/MAX15006A/_models/C3216X7R2A105M160AA_p.mod"
+.include "C:/AE/MAX15006A/_models/MAX15006A.lib"
+I1 /VOUT 0 DC {ILOAD}
+XU5 /VOUT 0 C2012X7R2A104K125AA_p
+XU4 /VOUT 0 C3216X5R1C106M160AA_p
+XU3 /VIN 0 C2012X7R2A104K125AA_p
+XU1 /VIN unconnected-_U1-NC-Pad2_ unconnected-_U1-NC-Pad3_ unconnected-_U1-NC-Pad4_ 0 unconnected-_U1-NC-Pad6_ unconnected-_U1-NC-Pad7_ /VOUT MAX15006A
+XU2 /VIN 0 C3216X7R2A105M160AA_p
+V1 /VIN 0 DC {VSOURCE}
+*
+*qspice
+*
+*MAX15006A
+*40V, Ultra-Low Quiescent-Current Linear Regulators in 6-Pin TDFN/8-Pin SO
+*AE01005006
+*
+*netlist
+*.include MAX15006A_reg.cir
+*
+*params
+*
+*load regulation
+*.param VSOURCE=5
+*.param ILOAD=50m
+*.dc I1 10m {ILOAD} 0.01m
+*
+*line regulation
+.param VSOURCE=14
+.param ILOAD=1m
+.dc V1 8 {VSOURCE} 10m
+*
+*.backanno
+*.op
+*
+.end
