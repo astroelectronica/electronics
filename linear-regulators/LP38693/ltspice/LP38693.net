@@ -1,0 +1,21 @@
+*LTspice
+*
+*LP38693-ADJ
+*500-mA, 10-V, adjustable low-dropout voltage regulator with enable
+*AE01005693
+*
+*netlist
+.include LP38693.cir
+*
+*params
+.param VSOURCE=5
+.param ILOAD=0.5
+.param RADJ=9.31K
+.param RREF=5.62K
+.param REN=51K
+*
+*load regulation
+.dc I1 0 {ILOAD} 1m
+*
+*.backanno
+*.op
