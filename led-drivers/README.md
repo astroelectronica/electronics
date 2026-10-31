@@ -1,6 +1,7 @@
 # Led Drivers
 
-Pending to define
+A buck LED driver is a highly efficient step-down DC-DC converter designed to deliver a stable, constant output current to an LED or LED string from a higher input DC voltage. To manage brightness, these drivers typically integrate dual dimming mechanisms: analog dimming, which adjusts the continuous output current level, and Pulse Width Modulation (PWM) dimming, which rapidly cycles the current on and off at high frequencies to vary the average light intensity without changing the color temperature.
+
 ## Parts
 
 | ID | MPN | Description |
