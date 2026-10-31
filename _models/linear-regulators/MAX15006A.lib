@@ -1,0 +1,173 @@
+*******************************************************************************
+* Copyright (C) Maxim Integrated Products, Inc., All Rights Reserved.
+*
+* Permission is hereby granted, free of charge, to any person obtaining a
+* copy of this software and associated documentation files (the "Software"),
+* to deal in the Software without restriction, including without limitation
+* the rights to use, copy, modify, merge, publish, distribute, sublicense,
+* and/or sell copies of the Software, and to permit persons to whom the
+* Software is furnished to do so, subject to the following conditions:
+*
+* The above copyright notice and this permission notice shall be included
+* in all copies or substantial portions of the Software.
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+* OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+* MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+* IN NO EVENT SHALL MAXIM INTEGRATED BE LIABLE FOR ANY CLAIM, DAMAGES
+* OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+* ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+* OTHER DEALINGS IN THE SOFTWARE.
+*
+* Except as contained in this notice, the name of Maxim Integrated
+* Products, Inc. shall not be used except as stated in the Maxim Integrated
+* Products, Inc. Branding Policy.
+*
+* The mere transfer of this software does not imply any licenses
+* of trade secrets, proprietary technology, copyrights, patents,
+* trademarks, maskwork rights, or any other form of intellectual
+* property whatsoever. Maxim Integrated Products, Inc. retains all
+* ownership rights.
+***************************************************************
+* MAX15006A is an ultra-low quiescent-current linear regulator with an input voltage range 4V to 40V[3.3V].
+
+*********************************************************** **********************************************************************
+.subckt MAX15006A 1   2   3    4    5   6   7    8 
+*                 |   |   |    |    |   |   |    |       
+*                 |   |   |    |    |   |   |    |    
+*                 |   |   |    |    |   |   |    |
+*                 |   |   |    |    |   |   |     Output
+*                 |   |   |    |    |   |   |
+*                 |   |   |    |    |   |    Not Connected
+*                 |   |   |    |    |   |
+*                 |   |   |    |    |   Not Connected
+*                 |   |   |    |    |
+*                 |   |   |    |    Ground
+*                 |   |   |    |
+*                 |   |   |    Not Connected
+*                 |   |   | 
+*                 |   |   Not Connected
+*                 |   |
+*                 |   Not Connected
+*                 |  
+*                 Regulator Supply Input
+*
+* Date of model creation: 
+*		  11/2007
+*
+*
+* Revision History: 
+* 		  Version 0
+*         Version 1
+* 
+* Recommendations:
+*     	Use SIMETRIX (or SPICE 2G6; other simulators may require translation)
+*     	For a quick, effective design, use a combination of: data sheet
+* 	    specs, bench testing, and simulations with this macromodel
+*			
+*
+* Supported:
+*	     Minimum Input Voltage , PSRR 
+*        Model works only at temperature of 27 degree celsius.
+*
+*
+* Not Supported:
+*       Model does not support over temperature variation
+*     	Startup , Line Transient , Load Transient , Dropout 	
+*
+*   Known Discrepancies in Model vs. Datasheet:
+*       Load regulation and Line regulation has little mismatch with datasheet Value
+*
+**************************************************************************************************
+V_Max15006A_V11         Max15006A_N9380642 Max15006A_N9407721 3.3Vdc
+V_Max15006A_V8         Max15006A_N9381134 5 1.4Vdc
+G_Max15006A_G4         Max15006A_N9380206 5 Max15006A_N9380242 5 -1
+X_Max15006A_M4         Max15006A_N9402937 Max15006A_N9388475 Max15006A_N9380362
++  Max15006A_N9380362 pmosmacro_str
+D_Max15006A_D15         8 Max15006A_N9380438 diodemacro_ideal 
+G_Max15006A_G5         1 5 Max15006A_N9407721 5 2.24485u
+G_Max15006A_G3         Max15006A_N9380242 5 Max15006A_N9380230 5 -1
+R_Max15006A_R7         5 Max15006A_N9380206  1  
+C_Max15006A_C5         5 Max15006A_N94009661  1u  
+E_Max15006A_E1         Max15006A_N9381374 5 Max15006A_N93812080 1 5000
+D_Max15006A_D16         Max15006A_N9380502 8 diodemacro_ideal 
+R_Max15006A_R10         Max15006A_N94009661 Max15006A_N9401315  0.1m  
+C_Max15006A_C3         5 Max15006A_N9380242  450.886u  
+E_Max15006A_E11         Max15006A_N9380230 5 Max15006A_N93802580 5 1
+E_Max15006A_E2         Max15006A_N9381384 5 Max15006A_N93812280 1 -10
+G_Max15006A_G8         Max15006A_N9423585 5 Max15006A_N9380230 5 -1
+D_Max15006A_D3         Max15006A_N9380242 Max15006A_N93809961 diodemacro_ideal 
+R_Max15006A_R11         Max15006A_N9401315 Max15006A_N9401152  1  
+V_Max15006A_V10         5 Max15006A_N93802761 1.4Vdc
+E_Max15006A_E12         Max15006A_N9388475 Max15006A_N9380230 1 5 1
+E_Max15006A_E10         Max15006A_N9380362 5 1 5 1
+V_Max15006A_V9         Max15006A_N93809961 5 1.2405Vdc
+V_Max15006A_V3         Max15006A_N93812280 5 40Vdc
+R_Max15006A_R1         Max15006A_N9380294 Max15006A_N9380642  6545  
+R_Max15006A_R8         Max15006A_N9381616 Max15006A_N9396132  10k  
+E_Max15006A_E8         Max15006A_N9396132 5 Max15006A_N9380294
++  Max15006A_N9380206 5300
+X_Max15006A_F1    Max15006A_N9380642 Max15006A_N9380172 1 5
++  Max15006_Max15006A_F1 
+R_Max15006A_R6         Max15006A_N9380230 Max15006A_N9380742  0.01  
+R_Max15006A_R2         5 Max15006A_N9380294  3955  
+V_Max15006A_V4         Max15006A_N93812080 5 4.0022Vdc
+D_Max15006A_CO8_D1         Max15006A_N93802580 Max15006A_N9381134
++  diodemacro_mostideal 
+G_Max15006A_CO8_G1         Max15006A_N93802580 Max15006A_N93802761
++  Max15006A_N9381076 Max15006A_N9381134 -1E3
+D_Max15006A_CO8_D2         Max15006A_N93802761 Max15006A_N93802580
++  diodemacro_mostideal 
+X_Max15006A_M1         Max15006A_N9380642 Max15006A_N9402937 Max15006A_N9380362
++  Max15006A_N9380362 pmosmacro_reg
+R_Max15006A_R13         5 Max15006A_N9423585  1  
+G_Max15006A_G9         Max15006A_N9381172 5 Max15006A_N9423585 5 357.143n
+V_Max15006A_V12         Max15006A_N9381172 5 14Vdc
+C_Max15006A_C2         Max15006A_N9380742 5  0.1p  
+G_Max15006A_G7         Max15006A_N9402937 5 Max15006A_N9401152 5 -0.1u
+X_Max15006A_M2         Max15006A_N9380206 Max15006A_N9381374 5 5 nmosmacro_str
+C_Max15006A_C4         5 Max15006A_N93974751  0.08u  
+R_Max15006A_R9         Max15006A_N93974751 Max15006A_N9381616  50  
+I_Max15006A_I2         1 5 DC 10.408uAdc  
+D_Max15006A_D18         5 Max15006A_N9423585 diodemacro_mostideal 
+R_Max15006A_R12         5 Max15006A_N9402937  10Meg  
+X_Max15006A_M3         Max15006A_N9380206 Max15006A_N9381384 5 5 nmosmacro_str
+I_Max15006A_I10         Max15006A_N9380438 Max15006A_N9380502 DC 80mAdc  
+X_Max15006A_F2    Max15006A_N9380172 Max15006A_N9380178 1 5
++  Max15006_Max15006A_F2 
+E_Max15006A_E7         Max15006A_N9381076 Max15006A_N9381172 Max15006A_N9380742
++  5 -79m
+E_Max15006A_E9         Max15006A_N9401152 5 Max15006A_N9381616 5 1
+D_Max15006A_D17         5 Max15006A_N9380242 diodemacro_mostideal 
+D_Max15006A_D13         Max15006A_N9380178 Max15006A_N9380438 diodemacro_ideal 
+D_Max15006A_D14         Max15006A_N9380502 Max15006A_N9380178 diodemacro_ideal 
+******************
+.model diodemacro_ideal d(n=0.001)
+.model diodemacro_mostideal d(IS=1E-12 N=0.000001 BV=35 IBV=1)
+.model diodemacro_nonideal d(IS=1n RS=0.001 N=1.77 CJO=0.1p BV=35 IBV=1)
+.ENDS MAX15006A
+******************
+.subckt Max15006_Max15006A_F1 1 2 3 4  
+F_Max15006A_F1         3 4 VF_Max15006A_F1 1.592m
+VF_Max15006A_F1         1 2 0V
+.ENDS Max15006_Max15006A_F1
+.subckt Max15006_Max15006A_F2 1 2 3 4  
+F_Max15006A_F2         3 4 VF_Max15006A_F2 1
+VF_Max15006A_F2         1 2 0V
+.ENDS Max15006_Max15006A_F2
+******************
+.subckt pmosmacro_reg d g s b
+m1 d g s b pmos
+.model pmos pmos(VTO=-0.5 KP=0.12 w=1u l=1u) 
+.ENDS pmosmacro_reg
+***********
+.subckt pmosmacro_str d g s b
+m1 d g s b pmos
+.model pmos pmos(VTO=-0.5 KP=50E-6 w=50u l=1u) 
+.ENDS pmosmacro_str
+***********
+.subckt nmosmacro_str d g s b
+m1 d g s b nmos
+.model nmos nmos(VTO=0.5 KP=100E-6 w=20u l=1u) 
+.ENDS nmosmacro_str
+******************
