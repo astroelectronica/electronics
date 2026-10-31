@@ -1,6 +1,6 @@
 # Current Limiters
 
-pending to define
+Electronic component or circuit that restricts the maximum amount of electrical current flowing through a path to protect downstream components from overcurrent damage and short circuits.
 
 ## Parts
 
