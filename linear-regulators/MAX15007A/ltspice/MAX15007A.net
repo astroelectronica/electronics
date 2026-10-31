@@ -1,0 +1,20 @@
+*LTspice
+*
+*MAX15007A
+*40V, Ultra-Low Quiescent-Current Linear Regulators in 6-Pin TDFN/8-Pin SO
+*AE01005007
+*
+*netlist
+.include MAX15007A.cir
+*
+*params
+.param VSOURCE=5
+.param ILOAD=0.05
+.param REN=100K
+*
+*load regulation
+.dc I1 0 {ILOAD} 100n
+*
+*.backanno
+*.op
+

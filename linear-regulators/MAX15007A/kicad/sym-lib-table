@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "MAX15007A")(type "KiCad")(uri "${KIPRJMOD}/_lib/MAX15007A.kicad_sym")(options "")(descr ""))
+)
