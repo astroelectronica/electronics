@@ -19,6 +19,7 @@ Models are shared and live in a single folder.
 | AE01005 | [Linear Regulators](https://github.com/astroelectronica/electronics/tree/main/linear-regulators) |
 | AE01009 | [Optocouplers](https://github.com/astroelectronica/electronics/tree/main/optocouplers) |
 | AE01015 | [Current Limiters](https://github.com/astroelectronica/electronics/tree/main/current-limiters) |
+| AE01020 | [Voltage Reference](https://github.com/astroelectronica/electronics/tree/main/voltage-reference) |
 
 ## Tools
 
