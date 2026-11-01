@@ -1,0 +1,27 @@
+*LTspice
+*
+*TLP182
+*Optocoupler Transistor, 80V, 0.05A, AC.
+*AE01009183
+*
+*netlist
+.include TLP182.cir
+*
+*params
+.param RK=210
+.param RC=500
+*
+.param VSOURCE=5
+.param freq=500
+.param voff=0
+.param vampl=5
+.param delay=0
+.param repeat=4
+*
+.param cycle=1/freq
+.param x_base=(cycle*repeat)+delay
+*
+*transient response
+.tran 0 {x_base} 0 ;uic startup
+*
+

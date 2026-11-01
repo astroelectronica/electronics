@@ -1,0 +1,8 @@
+.title KiCad schematic
+.include "C:/AE/TLP182/tlp182.mod"
+XU1 /IN /K 0 /OUT TLP182
+R1 /OUT VDD {RC}
+V2 VDD 0 DC {VSOURCE}
+V1 /IN 0 sine({voff} {vampl} {freq})
+R2 0 /K {RK}
+.end
