@@ -1,0 +1,10 @@
+.title KiCad schematic
+.include "C:/AE/TL431/_models/FMMT493.spice.txt"
+.include "C:/AE/TL431/_models/tl431.mod"
+R2 /VREF /VOUT {RSENSE}
+XU1 /VREF /VOUT /VZ TL431
+V1 /VIN 0 {VSOURCE}
+Q1 /VIN /VZ /VREF FMMT493
+R1 /VIN /VZ {RZ}
+I1 /VOUT 0 {ILOAD}
+.end

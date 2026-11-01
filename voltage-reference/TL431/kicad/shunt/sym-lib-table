@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "TL431")(type "KiCad")(uri "C:/AE/TL431/_lib/TL431.kicad_sym")(options "")(descr ""))
+)

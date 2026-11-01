@@ -1,0 +1,17 @@
+.title KiCad schematic
+.include "C:/AE/TL431/_models/BAS21.spice.txt"
+.include "C:/AE/TL431/_models/C1608C0G1H470J080AA_p.mod"
+.include "C:/AE/TL431/_models/C2012X5R1E106M125AB_p.mod"
+.include "C:/AE/TL431/_models/FMMT493.spice.txt"
+.include "C:/AE/TL431/_models/tl431.mod"
+XU1 /VZ /VREF C1608C0G1H470J080AA_p
+R1 /VC /VZ {RBASE}
+XU2 /VREF 0 /VZ TL431
+V1 /VIN 0 {VSOURCE}
+D1 /VIN /VC DI_BAS21
+XU3 /VOUT 0 C2012X5R1E106M125AB_p
+I1 /VOUT 0 {ILOAD}
+Q1 /VC /VZ /VOUT FMMT493
+R2 /VOUT /VREF {RADJ}
+R3 /VREF 0 {RREF}
+.end

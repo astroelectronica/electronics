@@ -1,0 +1,17 @@
+.title KiCad schematic
+.include "C:/AE/TL431/_models/c2012np02a102j060aa_p.mod"
+.include "C:/AE/TL431/_models/c3216x5r1v106k160ab_p.mod"
+.include "C:/AE/TL431/_models/ps2501a.lib"
+.include "C:/AE/TL431/_models/tl431.mod"
+R4 /VOUT /VREF {RADJ}
+R5 /VREF 0 {RREF}
+V1 /VOUT 0 {VSOURCE}
+XU4 0 /VOUT C3216X5R1V106K160AB_p
+XU1 /VOUT /VK /VFB /VC PS2501A
+V2 /VC 0 {VSUPPLY}
+R1 /VFB 0 {RE}
+XU2 /VREF 0 /VZ TL431
+R2 /VK /VZ {RZ}
+XU3 /VZ /VCOMP C2012NP02A102J060AA_p
+R3 /VCOMP /VREF {RCOMP}
+.end

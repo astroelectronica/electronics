@@ -1,0 +1,23 @@
+*LTspice
+*
+*TL431
+*Optocoupling voltage feedback
+*AE01020431
+*
+*netlist
+.include TL431_opto.cir
+*
+*params
+.param VSOURCE=6
+.param VSUPPLY=5
+.param RE=10K
+.param RZ=2.2K
+.param RCOMP=75K
+.param RADJ=33K
+.param RREF=33K
+*
+*line regulation
+.dc V1 1 {VSOURCE} 0.01m
+*
+*.backanno
+*.op

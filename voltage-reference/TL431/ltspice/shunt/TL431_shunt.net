@@ -1,0 +1,26 @@
+*LTspice
+*
+*TL431
+*Output shunt regulator
+*AE01020431
+*
+*netlist
+.include TL431_shunt.cir
+*
+*params
+.param RADJ=120k
+.param RREF=120k
+.param RLIM=180
+*
+*load regulation
+*.param VSOURCE=24
+*.param ILOAD=0.1
+*.dc I1 0 {ILOAD} 0.1m
+*
+*line regulation
+.param VSOURCE=24
+.param ILOAD=10m
+.dc V1 9 {VSOURCE} 0.1
+*
+*.backanno
+*.op

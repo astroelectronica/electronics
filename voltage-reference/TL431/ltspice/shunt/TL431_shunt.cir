@@ -1,0 +1,9 @@
+.title KiCad schematic
+.include "C:/AE/TL431/_models/tl431.mod"
+R1 /VIN /VOUT {RLIM}
+R3 /VREF 0 {RREF}
+XU1 /VREF 0 /VOUT TL431
+I1 /VOUT 0 {ILOAD}
+R2 /VOUT /VREF {RADJ}
+V1 /VIN 0 {VSOURCE}
+.end
