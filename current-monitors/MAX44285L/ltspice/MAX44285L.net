@@ -1,0 +1,24 @@
+*LTspice
+*
+*MAX44285L
+*Dual-Channel, High-Precision, High-Voltage, Current-Sense Amplifier
+*AE01001281
+*
+*netlist
+.include MAX44285L.cir
+*
+*params
+.param LOAD1=4
+.param LOAD2=4
+.param VSOURCE=76
+.param VSUPPLY=5
+.param RSNS1=0.05
+.param RSNS2=0.05
+.param RLPF1=100
+.param RLPF2=100
+*
+*load regulation
+.dc I1 0 {LOAD1} 0.5 I2 0 {LOAD2} 0.5
+*
+.backanno
+.op
