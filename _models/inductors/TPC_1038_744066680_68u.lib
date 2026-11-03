@@ -1,0 +1,18 @@
+**************************************************
+* Manufacturer:       Wurth Elektronik
+* Kinds:     SMDShieldTinyPower Inductor
+* Matchcode:          WE-TPC
+* Library Type:       spice
+* Version:        rev19b
+* Created/modified by:    Fredo
+* Date and Time   :       6/20/2019
+* Team:           eiSos EDA Service
+* Contact:        libraries@we-online.com
+**************************************************
+.subckt TPC_1038_744066680_68u 1 2
+Rp 1 2 33120
+*Cp 1 2 5.7p
+Rs 1 N3 0.185
+L1 N3 2 68u
+.ends TPC_1038_744066680_68u
+*******
