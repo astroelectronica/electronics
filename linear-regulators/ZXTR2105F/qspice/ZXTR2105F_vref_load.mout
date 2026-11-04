@@ -1,0 +1,36 @@
+Warning: Trouble parsing .meas eff_max param (v(/vout)*-ix(u1:3))/(v(/vin)*ix(u1:1))*100
+.meas vsource_max max v(/vin):
+             12 (at I1=1e-08)
+.meas isource_max max -i(v1):
+     0.00534781 (at I1=0.005)
+.meas psource_max param (vsource_max*isource_max):
+      0.0641737
+.meas vload_max max v(/vout):
+        7.19871 (at I1=1e-08)
+.meas iload_max max i(i1):
+          0.005 (at I1=0.005)
+.meas pload_max param (vload_max*iload_max):
+      0.0359936
+.meas vload_min min v(/vout):
+        7.03048 (at I1=0.005)
+.meas iload_min min i(i1):
+          1e-08 (at I1=1e-08)
+.meas pload_min param (vload_min*iload_min):
+     7.03048e-08
+.meas vout_deviation param (vload_max-vload_min):
+       0.168232
+.meas pldo_max param ((vsource_max-vload_max)*i(i1)):
+      0.0240064
+.meas vref_max max v(/vref):
+        2.49587 (at I1=1e-08)
+.meas vref_min min v(/vref):
+        2.49586 (at I1=0.005)
+.meas vref_deviation param (vref_max-vref_min):
+     1.20817e-05
+.meas vz_max max v(/vz):
+        1.96218 (at I1=0.005)
+.meas vz_min min v(/vz):
+        1.96011 (at I1=1e-08)
+.meas vz_deviation param (vz_max-vz_min):
+      0.0020654
+

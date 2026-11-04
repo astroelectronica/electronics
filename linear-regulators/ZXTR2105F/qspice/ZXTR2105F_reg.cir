@@ -1,0 +1,34 @@
+.title KiCad schematic
+.include "C:/AE/ZXTR2105F/_models/ZXTR2105F.spice.txt"
+.include "C:/AE/ZXTR2105F/_models/c3216x7r1h105k160ab_p.mod"
+.include "C:/AE/ZXTR2105F/_models/c3216x7s2a225k160ab_p.mod"
+XU3 /VOUT 0 C3216X7R1H105K160AB_p
+XU2 /VIN 0 C3216X7S2A225K160AB_p
+XU1 /VIN 0 /VOUT ZXTR2105
+V1 /VIN 0 DC {VSOURCE}
+I1 /VOUT 0 DC {ILOAD}
+*
+*Qspice
+*
+*ZXTR2105F
+*60V INPUT, 5V 15mA REGULATOR TRANSISTOR
+*AE01005205
+*
+*netlist
+*.include ZXTR2105F_reg.cir
+*
+*params
+*
+*load regulation
+*.param VSOURCE=12
+*.param ILOAD=15m
+*.dc I1 0 {ILOAD} 10n
+*
+*line regulation
+.param VSOURCE=25
+.param ILOAD=5m
+.dc V1 8 {VSOURCE} 1m
+*
+.backanno
+.op
+*

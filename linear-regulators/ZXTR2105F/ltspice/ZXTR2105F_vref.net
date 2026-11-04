@@ -1,0 +1,25 @@
+*LTspice
+*
+*ZXTR2105F
+*Output Control of a Three-Terminal Fixed Regulator
+*AE01005205
+*
+*netlist
+.include ZXTR2105F_vref.cir
+*
+*params
+.param RADJ=220K
+.param RREF=220K
+*
+*load regulation
+*.param VSOURCE=12
+*.param ILOAD=5m
+*.dc I1 0 {ILOAD} 10n
+*
+*line regulation
+.param VSOURCE=30
+.param ILOAD=10m
+.dc V1 10 {VSOURCE} 1m
+*
+.backanno
+.op

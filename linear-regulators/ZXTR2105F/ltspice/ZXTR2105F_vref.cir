@@ -1,0 +1,14 @@
+.title KiCad schematic
+.include "C:/AE/ZXTR2105F/_models/ZR431.spice.txt"
+.include "C:/AE/ZXTR2105F/_models/ZXTR2105F.spice.txt"
+.include "C:/AE/ZXTR2105F/_models/c3216x7r1h105k160ab_p.mod"
+.include "C:/AE/ZXTR2105F/_models/c3216x7s2a225k160ab_p.mod"
+I1 /VOUT 0 DC {ILOAD} 
+R2 /VREF 0 {RREF}
+R1 /VOUT /VREF {RADJ}
+XU3 /VOUT 0 C3216X7R1H105K160AB_p
+XU2 /VIN 0 C3216X7S2A225K160AB_p
+XU1 /VIN /VZ /VOUT ZXTR2105
+V1 /VIN 0 DC {VSOURCE} 
+XU4 /VZ /VREF 0 ZR431
+.end

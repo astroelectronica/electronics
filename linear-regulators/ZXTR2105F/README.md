@@ -1,0 +1,6 @@
+# ZXTR2105F
+60V INPUT, 5V 30mA REGULATOR TRANSISTOR
+
+AE01005205
+
+https://www.diodes.com/part/view/ZXTR2105F

@@ -1,0 +1,23 @@
+*LTspice
+*
+*ZXTR2105F
+*60V INPUT, 5V 15mA REGULATOR TRANSISTOR
+*AE01005205
+*
+*netlist
+.include ZXTR2105F_reg.cir
+*
+*params
+*
+*load regulation
+*.param VSOURCE=12
+*.param ILOAD=15m
+*.dc I1 0 {ILOAD} 10n
+*
+*line regulation
+.param VSOURCE=25
+.param ILOAD=5m
+.dc V1 8 {VSOURCE} 1m
+*
+.backanno
+.op

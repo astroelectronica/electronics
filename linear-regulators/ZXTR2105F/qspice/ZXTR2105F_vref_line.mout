@@ -1,0 +1,36 @@
+.meas vsource_max max v(/vin):
+             30 (at V1=30)
+.meas isource_max max -i(v1):
+      0.0117208 (at V1=30)
+.meas psource_max param (vsource_max*isource_max):
+       0.351623
+.meas vload_max max v(/vout):
+        7.07673 (at V1=30)
+.meas iload_max max i(i1):
+           0.01 (at V1=10.001)
+.meas pload_max param (vload_max*iload_max):
+      0.0707673
+.meas vload_min min v(/vout):
+        6.98487 (at V1=10.001)
+.meas iload_min min i(i1):
+           0.01 (at V1=10.001)
+.meas pload_min param (vload_min*iload_min):
+      0.0698487
+.meas vout_deviation param (vload_max-vload_min):
+      0.0918588
+.meas pldo_max param ((vsource_max-vload_max)*i(i1)):
+       0.229233
+.meas eff_max param (pload_max/psource_max)*100:
+        20.1259
+.meas vref_max max v(/vref):
+        2.49655 (at V1=30)
+.meas vref_min min v(/vref):
+        2.49577 (at V1=10.001)
+.meas vref_deviation param (vref_max-vref_min):
+     0.000775425
+.meas vz_max max v(/vz):
+        1.96268 (at V1=10.001)
+.meas vz_min min v(/vz):
+        1.96224 (at V1=21.77)
+.meas vz_deviation param (vz_max-vz_min):
+     0.000442803
