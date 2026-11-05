@@ -7,3 +7,4 @@ pending to define
 | ID | MPN | Description |
 |---|---|---|
 | AE01020431 | [TL431](https://github.com/astroelectronica/electronics/tree/main/voltage-reference/TL431) | Adjustable precision shunt regulator |
+| AE01020160 | [ZXRE160](https://github.com/astroelectronica/electronics/tree/main/voltage-reference/ZXRE160) | 0.6V adjustable shunt regulator |
