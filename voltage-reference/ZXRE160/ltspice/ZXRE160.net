@@ -1,0 +1,30 @@
+*
+*LTspice
+*
+*ZXRE160
+*0.6V adjustable shunt regulator
+*AE01020160
+*
+*netlist
+.include ZXRE160.cir
+*
+*params
+.param VSOURCE=5
+.param RADJ=10K
+.param RREF=15K
+.param RLIM=1K
+.param RK=0.6/10m
+.param ILOAD=5m
+.param TAMB=25
+*
+*load regulation
+.dc I1 0 {ILOAD} .1m
+*
+*line regulation
+*.dc V1 5 {VIN} .01
+*
+*transient response
+*.tran 0 51u .01u startup
+*
+*.backanno
+*VOUT = ((ILOAD * RSENSE)* GAIN) + VREF
