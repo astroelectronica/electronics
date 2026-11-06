@@ -1,0 +1,39 @@
+*LTspice
+*
+*LM3485
+*AN-1392 LM3485 LED Demo Board
+*AE01007485
+*
+*netlist
+.include LM3485_AN1392.cir
+*
+*params
+.param VIN=28
+.param VPUL=5
+.param RI=10K
+.param RSET=0.5
+.param RESR=1
+.param R_350=61.9K
+.param R_700=44.2K
+.param RFF=10K
+.param RFBU=33k
+.param RFBB=20k
+.param RADJ=25.5k
+.param RLOAD=100K
+*
+.param FREQ=500
+.param PERCENT=10
+.param DELAY=0
+.param REPEAT=2
+.param TR=100n
+.param TF=100n
+*
+.param CYCLE=1/FREQ
+.param X_BASE=(CYCLE*REPEAT)+DELAY
+.param DUTY=(PERCENT/100)*CYCLE
+*
+*transient response
+.tran 0 {X_BASE} 0 startup
+*
+*.backanno
+*.op

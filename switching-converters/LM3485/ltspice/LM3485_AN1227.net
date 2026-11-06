@@ -1,0 +1,20 @@
+*LTspice
+*
+*LM3485
+*AN-1227 LM3485 Evaluation Board
+*AE01007485
+*
+*netlist
+.include LM3485_AN1227.cir
+*
+*params
+.param VIN=24
+.param ILOAD=500m
+.param RFBU=33k
+.param RFBB=20k
+.param RADJ=24.0k
+*
+*transient response
+.tran 0 10m 0 startup uic
+*.backanno
+*.op

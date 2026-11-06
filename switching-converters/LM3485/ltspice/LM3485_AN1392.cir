@@ -1,0 +1,40 @@
+.title KiCad schematic
+.include "C:/AE/LM3485/_models/C2012X7R2A104K125AA_p.mod"
+.include "C:/AE/LM3485/_models/CGJ4C2C0G2A101J060AA_p.mod"
+.include "C:/AE/LM3485/_models/MBR0520LT1.LIB"
+.include "C:/AE/LM3485/_models/XPE_SPICE.lib"
+.include "C:/AE/LM3485/_models/ZXMP7A17K.lib"
+.include "C:/AE/LM3485/_models/c2012x7r2e102k085aa_p.mod"
+.include "C:/AE/LM3485/_models/c3216x7r1h105m160ab_p.mod"
+.include "C:/AE/LM3485/_models/lm3485.lib"
+.include "C:/AE/LM3485/_models/lmx58_lm2904.lib"
+.include "C:/AE/LM3485/_models/slf7045t_6r8m1r7_pf_s.mod"
+.include "C:/AE/LM3485/_models/ss24.lib"
+XU10 /SENSE /G VCC ZXMP7A17K
+XU9 0 /SENSE ss24
+XU7 /SENSE /A SLF7045T_6R8M1R7_PF_s
+XU5 /SENSE 0 /FB /ADJ /G VCC LM3485
+XU11 VCC 0 C2012X7R2A104K125AA_p
+R6 /FF /IF {R_350}
+R2 /FF /IF {R_700}
+R8 /FB /FF {RFF}
+R1 VCC /ADJ {RADJ}
+XU4 VCC 0 C2012X7R2A104K125AA_p
+XU2 VCC /ADJ CGJ4C2C0G2A101J060AA_p
+R7 /IF 0 {RI}
+XU8 /K /IF VCC 0 /FF LMX58_LM2904
+R5 /K 0 {RSET}
+D3 /A Net-_D3-K_ XLampXPEwhite
+D4 Net-_D3-K_ Net-_D4-K_ XLampXPEwhite
+D7 Net-_D6-K_ Net-_D7-K_ XLampXPEwhite
+D6 Net-_D5-K_ Net-_D6-K_ XLampXPEwhite
+D5 Net-_D4-K_ Net-_D5-K_ XLampXPEwhite
+D8 Net-_D7-K_ /K XLampXPEwhite
+XU6 /A /FB C2012X7R2E102K085AA_p
+R4 /ESR 0 {RESR}
+XU3 /A /ESR C3216X7R1H105M160AB_p
+XU1 VCC 0 C3216X7R1H105M160AB_p
+V1 VCC 0 DC {VIN} 
+D2 /CTRL /FB Dmbr0520lt1
+V2 /CTRL 0 PULSE(0 {VPUL} {DELAY} {TR} {TF} {DUTY} {CYCLE})
+.end

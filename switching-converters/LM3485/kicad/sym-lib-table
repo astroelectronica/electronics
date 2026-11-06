@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "LM3485")(type "KiCad")(uri "C:/AE/LM3485/_lib/LM3485.kicad_sym")(options "")(descr ""))
+)
