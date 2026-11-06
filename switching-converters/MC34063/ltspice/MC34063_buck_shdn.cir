@@ -1,0 +1,31 @@
+.title KiCad schematic
+.include "C:/AE/MC34063/buck_shdn/_models/1N5819.lib"
+.include "C:/AE/MC34063/buck_shdn/_models/ATLI_860080375014_470uF.lib"
+.include "C:/AE/MC34063/buck_shdn/_models/ATLL_860160674021_100uF.lib"
+.include "C:/AE/MC34063/buck_shdn/_models/BC817-25.spice.txt"
+.include "C:/AE/MC34063/buck_shdn/_models/PD_1280_7447707221_220u.lib"
+.include "C:/AE/MC34063/buck_shdn/_models/c1608c0g1h470j080aa_p.mod"
+.include "C:/AE/MC34063/buck_shdn/_models/ceu4j2x7r1h104m125ae_p.mod"
+.include "C:/AE/MC34063/buck_shdn/_models/cga3e2np01h471j080aa_p.mod"
+.include "C:/AE/MC34063/buck_shdn/_models/mc34063.lib"
+XU8 VDD 0 ATLI_860080375014_470uF
+XU4 VDD 0 CEU4J2X7R1H104M125AE_p
+I1 VDD 0 {ILOAD}
+XU7 VCC 0 ATLL_860160674021_100uF
+XU1 VCC 0 CEU4J2X7R1H104M125AE_p
+R6 /CTRL /BASE {RCTRL}
+XU3 /SNS /SWE /TC 0 /FB VCC /SNS /SNS MC33063
+XU6 VDD /SWE PD_1280_7447707221_220u
+R3 VCC /SNS {RSENSE}
+R1 VCC /SNS {RSENSE}
+R2 VCC /SNS {RSENSE}
+R5 0 /FB {RREF}
+R4 /FB VDD {RADJ}
+XU5 /FB VDD C1608C0G1H470J080AA_p
+D1 0 /SWE DI_1N5819
+XU2 /TC 0 CGA3E2NP01H471J080AA_p
+Q1 /TC /BASE 0 DI_BC817-25
+V1 VCC 0 {VSOURCE}
+V2 /CTRL 0 PULSE( {VI} {VF} {TD} {TR} {TF} {DUTY} {CYCLE} ) 
+R7 /BASE 0 {RPD}
+.end

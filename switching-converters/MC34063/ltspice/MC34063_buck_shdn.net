@@ -1,0 +1,31 @@
+*LTspice
+*
+*MC34063
+*Buck switching regulator. Controlled shutdown.
+*AE01007063
+*
+*netlist
+.include MC34063_buck_shdn.cir
+*
+*params
+.param VSOURCE=24
+.param ILOAD=0.2
+.param RSENSE=1
+.param RADJ=3.6K
+.param RREF=1.2K
+.param RCTRL=10k
+.param RPD=100k
+*
+.param VI=5						;initial voltage
+.param VF=0						;final voltage
+.param TD=20m				;time delay
+.param TR=50n					;time rising
+.param TF=50n					;time falling
+.param DUTY=50m			;time of duty
+.param CYCLE=100m		;time of cycle
+*
+*transient response
+.param x_base=100m
+.tran 0 {x_base} 0 uic startup
+.backanno
+.op

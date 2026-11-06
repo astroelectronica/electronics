@@ -1,0 +1,46 @@
+.title KiCad schematic
+.include "C:/AE/MC34063/buck/_models/1N5819.lib"
+.include "C:/AE/MC34063/buck/_models/ATLI_860080375014_470uF.lib"
+.include "C:/AE/MC34063/buck/_models/ATLL_860160674021_100uF.lib"
+.include "C:/AE/MC34063/buck/_models/PD_1280_7447707221_220u.lib"
+.include "C:/AE/MC34063/buck/_models/c1608c0g1h470j080aa_p.mod"
+.include "C:/AE/MC34063/buck/_models/ceu4j2x7r1h104m125ae_p.mod"
+.include "C:/AE/MC34063/buck/_models/cga3e2np01h471j080aa_p.mod"
+.include "C:/AE/MC34063/buck/_models/mc34063.lib"
+XU4 VDD 0 CEU4J2X7R1H104M125AE_p
+I1 VDD 0 {ILOAD}
+XU8 VDD 0 ATLI_860080375014_470uF
+R3 VCC /SNS {RSENSE}
+R1 VCC /SNS {RSENSE}
+R2 VCC /SNS {RSENSE}
+R5 0 /FB {RREF}
+R4 /FB VDD {RADJ}
+XU5 /FB VDD C1608C0G1H470J080AA_p
+V1 VCC 0 {VSOURCE}
+D1 0 /SWE DI_1N5819
+XU6 VDD /SWE PD_1280_7447707221_220u
+XU1 VCC 0 CEU4J2X7R1H104M125AE_p
+XU2 /TC 0 CGA3E2NP01H471J080AA_p
+XU3 /SNS /SWE /TC 0 /FB VCC /SNS /SNS MC33063
+XU7 VCC 0 ATLL_860160674021_100uF
+*
+*qspice
+*
+*MC34063
+*Buck switching regulator
+*AE01007063
+*
+*netlist
+*.include MC34063_buck.cir
+*
+*params
+.param VSOURCE=24
+.param ILOAD=200m
+.param RSENSE=1
+.param RADJ=3.6K
+.param RREF=1.2K
+*
+*transient response
+.param x_base=25m
+.tran 0 {x_base} 0 uic startup
+.end

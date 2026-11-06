@@ -1,0 +1,21 @@
+*LTspice
+*
+*MC34063
+*Buck switching regulator
+*AE01007063
+*
+*netlist
+.include MC34063_buck.cir
+*
+*params
+.param VSOURCE=24
+.param ILOAD=200m
+.param RSENSE=1
+.param RADJ=3.6K
+.param RREF=1.2K
+*
+*transient response
+.param x_base=25m
+.tran 0 {x_base} 0 uic startup
+.backanno
+.op
