@@ -1,0 +1,120 @@
+*****************************************************************************
+*  (C) Copyright 2012 Texas Instruments Incorporated. All rights reserved.
+*****************************************************************************
+** This model is designed as an aid for customers of Texas Instruments.
+** TI and its licensors and suppliers make no warranties, either expressed
+** or implied, with respect to this model, including the warranties of 
+** merchantability or fitness for a particular purpose.  The model is
+** provided solely on an "as is" basis.  The entire risk as to its quality
+** and performance is with the customer
+*****************************************************************************
+*
+** Released by: WEBENCH Design Center, Texas Instruments Inc.
+* Part: LM3485
+* Date: 26DEC2012
+* Model Type: Transient
+* Simulator: PSPICE
+* Simulator Version: 16.2.0.s003
+* EVM Order Number: AN-1227
+* EVM Users Guide: SNVA052A, 10MAY2004
+* Datasheet: SNVS178F, 29SEP2009
+*
+* Model Version: Final 1.0
+*
+*****************************************************************************
+*
+* Updates:
+*
+* Final 1.0
+* Release to Web.
+*
+*****************************************************************************
+.SUBCKT LM3485 ISEN GND FB ADJ PGATE VIN
+E1 VIN VCC VALUE = {IF(V(VIN)<9,(V(VIN)-0),8.4)}
+XFB FB REFLO COMPLO COMPWDEL_0
+XFB2 FB REFHI COMPHI COMPWDEL_0
+XFB3 ADJ ISEN ILIM COMPWDEL_2
+G2 ADJ GND VALUE={5.5u}
+XA3 ILIM 32 ONESHOT AND2A
+XA4 PWM 32 INVERTERA4
+X3 ONESHOT RESET Q QN RSFF
+RGATE PGATEo PGATE 20
+E4 PGATEo GND VALUE = {IF(V(DRIVE)>1,V(VIN),V(VCC))}
+XA5 Q COMP PWM OR2A5
+X6 RESET GND QN GND SSWITCH
+G6 0 RESET VALUE = {IF(V(Q)>2.5,2m,0)}
+C7 RESET GND 8n IC=5
+D2 GND RESET DN751
+.MODEL DN751 D BV=4.9458 CJO=406.80P IBV=10MA IS=1E-11
++ M=.33 N=1.27 RS=7.7083 TT=50N VJ=.75
+V1 REFHI GND DC=1.247
+V2 REFLO GND DC=1.237
+XA1 COMPLO 17 COMP AND2A
+XA2 COMPHI COMP 17 OR2A3
+R5 DRIVE COMP 1m
+.ENDS LM3485
+*$
+.SUBCKT COMPWDEL_0 1 2 3 PARAMS: TD=190N
+E1 4 0 VALUE = {IF(V(1)>V(2),5,0)}
+T1 4 0 5 0 Z0=1 TD={TD}
+R1 5 0 1
+E2 3 0 VALUE = {IF(V(5)<0,0,V(5))}
+.ENDS COMPWDEL_0
+*$
+.SUBCKT COMPWDEL_2 1 2 3 PARAMS: TD=10N
+E1 4 0 VALUE = {IF(V(1)>V(2),5,0)}
+T1 4 0 5 0 Z0=1 TD={TD}
+R1 5 0 1
+E2 3 0 VALUE = {IF(V(5)<0,0,V(5))}
+.ENDS COMPWDEL_2
+*$
+.SUBCKT RSFF SET RESET Q QN 
+*A1 1 2 3 SET_DIN RESET_DIN Q_DOUT QN_DOUT SRLATCH2A1
+EA1_Q 5 0  VALUE = {IF(V(SET)>2.5,5,IF(V(RESET)>2.5 
++ & V(SET)<0.1,0.1,V(Q)))}
+EA2_QN 6 0 VALUE = {IF(V(SET)>2.5,0.1,IF(V(RESET)>2.5 
++ & V(SET)<0.1,5,V(QN)))}
+RQ 5 Q 1
+CQ Q 0 1e-15 IC=100m
+RQN 6 QN 1
+CQN QN 0 1e-15 IC=5
+.ENDS
+*$
+.SUBCKT SSWITCH 1 2 3 4 PARAMS: RON=1 ROFF=1MEG VON=5 VOFF=0
+*CONNECTIONS    + - NC+ NC-
+*PARAMETERS: RON ON RESISTANCE IN OHMS, ROFF OFF RESISTANCE IN OHMS
+* VON ON CURRENT IN AMPS, VOFF OFF CURRENT IN AMPS
+* IF V(3,4) > VON THEN RSWITCH=RON, IF V(3,4) < VOFF THEN RSWITCH=ROFF, ELSE
+* RSWITCH WILL SMOOTHLY TRANSISTION BETWEEN THE ON AND OFF STATES
+S_A1 1 2 3 4 SMOOTH
+.MODEL SMOOTH VSWITCH RON={RON} ROFF={ROFF} VON={VON} VOFF={VOFF}
+.ENDS SSWITCH
+*$
+.SUBCKT AND2A A B Y PARAMS: VDD=5 VSS=0 VTHRESH=2.5
+E_ABMGATE   YINT 0 VALUE {{IF(V(A) > {VTHRESH}  &  
++ V(B) > {VTHRESH},{VDD},{VSS})}}
+RINT YINT Y 1
+CINT Y 0 3n
+.ENDS AND2A
+*$
+.SUBCKT INVERTERA4 A  Y PARAMS: VDD=5 VSS=0 VTHRESH=2.5 
+E_ABMGATE    YINT 0 VALUE {{IF(V(A) > {VTHRESH} , 
++ {VSS},{VDD})}}
+RINT YINT Y 1
+CINT Y 0 0.8n
+.ENDS INVERTERA4
+*$
+.SUBCKT OR2A5 A B Y PARAMS: VDD=5 VSS=0 VTHRESH=2.5
+E_ABMGATE   YINT 0 VALUE {{IF(V(A) > {VTHRESH}  |  
++ V(B) > {VTHRESH},{VDD},{VSS})}}
+RINT YINT Y 1
+CINT Y 0 1f
+.ENDS OR2A5
+*$
+.SUBCKT OR2A3 A B Y PARAMS: VDD=5 VSS=0 VTHRESH=2.5
+E_ABMGATE   YINT 0 VALUE {{IF(V(A) > {VTHRESH}  |  
++ V(B) > {VTHRESH},{VDD},{VSS})}}
+RINT YINT Y 1
+CINT Y 0 1n
+.ENDS OR2A3
+*$
