@@ -1,0 +1,19 @@
+*------------------------------------------
+* *** Spice model ***
+*Copyright (C) Panasonic Industry Corporation
+*Conductive Polymer Tantalum Solid Capacitor
+*Parts No. 6TPC100M
+*------------------------------------------
+.SUBCKT 6TPC100M 1 2 
+C1         4 5  73u  
+C2         4 6  27u  
+C3         4 7  5.5u  
+R1         3 4  28.5m  
+R2         4 5  100k  
+R3         5 2  22m  
+R4         6 2  70m  
+R5         7 2  95  
+L1         1 3  2.1n  
+L2         5 2  270p 
+.ENDS 
+*$
