@@ -1,0 +1,26 @@
+**************************************************
+* Manufacturer:          Wurth Elektronik
+* Kinds:                 SMT Power Inductor
+* Matchcode:             WE-PD
+* Library Type:          Pspice
+* Version:               rev22a
+* Created/modified by:   Ella
+* Date and Time:         6/10/2022
+* Team:                  eiSos EDA Service
+* Contact:               libraries@we-online.com
+**************************************************
+* Copyright(C) 2022 Würth Elektronik eiSos GmbH & Co. KG
+* All Rights Reserved.
+**************************************************
+* Disclaimer: While Würth Elektronik eiSos has made every reasonable effort to ensure the accuracy
+* of the simulation models provided, Würth Elektronik eiSos does not guarantee the exemption of error on
+* the simulation models, nor does Würth Elektronik eiSos guarantee that the simulation model is current.
+* Würth Elektronik eiSos reserves the right to make any adjustments at any time without notice.
+* Würth Elektronik eiSos expressly disclaims all implied warranties regarding this simulation model.
+**************************************************
+.subckt PD_7345_7447773220_22u 1 2
+Rp 1 2 18190
+*Cp 1 2 4.464p
+Rs 1 N3 0.075
+L1 N3 2 21.7u
+.ends PD_7345_7447773220_22u
