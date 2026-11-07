@@ -1,0 +1,8 @@
+.title KiCad schematic
+.include "C:/AE/PS2501A/_models/ps2501a.lib"
+R2 /K 0 {RK}
+V1 /IN 0 PULSE( 0 {VPUL} {delay} {tr} {tf} {duty} {cycle} ) 
+V2 VDD 0 {VSOURCE}
+R1 VDD /OUT {RC}
+XU1 /IN /K 0 /OUT PS2501A
+.end

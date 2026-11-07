@@ -1,0 +1,33 @@
+*LTspice
+*
+*PS2501A
+*HIGH ISOLATION VOLTAGE SINGLE TRANSISTOR TYPE
+*AE01009001
+*
+*netlist
+.include PS2501A.cir
+*
+*params
+.param RK=210
+.param RC=500
+*
+.param VSOURCE=5
+.param VPUL=3.3
+*
+.param frec=500
+.param percent=50
+.param delay=1m
+.param repeat=2
+.param tr=3u
+.param tf=5u
+*
+.param cycle=1/frec
+.param x_base=(cycle*repeat)+delay
+.param duty=(percent/100)*cycle
+*
+*transient response
+.tran 0 {x_base} 0 uic startup
+*
+*.backanno
+*.op
+
