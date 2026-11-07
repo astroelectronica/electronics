@@ -1,0 +1,9 @@
+.title KiCad schematic
+.include "C:/AE/ZR431L/_models/ZR431L.spice.txt"
+R1 /VIN /VOUT {RLIM}
+XU1 /VOUT /VREF 0 ZR431L
+R2 /VOUT /VREF {RADJ}
+R3 /VREF 0 {RREF}
+I1 /VOUT 0 {ILOAD}
+V1 /VIN 0 {VSOURCE}
+.end
