@@ -1,0 +1,9 @@
+.title KiCad schematic
+.include "C:/AE/AS431/AS431.spice.txt"
+XU1 0 /VOUT /VREF AS431
+R3 /VOUT /VIN {RLIM}
+V1 /VIN 0 DC {VSOURCE} 
+I1 /VOUT 0 DC {ILOAD} 
+R1 /VREF /VOUT {RADJ}
+R2 0 /VREF {RREF}
+.end
