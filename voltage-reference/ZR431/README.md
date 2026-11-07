@@ -1,0 +1,6 @@
+# ZR431
+LOW Knee CURRENT 2.5 ADJUSTABLE SHUNT REGULATOR
+
+AE01020425
+
+https://www.diodes.com/part/view/ZR431

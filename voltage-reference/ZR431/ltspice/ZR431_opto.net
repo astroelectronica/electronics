@@ -1,0 +1,24 @@
+*LTspice
+*
+*ZR431
+*Optocoupling voltage feedback
+*AE01020425
+*
+*netlist
+.include ZR431_opto.cir
+*
+*params
+.param VSOURCE=5.5
+.param VSUPPLY=5
+.param ILOAD=100m
+.param RE=470
+.param RZ=200
+.param RCOMP=100
+.param RADJ=120K
+.param RREF=120K
+*
+*transient response
+.tran 0 4m 0 uic startup
+*
+*.backanno
+*.op

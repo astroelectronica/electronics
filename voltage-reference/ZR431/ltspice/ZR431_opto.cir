@@ -1,0 +1,20 @@
+.title KiCad schematic
+.include "C:/AE/ZR431/_models/B140HB.spice.txt"
+.include "C:/AE/ZR431/_models/ZR431.spice.txt"
+.include "C:/AE/ZR431/_models/c2012np02a102j060aa_p.mod"
+.include "C:/AE/ZR431/_models/c3216x5r1v106k160ab_p.mod"
+.include "C:/AE/ZR431/_models/ps2501a.lib"
+R4 /VOUT /VREF {RADJ}
+R5 /VREF 0 {RREF}
+XU3 /VZ /VCOMP C2012NP02A102J060AA_p
+R3 /VCOMP /VREF {RCOMP}
+I1 /VOUT 0 {ILOAD}
+XU4 0 /VOUT C3216X5R1V106K160AB_p
+V1 /VIN 0 PWL (0 1 1m 5.5 2m 5.5)
+V2 /VC 0 {VSUPPLY}
+R2 /VK /VZ {RZ}
+R1 /VFB 0 {RE}
+XU1 /VOUT /VK /VFB /VC PS2501A
+D1 /VIN /VOUT DI_B140HB
+XU2 /VZ /VREF 0 ZR431
+.end

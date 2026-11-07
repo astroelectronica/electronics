@@ -1,0 +1,19 @@
+*LTspice
+*
+*ZR431
+*Overcurrent protection
+*AE01020425
+*
+*netlist
+.include ZR431_ocp.cir
+*
+*params
+.param VSOURCE=7
+.param RZ=7.15K
+.param RSENSE=49.9
+*
+*load regulation
+.step param Iload 0 55m 200u
+*
+.backanno
+.op

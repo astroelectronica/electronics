@@ -1,0 +1,21 @@
+*LTspice
+*
+*ZR431
+*Output shunt regulator
+*AE01020425
+*
+*netlist
+.include ZR431_auto.cir
+*
+*params
+.param VSOURCE=12
+.param ILOAD=0.1
+.param RBASE=1.8k
+.param RADJ=120k
+.param RREF=120k
+*
+*load regulation
+.dc I1 0 {ILOAD} 1u
+*
+*.backanno
+*.op
