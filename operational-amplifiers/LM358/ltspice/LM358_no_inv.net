@@ -1,0 +1,26 @@
+*LTspice
+*
+*LM358
+*No-verting operational amplifier
+*AE01010358
+*
+*netlist
+.include LM358_no_inv.cir
+*
+*params
+.param VPOS=12
+.param VNEG=-12
+*
+.param VOFFSET=0
+.param VAMPL=2
+.param FREQ=1K
+*
+.param RINP=500
+.param RINN=1K
+.param RLOOP=1K
+*
+*transient response
+.tran 0 4m 0 ;uic startup
+*
+.backanno
+.op

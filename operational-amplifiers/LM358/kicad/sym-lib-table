@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name "LM358")(type "KiCad")(uri "/home/astroelectronica/kicad/projects/LM358/libraries/LM358.kicad_sym")(options "")(descr ""))
+)

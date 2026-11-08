@@ -1,0 +1,9 @@
+.title KiCad schematic
+.include "/home/astroelectronica/kicad/projects/LM358/models/lmx58_lm2904.lib"
+V1 VPP 0 {VPOS}
+V3 VEE 0 {VNEG}
+V2 /IN 0 sin({VOFFSET} {VAMPL} {FREQ})
+R1 /IN /LOOP {RIN}
+XU1 0 /LOOP VPP VEE /OUT LMX58_LM2904
+R2 /LOOP /OUT {RLOOP}
+.end
