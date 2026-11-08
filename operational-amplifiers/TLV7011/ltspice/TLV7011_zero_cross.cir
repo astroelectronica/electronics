@@ -1,0 +1,11 @@
+.title KiCad schematic
+.include "/home/astroelectronica/kicad/projects/TLV7011/models/ES3B.spice.txt"
+.include "/home/astroelectronica/kicad/projects/TLV7011/models/tlv7011.lib"
+R1 /IN /REF {RINU}
+V1 /IN 0 sin({VOFFSET} {VAMPL} {FREQ})
+R3 /OUT 0 {ROUT}
+XU1 /REF 0 /OUT VDD 0 TLV7011
+R2 /REF 0 {RINB}
+V2 VDD 0 {VSUPPLY}
+D1 0 /REF DI_ES3B
+.end

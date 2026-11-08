@@ -1,0 +1,25 @@
+*LTspice
+*
+*TLV7011
+*Zero crossing detection using comparator circuit
+*AE01010701
+*
+*netlist
+.include TLV7011_zero_cross.cir
+*
+*Voltage settings
+.param VSUPPLY=5
+.param VOFFSET=0
+.param VAMPL=230*1.4142
+.param FREQ=50
+*
+*Part settings
+.param RINU=1Meg
+.param RINB=10K
+.param ROUT=100K
+*
+*trasient response
+.tran 0 80m 0 uic startup
+*
+.backanno
+.op
