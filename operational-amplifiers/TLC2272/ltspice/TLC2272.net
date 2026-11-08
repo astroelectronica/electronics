@@ -1,0 +1,25 @@
+*LTspice
+*
+*TLC2272
+*1-10V to PWM converter with NTC compensation.
+*AE01010227
+*
+*netlist
+.include TLC2272.cir
+*
+*params
+.param VSUPPLY=5
+*
+*DIMM regulation
+*.param Rntc=100k
+*.step param VDIMM list 1 4 7 9
+*
+*temperature_regulation
+.param VDIMM=5
+.step param Rntc list 100k 10k 1k
+*
+*transient response
+.tran 0 20m 0 uic startup
+*
+.backanno
+.op
