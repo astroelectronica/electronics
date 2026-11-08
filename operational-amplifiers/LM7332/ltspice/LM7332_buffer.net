@@ -1,0 +1,20 @@
+*LTspice
+*
+*LM7332
+*Buffer follower
+*AE01010332
+*
+*netlist
+.include LM7332_buffer.cir
+*
+*Voltage settings
+.param VPOS=15
+.param VNEG=-15
+.param VIMIN=-10
+.param VIMAX=10
+*
+*DC sweep input voltage
+.dc V3 {VIMIN} {VIMAX} 10m
+*
+.backanno
+.end

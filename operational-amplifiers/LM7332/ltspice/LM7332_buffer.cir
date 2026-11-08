@@ -1,0 +1,7 @@
+.title KiCad schematic
+.include "/home/astroelectronica/kicad/projects/LM7332/models/LM7332.MOD"
+XU1 /OUT /OUT /IN VEE VDD LM7332
+V2 VEE 0 {VNEG}
+V1 VDD 0 {VPOS}
+V3 /IN 0 {VIMAX}
+.end
