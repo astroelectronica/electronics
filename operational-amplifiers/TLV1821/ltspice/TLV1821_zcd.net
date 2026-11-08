@@ -1,0 +1,26 @@
+*LTspice
+*
+*TLV1821
+*Zero crossing detector
+*AE01010821
+*
+*netlist
+.include TLV1821_zcd.cir
+*
+*params
+.param VSUPPLY=5
+.param RIN1=5K
+.param RIN2=5K
+.param RPUP=100K
+.param RPUN=100K
+.param RLOOP=20Meg
+.param RREF=10K
+*
+.param Voffset=0
+.param Vamp=5
+.param Freq=50
+.param Td=0
+*
+*transient response
+.tran 0 80m 1n uic startup
+*

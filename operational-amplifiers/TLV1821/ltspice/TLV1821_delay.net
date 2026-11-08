@@ -1,0 +1,25 @@
+*LTspice
+*
+*TLV1821
+*Time delay generator
+*AE01010821
+*
+*netlist
+.include TLV1821_delay.cir
+*
+*params
+.param VSUPPLY=5
+.param VLOGIC=3.3
+.param RDELAY=100K
+.param VL=0
+.param VH=VSUPPLY
+.param TD=10m
+.param TR=50n
+.param TF=50n
+.param DUTY=150m
+.param PERIODE=200m
+.param NCYCLES=1
+*
+*transient response
+.tran 0 200m 10n ;uic startup
+*

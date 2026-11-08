@@ -1,0 +1,21 @@
+*LTspice
+*
+*TLV1821
+*Square-Wave Oscillator
+*AE01010821
+*
+*netlist
+.include TLV1821_square.cir
+*
+*params
+.param VSUPPLY=5
+.step param VSOURCE list 5 3 1
+.param RLOOP_N=100K
+.param RLOOP_P=100K
+.param RPD=100K
+.param RIN=100K
+.param RPU=100K
+*
+*transient response
+.tran 0 200u 10n uic startup
+*

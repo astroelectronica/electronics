@@ -1,0 +1,13 @@
+.title KiCad schematic
+.include "C:/AE/TLV1821/_models/c2012np02w101j060aa_p.mod"
+.include "C:/AE/TLV1821/_models/tlv1821.lib"
+R4 /VP /VOUT {RLOOP_P}
+R3 /VP 0 {RPD}
+R2 /VIN /VP {RIN}
+R5 VDD /VOUT {RPU}
+V2 /VIN 0 DC {VSOURCE} 
+XU1 /VP /VN VDD 0 /VOUT TLV1821
+R1 /VN /VOUT {RLOOP_N}
+XU2 /VN 0 C2012NP02W101J060AA_p
+V1 VDD 0 DC {VSUPPLY} 
+.end

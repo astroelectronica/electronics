@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "TLV1821")(type "KiCad")(uri "C:/AE/TLV1821/_lib/TLV1821.kicad_sym")(options "")(descr ""))
+)

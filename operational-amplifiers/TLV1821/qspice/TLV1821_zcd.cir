@@ -1,0 +1,41 @@
+.title KiCad schematic
+.include "C:/AE/TLV1821/_models/BAT54.spice.txt"
+.include "C:/AE/TLV1821/_models/tlv1821.lib"
+R4 /VP /VOUT {RLOOP}
+R5 /VP 0 {RREF}
+XU1 /VP /VN VDD 0 /VOUT TLV1821
+R6 VDD /VP {RPUP}
+R3 VDD /VN {RPUN}
+R2 /VDIV /VN {RIN2}
+D1 0 /VDIV BAT54
+V1 VDD 0 DC {VSUPPLY} 
+V4 /VIN 0 DC SINE({Voffset} {Vamp} {Freq} {Td}) 
+R1 /VIN /VDIV {RIN1}
+*
+*qspice
+*
+*TLV1821
+*Zero crossing detector
+*AE01010821
+*
+*netlist
+*.include TLV1821_zcd.cir
+*
+*params
+.param VSUPPLY=5
+.param RIN1=5K
+.param RIN2=5K
+.param RPUP=100K
+.param RPUN=100K
+.param RLOOP=20Meg
+.param RREF=10K
+*
+.param Voffset=0
+.param Vamp=5
+.param Freq=50
+.param Td=0
+*
+*transient response
+.tran 0 80m 1n uic startup
+*
+.end

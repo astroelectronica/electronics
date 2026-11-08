@@ -1,0 +1,10 @@
+*transient response
+*
+.meas tref_vin find time when V(/vin)=V(/ref) cross=1
+.meas tref_vout1 find time when V(/common)=V(/v1n) cross=1
+.meas tref_vout2 find time when V(/common)=V(/v2n) cross=1
+.meas tref_vout3 find time when V(/common)=V(/v3n) cross=1
+.meas tdelay1 param (tref_vout1-tref_vin)
+.meas tdelay2 param (tref_vout2-tref_vin)
+.meas tdelay3 param (tref_vout3-tref_vin)
+*
