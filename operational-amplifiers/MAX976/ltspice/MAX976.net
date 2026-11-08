@@ -1,0 +1,25 @@
+*LTspice
+*
+*MAX976
+*PWM generator with analog control
+*AE01010976
+*
+*netlist
+.include MAX976.cir
+*
+*Voltage settings
+.step param VCTRL list 1 2 3 4
+.param VSUPPLY=5
+*
+*Resistors settings
+.param RIN=10K
+.param RLOOP=10K
+.param ROSC=10K
+.param RLOAD=100K
+*
+*DC sweep control voltage
+.tran 0 200m 0 startup uic
+*
+.option noopiter
+.backanno
+.end

@@ -1,0 +1,30 @@
+*AE01010219_01_sim01_line_regulation
+*
+*Time references
+.meas tref1 find time when V(/inp)=V(/rc) cross=14
+.meas tref2 find time when V(/inp)=V(/rc) cross=15
+.meas tref3 find time when V(/inp)=V(/rc) cross=16
+*
+*Frequency
+.meas frec_out param (1/(tref3-tref1))
+*
+*Cycle time
+.meas time_cycle param (1/frec_out)
+*
+*Duty time
+.meas duty_out param (tref2-tref1)
+*
+*Duty percent
+.meas duty_% param ((duty_out*100)/time_cycle)
+*
+*Charging time:
+.meas charging_time param tref2-tref1
+*
+*Discharging time:
+.meas discharging_time param tref3-tref2
+*
+*Upper threshold voltage:
+.meas upper_threshold find V(/inp) when V(/inp)=V(/rc) cross=15
+*
+*Lower threshold voltage:
+.meas lower_threshold find V(/inp) when V(/inp)=V(/rc) cross=16
