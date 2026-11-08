@@ -1,0 +1,3 @@
+*SRC=MMBD4148;DI_MMBD4148;Diodes;Si;  75.0V  0.250A  4.00ns   Diodes Inc. Switching Diode 
+.MODEL DI_MMBD4148 D  ( IS=300n RS=0.422 BV=75.0 IBV=2.50u 
++ CJO=1.99p  M=0.333 N=2.77 TT=5.76n )
