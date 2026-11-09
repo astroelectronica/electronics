@@ -1,0 +1,11 @@
+.title KiCad schematic
+.include "/home/astroelectronica/kicad/projects/TLV3201/models/c2012np02w101j060aa_p.mod"
+.include "/home/astroelectronica/kicad/projects/TLV3201/models/tlv3201.lib"
+XU2 /VC 0 C2012NP02W101J060AA_p
+R4 /VC /OUT {ROSC}
+XU1 /REF /VC VDD 0 /OUT TLV3201
+V1 VDD 0 {VSUPPLY}
+R3 /REF /OUT {RREFP}
+R2 /REF 0 {RREFB}
+R1 VDD /REF {RREFU}
+.end

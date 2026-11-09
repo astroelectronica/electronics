@@ -1,0 +1,23 @@
+*LTspice
+*
+*TLV3201
+*Relaxation oscillator operational amplifier
+*AE01010201
+*
+*netlist
+.include TLV3201_relax_osc.cir
+*
+*Voltage settings
+.param VSUPPLY=5
+*
+*Part settings
+.param RREFU=20K
+.param RREFB=20K
+.param RREFP=20K
+.param ROSC=6.8K
+*
+*trasient response
+.tran 0 5u 0 uic
+*
+.backanno
+.op
