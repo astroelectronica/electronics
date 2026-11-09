@@ -6,6 +6,7 @@ pending to define
 
 | ID | MPN | Description |
 |---|---|---|
+| AE01010188 | [INA188](https://github.com/astroelectronica/electronics/tree/main/operational-amplifiers/INA188) | 36-V, Zero-Drift, Rail-to-Rail-Out Instrumentation Amplifier |
 | AE01010358 | [LM358](https://github.com/astroelectronica/electronics/tree/main/operational-amplifiers/LM358) | Dual, 30-V, 700-kHz operational amplifier |
 | AE01010332 | [LM7332](https://github.com/astroelectronica/electronics/tree/main/operational-amplifiers/LM7332) | Dual, 32-V, 19-MHz operational amplifier |
 | AE01010976 | [MAX976](https://github.com/astroelectronica/electronics/tree/main/operational-amplifiers/MAX976) | Single/Dual/Quad, SOT23, Single-Supply, High-Speed, Low-Power Comparators |
