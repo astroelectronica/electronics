@@ -1,0 +1,150 @@
+*$
+* LM809_2P45 
+*****************************************************************************
+* (C) Copyright 2015 Texas Instruments Incorporated. All rights reserved.
+*****************************************************************************
+** This model is designed as an aid for customers of Texas Instruments.
+** TI and its licensors and suppliers make no warranties, either expressed
+** or implied, with respect to this model, including the warranties of
+** merchantability or fitness for a particular purpose. The model is
+** provided solely on an "as is" basis. The entire risk as to its quality
+** and performance is with the customer.
+*****************************************************************************
+*
+** Released by: WEBENCH Design Center, Texas Instruments Inc.
+* Part: LM809_2P45
+* Date: 22JUN2015 
+* Model Type: Transient
+* Simulator: PSpice
+* Simulator Version: 16.2.0.p001
+* EVM Order Number: 
+* EVM User's Guide: 
+* Datasheet: SNVS052D–SEPTEMBER 1999–REVISED MAY 2013
+*
+* Model Version: Final 1.00
+*
+*****************************************************************************
+*
+* Updates:
+*
+* Final 1.00
+* Release to Web
+*
+*****************************************************************************
+.SUBCKT LM809_2P45_TRANS VCC RESET_N NC GND PARAMS: VCC_RESET_TH = 2.45
+X_U1         VCC_OUT_HYS VCC_STARTUP CONTROL_VCC AND2_BASIC_GEN PARAMS: VDD=1
++  VSS=0 VTHRESH=500E-3
+E_ABM7         N119774 0 VALUE { IF(V(VCC_OUT_HYS) >0.5, IF(V(VCC) >
++  VCC_RESET_TH, 1, 0), IF(V(VCC) > (VCC_RESET_TH + VHYS),1,0))    }
+X_U66         N16877224 GATE BUF_BASIC_GEN PARAMS: VDD=1 VSS=0 VTHRESH=0.5
+X_S7    N16840233 N16840288 TIMER_RAMP N16840288 LM809_2P45_S7 
+R_R17         N16877355 N16877224  1  
+C_C16         0 N16877224  1n  
+E_ABM16         N16877568 0 VALUE { 
++ {IF((V(CONTROL_VCC)>0.5)|(V(VCCH)<0.5),V(VCCH),V(VCCL))}    }
+C_C11         0 N16840229  1n  
+R_R11         N16840321 N16840229  1  
+X_S6    COMP_OUT 0 TIMER_RAMP 0 LM809_2P45_S6 
+E_ABM2         N16840307 0 VALUE { (V(OUT1)* (-VHYS) + VCC_RESET_TH)    }
+E_ABM14         N16801611 0 VALUE { IF(V(OVDRIVE_VCC) > 0.5,1,0)    }
+X_S8    GATE 0 RESET_N 0 LM809_2P45_S8 
+X_U29         OUT1 VCC_OUT_HYS COMP_OUT AND2_BASIC_GEN PARAMS: VDD=1 VSS=0
++  VTHRESH=500E-3
+X_S9    GATE 0 VCC_INT RESET_N LM809_2P45_S9 
+E_ABM8         N16840321 0 VALUE { LIMIT(VCC_RESET_TH - V(VCC_INT),0,0.7)    }
+E_ABM1         VCC_VALID 0 VALUE { IF(V(VCC) > {VCCmin},1,0)    }
+X_U6         VCC_INT N16840491 OUT1 COMP_BASIC_GEN PARAMS: VDD=1 VSS=0
++  VTHRESH=0.5
+X_D6         TIMER_RAMP N16840301 d_d1 PARAMS: 
+C_C6         0 VCC_OUT_HYS  1n  TC=0,0 
+E_ABM12         VCCH 0 VALUE { IF(V(VRISE) > 0.5 ,1,0)    }
+R_R6         N16840307 N16840491  1  
+G_G3         VCC 0 TABLE { V(VCC, 0) } 
++ ( (1.2,15u)(2,15u)(5.5,15u) )
+E_ABM13         VCCL 0 VALUE { IF(V(N16801619) > 0.5,0,1)    }
+R_R9         N119774 VCC_OUT_HYS  1 TC=0,0 
+C_C7         0 N16840491  1n  
+C_C5         0 N16801619  1n  TC=0,0 
+X_U16         VCC_OUT_HYS N16840233 INV_BASIC_GEN PARAMS: VDD=1 VSS=0
++  VTHRESH=500E-3
+X_D1         VRISE VCCL d_d1 PARAMS: 
+V_V8         N16840288 0 1.0
+X_U26         TIMER_RAMP OVDRIVE_VCC INV_BASIC_GEN PARAMS: VDD=1 VSS=0
++  VTHRESH=500E-3
+X_D2         N16801619 N16801615 d_d1 PARAMS: 
+R_R4         N16801611 VRISE  346.320k TC=0,0 
+G_G4         N16840301 TIMER_RAMP TABLE { V(N16840229, 0) } 
++ (
++  (1m,1.5u)(2m,2.1u)(3m,2.6u)(5m,3.73u)(10m,6.944u)(20m,13.88u)(50m,22.72u)(100m,33.3u)(500m,50u)
++  )
+R_R18         VCC_VALID VCC_STARTUP  1 TC=0,0 
+R_R5         N16801615 N16801619  1 TC=0,0 
+X_U3         N16801611 N16801615 INV_BASIC_GEN PARAMS: VDD=1 VSS=0
++  VTHRESH=500E-3
+V_V7         N16840301 0 1.0V
+C_C15         0 VCC_STARTUP  1n  TC=0,0 
+C_C12         0 TIMER_RAMP  1n  
+E_ABM15         N16877355 0 VALUE { IF(V(VCC_VALID) > 0.5, V(N16877568),1)    }
+C_C4         0 VRISE  1u  TC=0,0 
+R_R7         0 GND  1m TC=0,0 
+E_GAIN1         VCC_INT 0 VALUE {1 * V(VCC)}
+.PARAM  vccmin=1.0 vhys=0
+.ENDS LM809_2P45_TRANS
+*$
+.SUBCKT LM809_2P45_S7 1 2 3 4  
+S_S7         3 4 1 2 _S7
+RS_S7         1 2 1G
+.MODEL         _S7 VSWITCH Roff=100e6 Ron=0.1 Voff=0.2 Von=0.8
+.ENDS LM809_2P45_S7
+*$
+.SUBCKT LM809_2P45_S6 1 2 3 4  
+S_S6         3 4 1 2 _S6
+RS_S6         1 2 1G
+.MODEL         _S6 VSWITCH Roff=100E6 Ron=1 Voff=0.2 Von=0.8
+.ENDS LM809_2P45_S6
+*$
+.SUBCKT LM809_2P45_S8 1 2 3 4  
+S_S8         3 4 1 2 _S8
+RS_S8         1 2 1G
+.MODEL         _S8 VSWITCH Roff=60E9 Ron=250 Voff=0.8 Von=0.2
+.ENDS LM809_2P45_S8
+*$
+.SUBCKT LM809_2P45_S9 1 2 3 4  
+S_S9         3 4 1 2 _S9
+RS_S9         1 2 1G
+.MODEL         _S9 VSWITCH Roff=60E9 Ron=1000 Voff=0.2 Von=0.8
+.ENDS LM809_2P45_S9
+*$
+.SUBCKT INV_BASIC_GEN A  Y PARAMS: VDD=1 VSS=0 VTHRESH=0.5 
+E_ABMGATE    YINT 0 VALUE {{IF(V(A) > {VTHRESH} , 
++ {VSS},{VDD})}}
+RINT YINT Y 1
+CINT Y 0 1n
+.ENDS INV_BASIC_GEN
+*$
+.SUBCKT COMP_BASIC_GEN INP INM Y PARAMS: VDD=1 VSS=0 VTHRESH=0.5	
+E_ABM Yint 0 VALUE {IF (V(INP) > 
++ V(INM), {VDD},{VSS})}
+R1 Yint Y 1
+C1 Y 0 1n
+.ENDS COMP_BASIC_GEN
+*$
+.SUBCKT AND2_BASIC_GEN A B Y PARAMS: VDD=1 VSS=0 VTHRESH=0.5 
+E_ABMGATE    YINT 0 VALUE {{IF(V(A) > {VTHRESH}  &  
++ V(B) > {VTHRESH},{VDD},{VSS})}}
+RINT YINT Y 1
+CINT Y 0 1n
+.ENDS AND2_BASIC_GEN
+*$
+.SUBCKT BUF_BASIC_GEN A  Y PARAMS: VDD=1 VSS=0 VTHRESH=0.5 
+E_ABMGATE    YINT 0 VALUE {{IF(V(A) > {VTHRESH} , 
++ {VDD},{VSS})}}
+RINT YINT Y 1
+CINT Y 0 1n
+.ENDS BUF_BASIC_GEN
+*$
+.SUBCKT D_D1 1 2
+D1 1 2 DD1
+.MODEL DD1 D( IS=1e-15 TT=10p Rs=0 N=0.1m )
+.ENDS D_D1
+*$
