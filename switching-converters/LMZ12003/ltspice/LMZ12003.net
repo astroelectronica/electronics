@@ -1,0 +1,23 @@
+*LTspice
+*
+*LMZ12003
+*3A simple switcher power module. 20V maximum input voltage
+*AE01007123
+*
+*netlist
+.include LMZ12003.cir
+*
+*params
+.param VIN=20 rser=50
+.param RON=32.4k
+.param RENT=32.4k
+.param RENB=11.8k
+.param RFBT=1.37k
+.param RFBB=1.07k
+.param RLOAD=0.6
+*
+*transient response
+.tran 0 .2m 0 ;startup ;uic
+*
+*.backanno
+*.op
