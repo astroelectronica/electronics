@@ -11,4 +11,5 @@ pending to define
 | AE01010976 | [MAX976](https://github.com/astroelectronica/electronics/tree/main/operational-amplifiers/MAX976) | Single/Dual/Quad, SOT23, Single-Supply, High-Speed, Low-Power Comparators |
 | AE01010227 | [TLC2272](https://github.com/astroelectronica/electronics/tree/main/operational-amplifiers/TLC2272) | Dual, Low-Noise, Rail-To-Rail Operational Amplifier |
 | AE01010821 | [TLV1821](https://github.com/astroelectronica/electronics/tree/main/operational-amplifiers/TLV1821) | Single-channel micropower high-voltage comparator with open-drain output |
+| AE01010201 | [TLV3201](https://github.com/astroelectronica/electronics/tree/main/operational-amplifiers/TLV3201) | 5.5-V, high-speed, single push-pull comparator |
 | AE01010701 | [TLV7011](https://github.com/astroelectronica/electronics/tree/main/operational-amplifiers/TLV7011) | Low power, small size comparator with push-pull output |
