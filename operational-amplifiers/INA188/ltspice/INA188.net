@@ -1,0 +1,27 @@
+*LTspice
+*
+*INA188
+*±10V PLC Input.
+*AE01010188
+*
+*netlist
+.include INA188.cir
+*
+*Voltage settings
+.param VIN=10
+.param VPOS=15
+.param VNEG=15
+.param VREF=2.5
+*
+*Resistors settings
+.param RG=12.4K
+.param RHIGH=100K
+.param RMID=4.87K
+.param RLOW=20
+.param RLOAD=100K
+*
+*DC sweep input voltage
+.dc V2 {-VIN} {VIN} 0.001
+*
+.option noopiter
+.backanno
