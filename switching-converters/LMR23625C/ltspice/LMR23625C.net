@@ -1,0 +1,25 @@
+*LTspice
+*
+*LMR23625C
+*SIMPLE SWITCHER, 36V 2.5A Synchronous Step-Down Converter
+*AE01007625
+*
+*netlist
+.include LMR23625C.cir
+*
+*params
+.param ILOAD=1
+.param VSOURCE=9
+*
+.param RFBT=49.9
+.param RFBM=53.6k
+.param RFBB=23.2k
+.param RENT=402k
+.param RENB=133k
+*
+*transient response
+.param x_base=3m
+.tran 0 {x_base} 0 ;startup uic
+;.backanno
+.option noopiter
+
