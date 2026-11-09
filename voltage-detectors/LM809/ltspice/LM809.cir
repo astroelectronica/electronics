@@ -1,0 +1,8 @@
+.title KiCad schematic
+.include "C:/AE/LM809/models/C2012X7R2A104K125AA_p.mod"
+.include "C:/AE/LM809/models/LM809_2P93_TRANS.LIB"
+V1 VCC 0 {VSOURCE}
+R1 /RST 0 {ROUT}
+XU2 VCC /RST unconnected-_U2-NC-Pad3_ 0 LM809_2P93_TRANS
+XU1 VCC 0 C2012X7R2A104K125AA_p
+.end

@@ -1,0 +1,18 @@
+*LTspice
+*
+*LM809
+*Voltage supervisor, active-low, push-pull reset
+*AE01002809
+*
+*netlist
+.include LM809.cir
+*
+*params
+.param VSOURCE=5
+.param ROUT=100k
+*
+*Line regulation. Falling voltage.
+.dc V1 {VSOURCE} 0 0.001
+*
+*.backanno
+*.op
