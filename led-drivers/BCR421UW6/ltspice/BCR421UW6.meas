@@ -1,0 +1,12 @@
+*
+.meas IFmin min I(D1)
+.meas IFmax max I(D1)
+.meas IFdev param (IFmax-IFmin)
+*
+.meas VFmin min V(vcc,/ld1)
+.meas VFmax max V(vcc,/ld1)
+.meas VFdev param (VFmax-VFmin)
+*
+.meas Pmin min I(D1)*V(vcc,/ld1)
+.meas Pmax max I(D1)*V(vcc,/ld1)
+.meas Pdev param (Pmax-Pmin)

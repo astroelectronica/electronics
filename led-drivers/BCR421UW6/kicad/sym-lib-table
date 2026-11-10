@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "BCR421UW6")(type "KiCad")(uri "${KIPRJMOD}/BCR421UW6.kicad_sym")(options "")(descr ""))
+)

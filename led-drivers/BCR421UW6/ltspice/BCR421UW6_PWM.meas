@@ -1,0 +1,16 @@
+*
+*time reference
+.meas tref1 find time when V(vcc,/ld1)=V(/en) cross=73
+.meas tref2 find time when V(vcc,/ld1)=V(/en) cross=74
+.meas tref3 find time when V(vcc,/ld1)=V(/en) cross=75
+*
+*sw frequency and duty time
+.meas t_duty param tref2-tref1
+.meas t_cycle param tref3-tref1
+.meas f_sw param 1/t_cycle
+.meas duty_percent param 100-(((t_cycle-t_duty)/t_cycle)*100)
+*
+*led
+.meas Vled_rms rms V(vcc,/ld1) from=tref1 to=tref3
+.meas Iled_rms rms I(D1) from=tref1 to=tref3
+.meas Pled_rms param (Vled_rms*Iled_rms)

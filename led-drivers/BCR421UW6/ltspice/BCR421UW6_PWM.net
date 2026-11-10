@@ -1,0 +1,30 @@
+*LTspice
+*
+*BCR421UW6
+*10mA-350mA, Adjustable, SOT26
+*AE01003421
+*
+*netlist
+.include BCR421UW6_PWM.cir
+*
+*params
+.param VSOURCE=12
+.param REXT=470
+*
+*transient response
+*
+.param VPUL=3.3
+.param FREQ=20K
+.param REPEAT=40
+.param TR=10n
+.param TF=10n
+.param CYCLE=1/FREQ
+.param DELAY=0
+.step param PERCENT list 10 50 90
+.param DUTY=(PERCENT/100)*CYCLE
+.param X_BASE=(CYCLE*REPEAT)+DELAY
+*
+.tran 0 {X_BASE} 0 ;uic startup
+*
+*.op
+*.backanno
