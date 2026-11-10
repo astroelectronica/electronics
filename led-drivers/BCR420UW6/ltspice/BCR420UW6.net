@@ -1,0 +1,17 @@
+*LTspice
+*
+*BCR420UW6
+*10mA-350mA, Adjustable, SOT26
+*AE01003420
+*
+*netlist
+.include BCR420UW6.cir
+*
+*params
+.param EN=24
+.step param VSOURCE 12 40 0.2
+.STEP param REXT list 470 820 10000Meg
+*
+*transient response
+.op
+.backanno
