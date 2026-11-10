@@ -10,4 +10,5 @@ A buck LED driver is a highly efficient step-down DC-DC converter designed to de
 | AE01003806 | [AL8806](https://github.com/astroelectronica/electronics/tree/main/led-drivers/AL8806) | High efficiency 36V/1.5A buck led driver |
 | AE01003807 | [AL8807](https://github.com/astroelectronica/electronics/tree/main/led-drivers/AL8807) | High efficiency 36V/1A buck led driver |
 | AE01003860 | [AL8860](https://github.com/astroelectronica/electronics/tree/main/led-drivers/AL8860) | 40V 1.5A step down led driver with internal switch |
+| AE01003421 | [BCR421UW6](https://github.com/astroelectronica/electronics/tree/main/led-drivers/BCR421UW6) | 10mA-350mA adj linear led constant current regulator |
 | AE01003101 | [DLD101](https://github.com/astroelectronica/electronics/tree/main/led-drivers/DLD101) | Linear mode current sink led driver |
