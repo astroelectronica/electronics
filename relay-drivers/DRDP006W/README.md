@@ -1,0 +1,6 @@
+# DRDP006W
+COMPLEX ARRAY FOR RELAY DRIVERS 
+
+AE01018006
+
+https://www.diodes.com/part/view/DRDP006W

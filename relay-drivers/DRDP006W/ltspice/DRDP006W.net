@@ -1,0 +1,28 @@
+*LTspice
+*
+*DRDP006W
+*Complex array for relay drivers. PNP.
+*AE01018006
+*
+*netlist
+.include DRDP006W.cir
+*
+*params
+.param VSOURCE=12
+.param RPU=10K
+.param RB=1K
+.param L_COIL=100u
+.param R_COIL=0.2
+*
+.param VCTRL=5
+.param TR=1u
+.param TF=1u
+.param TDELAY=1000m
+.param TDUTY=1000m
+.param TCYCLE=2000m
+*
+*transient response
+.param x_base=3000m
+.tran 0 {x_base} 0 ;uic startup
+*
+.backanno
