@@ -13,3 +13,4 @@ pending to define
 | AE01009185 | [TLP185](https://github.com/astroelectronica/electronics/tree/main/optocouplers/TLP185) | Max:50Ma; Isolation Voltage:3.75Kv; Ctr Min:50%, DC |
 | AE01009290 | [TLP290](https://github.com/astroelectronica/electronics/tree/main/optocouplers/TLP290) | Voltage:3.75Kv; Ctr Min:50%; VCE V(Br)Ceo:80V. AC |
 | AE01009291 | [TLP291](https://github.com/astroelectronica/electronics/tree/main/optocouplers/TLP291) | Voltage:3.75Kv; Ctr Min:50%; VCE V(Br)Ceo:80V. DC |
+| AE01009294 | [TLP291-4](https://github.com/astroelectronica/electronics/tree/main/optocouplers/TLP291-4) | 4 channel. DC. NPN. Viso:3.75Kv. CTR Min:100%. VCE:80V |
