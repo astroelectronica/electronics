@@ -1,0 +1,8 @@
+.title KiCad schematic
+.include "C:/AE/TLP183/TLP183.mod"
+R1 0 /K {RK}
+XU1 /IN /K 0 /OUT TLP183
+V1 /IN 0 PULSE( 0 {VPUL} {delay} {tr} {tf} {duty} {cycle} )
+V2 VDD 0 DC {VSOURCE}
+R2 /OUT VDD {RC}
+.end

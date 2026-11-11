@@ -1,0 +1,24 @@
+*LTspice
+*
+*TLP183
+*Photocoupling voltage feedback
+*AE01009183
+*
+*netlist
+.include TLP183_vref.cir
+*
+*params
+.param VSOURCE=10
+.param VSUPPLY=5
+.param ILOAD=100m
+.param RE=470
+.param RZ=200
+.param RCOMP=100
+.param RADJ=120K
+.param RREF=120K
+*
+*line regulation
+.dc V1 0 {VSOURCE} .01
+*
+*.backanno
+*.op
