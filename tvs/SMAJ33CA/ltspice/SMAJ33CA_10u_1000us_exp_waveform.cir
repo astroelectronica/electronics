@@ -1,0 +1,6 @@
+.title KiCad schematic
+.include "C:/AE/SMAJ33CA/_models/TVS_Diode_SMAJxxx_CA_SPICE_Model_txt.txt"
+V1 /VIN 0 DC EXP({Vinitial} {Vpulsed} {Rise_delay} {Rise_tau} {Fall_delay} {Fall_tau}) Rser=50 
+V2 /VGEN 0 DC EXP({Vinitial} {Vpulsed} {Rise_delay} {Rise_tau} {Fall_delay} {Fall_tau}) Rser=50 
+XU1 0 /VIN SMAJ33CA
+.end

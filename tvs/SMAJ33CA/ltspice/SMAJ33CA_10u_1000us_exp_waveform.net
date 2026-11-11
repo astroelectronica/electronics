@@ -1,0 +1,22 @@
+*LTspice
+*
+*SMAJ33CA
+*10us/1000us exponential waveform. tFall:tRise> 50:1
+*AE01013033
+*
+*netlist
+.include SMAJ33CA_10u_1000us_exp_waveform.cir
+*
+*params
+.param Vinitial=0
+.param Vpulsed=606
+.param Rise_delay=0
+.param Rise_tau=3.3u
+.param Fall_delay=10u
+.param Fall_tau=1443u
+*
+*transient response
+.tran 0 10m 0 uic startup
+*
+*.backanno
+*.op

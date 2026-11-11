@@ -1,0 +1,13 @@
+*10us/1000us exponential waveform. tFall:tRise> 50:1
+.meas Vgen_max max V(/vgen)
+.meas Vgen_max_time find time when V(/vgen)=Vgen_max
+*
+.meas Vin_max max V(/vin)
+.meas Vin_max_time find time when V(/vin)=Vin_max
+*
+.meas Itvs_max max Ix(u1:2)
+.meas Itvs_max_time find time when Ix(u1:2)=Itvs_max
+.meas Ptvs_max max Ix(u1:2)*V(/vin)
+.meas Ptvs_max_time find time when Ix(u1:2)*V(/vin)=Ptvs_max
+*
+
