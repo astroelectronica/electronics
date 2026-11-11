@@ -1,0 +1,28 @@
+*LTspice
+*
+*TLP291_4
+*TLP291-4. 4 channel. DC. NPN. Viso:3.75Kv. CTR Min:100%. VCE:80V
+*AE01009294
+*
+*netlist
+.include TLP291_4.cir
+*
+*params
+.param RPU=1Meg
+.param RK=10K
+.param RDIV1=86.6K
+.param RDIV2=47.5K
+.param RDIV3=82.5K
+.param RDIV4=33K
+.param RDIV5=10K
+.param RREF=75K
+.param RSER=33K
+.param RPOWER=470
+.step param RSTATE list 1 100 1K 4.7K 100000Meg
+*
+.param VSOURCE=28
+.param VDIG=3.3
+*
+*.backanno
+.op
+
