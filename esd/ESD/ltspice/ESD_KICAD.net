@@ -1,0 +1,22 @@
+*LTspice
+*
+*-
+*IEC 61000-4-2 ESD generator.
+*AE01061042
+*
+*netlist
+.include ESD_KICAD.cir
+*
+*params
+.model SW SW(Ron=1 Roff=1G Vt=0.5)
+.ic V(/C_1)=nom_voltage V(/C_2)=nom_voltage
+.ic I(L1)=0 I(L2)=0
+.param nom_voltage=IEC61000_4_2_test_level
+.step param IEC61000_4_2_test_level list 2kV 4kV 6kV 8kV
+.param Rload=2
+.param td=1p
+*
+*transient response
+.tran 0 150n 0 0.0001n
+*
+*.backanno

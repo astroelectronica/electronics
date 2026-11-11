@@ -1,0 +1,8 @@
+*
+.meas Imax max I(R3)
+.meas tr find time when I(R3)=Imax
+.meas tr_90 param tr*0.95
+.meas tr_10 param tr*0.1
+.meas tr_25 param tr_90-tr_10
+.meas T_30ns find I(R3) when time=30n
+.meas T_60ns find I(R3) when time=60n

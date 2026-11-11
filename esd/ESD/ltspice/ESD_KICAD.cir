@@ -1,0 +1,12 @@
+.title KiCad schematic
+L1 /ESD /L_1 2.4u
+R1 /L_1 /R_1 330
+L2 /ESD /L_2 140n
+R2 /L_2 /R_2 200
+R3 /ESD 0 {Rload}
+C2 /C_2 0 8p
+S2 /C_2 /R_2 /IN 0 SW
+S1 /C_1 /R_1 /IN 0 SW
+V1 /IN 0 PULSE(0 1 {td} 1f 1 1 2)
+C1 /C_1 0 150p
+.end
