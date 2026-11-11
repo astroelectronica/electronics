@@ -6,4 +6,4 @@ pending to define
 
 | ID | MPN | Description |
 |---|---|---|
-| AE01061042 | [ESD](https://github.com/astroelectronica/electronics/tree/main/esd/esd) | IEC 61000-4-2 ESD generator |
+| AE01061042 | [ESD](https://github.com/astroelectronica/electronics/tree/main/esd/ESD) | IEC 61000-4-2 ESD generator |
