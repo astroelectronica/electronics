@@ -20,6 +20,7 @@ Models are shared and live in a single folder.
 | AE01007 | [Switching Converters](https://github.com/astroelectronica/electronics/tree/main/switching-converters) |
 | AE01009 | [Optocouplers](https://github.com/astroelectronica/electronics/tree/main/optocouplers) |
 | AE01010 | [Operational Amplifiers](https://github.com/astroelectronica/electronics/tree/main/operational-amplifiers) |
+| AE01013 | [TVS](https://github.com/astroelectronica/electronics/tree/main/tvs) |
 | AE01015 | [Current Limiters](https://github.com/astroelectronica/electronics/tree/main/current-limiters) |
 | AE01018 | [Relay Drivers](https://github.com/astroelectronica/electronics/tree/main/relay-drivers) |
 | AE01020 | [Voltage Reference](https://github.com/astroelectronica/electronics/tree/main/voltage-reference) |
