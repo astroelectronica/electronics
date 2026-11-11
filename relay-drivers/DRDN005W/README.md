@@ -1,0 +1,6 @@
+# DRDN005W
+COMPLEX ARRAY FOR RELAY DRIVERS
+
+AE01018005
+
+https://www.diodes.com/part/view/DRDN005W
