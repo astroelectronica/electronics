@@ -1,0 +1,3 @@
+*SRC=B3100;DI_B3100;Diodes;Si;  100V  3.00A  10.0ns   Diodes Inc. Schottky
+.MODEL DI_B3100 D  ( IS=916u RS=14.1m BV=100 IBV=500u
++ CJO=159p  M=0.333 N=3.04 TT=14.4n )
