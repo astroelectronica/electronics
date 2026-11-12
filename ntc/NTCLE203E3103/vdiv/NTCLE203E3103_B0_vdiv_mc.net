@@ -1,0 +1,26 @@
+*LTspice
+*
+*NTCLE203E3103_B0
+*Voltage divider (monte carlo analysis)
+*
+*
+*netlist
+.include NTCLE203E3103_B0_vdiv_mc.cir
+*
+*params
+.param TOLR=TR
+.param TOLB=TB
+.param TR=1
+.param TB=0.75
+.param VSOURCE={mc(5,0.01)}
+.param RIN={mc(4.7K,0.01)}
+.param RNTC={mc(4.7K,0.01)}
+*
+*temperature regulation
+.dc TEMP -50 150 1
+;dc dec V1 1u 100 100
+.param run=1
+.step param run 1 1000 1
+.meas TEMP when V(/NTC)=0.675
+*
+*.backanno

@@ -1,0 +1,3 @@
+*temperature regulation
+*
+.meas Rntc find V(/ntc1)/-I(I1) at 25

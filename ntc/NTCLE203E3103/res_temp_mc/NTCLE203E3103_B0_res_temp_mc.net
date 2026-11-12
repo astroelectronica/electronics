@@ -1,0 +1,23 @@
+*LTspice
+*
+*NTCLE203E3103_B0
+*Resistance vs temperature (monte carlo analysis)
+*
+*
+*netlist
+.include NTCLE203E3103_B0_res_temp_mc.cir
+*
+*params
+.param ISOURCE=0.001u
+.param TOLR=TR
+.param TOLB=TB
+.param TR=1
+.param TB=0.75
+*
+*temperature regulation
+.dc TEMP -50 150 1
+;dc dec V1 1u 100 100
+.param run=1
+.step param run 1 300 1
+*
+*.backanno

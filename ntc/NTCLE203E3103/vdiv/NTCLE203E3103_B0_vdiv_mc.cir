@@ -1,0 +1,7 @@
+.title KiCad schematic
+.include "models/NTCLE203E3103.lib"
+R2 /NTC 0 {RNTC}
+R1 /VIN /NTC {RIN}
+XU1 /NTC 0 NTCLE203E3103_B0
+V1 /VIN 0 {VSOURCE}
+.end

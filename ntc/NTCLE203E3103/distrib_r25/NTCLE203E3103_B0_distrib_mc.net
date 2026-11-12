@@ -1,0 +1,27 @@
+*LTspice
+*
+*NTCLE203E3103_B0
+*Distribution R25/R85 (monte carlo analysis)
+*
+*
+*netlist
+.include NTCLE203E3103_B0_distrib_mc.cir
+*
+*params
+.param ISOURCE=0.001u
+.param TOLR=TR
+.param TOLB=TB
+.param TR=1
+.param TB=0.75
+.param RT=1T
+*
+*temperature regulation
+.dc TEMP -55 155 1
+.param run=1
+.step param run 1 300 1
+.func mcs(x,y,z) if(run==1,x,if(2*int(run/2)==run,mc(x*(1-y),z), mc(x*(1+y),z)))
+.func mcg(x,y) if(run==1,x,x*(1+gauss(y/4)))
+.meas R25 find -V(/NTC)/I(I1) at=25
+.meas R85 find -V(/NTC)/I(I1) at=85
+*
+*.backanno

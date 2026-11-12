@@ -1,0 +1,22 @@
+*LTspice
+*
+*NTCLE203E3103_B0
+*Voltage vs current (monte carlo analysis)
+*
+*
+*netlist
+.include NTCLE203E3103_B0_v_i_mc.cir
+*
+*params
+.param ISOURCE=10m
+.param TOLR=TR
+.param TOLB=TB
+.param TR=1
+.param TB=0.75
+*
+*temperature regulation
+.dc dec I1 1u 0.01 100
+.step TEMP list -40 -20 0 25 85
+.step param run 1 10 1
+*
+*.backanno
