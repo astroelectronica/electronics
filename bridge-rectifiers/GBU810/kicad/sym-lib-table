@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "GBU810")(type "KiCad")(uri "C:/AE/GBU810/_lib/GBU810.kicad_sym")(options "")(descr ""))
+)

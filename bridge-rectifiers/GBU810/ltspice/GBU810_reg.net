@@ -1,0 +1,31 @@
+*LTspice
+*
+*GBU810
+*8.0A GLASS PASSIVATED BRIDGE RECTIFIER
+*AE01011810
+*
+*netlist
+.inc GBU810_reg.cir
+*
+*params
+.param ILOAD=1
+.param CBULK=47u
+.param RSER=0.2
+.param VOFFSET=0
+.param VRMS=230
+.param CREST_FACTOR=SQRT(2)
+.param FREQ=50
+.param VPK=VRMS*CREST_FACTOR
+.param TIME=1/FREQ
+.param CYCLES=3
+.param TOTAL_TIME=TIME*CYCLES
+.tran 0 {TOTAL_TIME} 0 uic startup
+*
+*load regulation
+*.step param ILOAD 100m 1 100m
+*
+*line regulation
+.step param VRMS 100 240 20
+*
+.backanno
+.op

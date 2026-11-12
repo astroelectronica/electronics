@@ -1,0 +1,47 @@
+*line regulation
+*
+*source
+.meas Vsource_max max V(/line,/neutral) from=20m to=40m
+.meas Vsource_min min V(/line,/neutral) from=20m to=40m
+.meas Vsource_rms rms V(/line,/neutral) from=20m to=40m
+*
+.meas Isource_max max -I(V1) from=20m to=40m
+.meas Isource_min min -I(V1) from=20m to=40m
+.meas Isource_rms rms -I(V1) from=20m to=40m
+*
+*load
+.meas Vload_max max V(/vout) from=20m to=40m
+.meas Vload_min min V(/vout) from=20m to=40m
+.meas Vload_rms rms V(/vout) from=20m to=40m
+*
+*.meas Iload_max max I(I1) from=20m to=40m
+*.meas Iload_min min I(I1) from=20m to=40m
+*.meas Iload_rms rms I(I1) from=20m to=40m
+*
+
+.meas Pload_rms param (Vload_rms*I(I1))
+*
+*D1
+.meas ID1_max max I(D1) from=20m to=40m
+.meas ID1_min min I(D1) from=20m to=40m
+.meas ID1_rms rms I(D1) from=20m to=40m
+*
+*D2
+.meas ID2_max max I(D2) from=20m to=40m
+.meas ID2_min min I(D2) from=20m to=40m
+.meas ID2_rms rms I(D2) from=20m to=40m
+*
+*D3
+.meas ID3_max max I(D3) from=20m to=40m
+.meas ID3_min min I(D3) from=20m to=40m
+.meas ID3_rms rms I(D3) from=20m to=40m
+*
+*D4
+.meas ID4_max max I(D4) from=20m to=40m
+.meas ID4_min min I(D4) from=20m to=40m
+.meas ID4_rms rms I(D4) from=20m to=40m
+*
+*bulk capacitor
+.meas Icbulk_max max I(C1) from=20m to=40m
+.meas Icbulk_min min I(C1) from=20m to=40m
+.meas Icbulk_rms rms I(C1) from=20m to=40m
