@@ -1,0 +1,198 @@
+* MAX16823 MACROMODEL
+* ----------------------------
+* Revision 1.1 01/2009
+* ----------------------------
+* Model Platform: Spice3
+* ----------------------------
+* The MAX16823 three-channel LED driver operates from a 5.5V to 40V input voltage range
+* and delivers up to 70mA per channel to one or more strings of high-brightness LEDs.
+* Each channel's current is programmable using an external current-sense resistor in 
+* series with the LEDs. Three DIM inputs allow a wide range of independent pulsed dimming
+* in addition to providing the on and off control of the outputs. Wave-shaping circuitry 
+* reduces EMI while providing fast turn-on and turn-off times.
+* ----------------------------
+* Sub circuit name: MAX16823
+* ----------------------------
+* Connections: Model pin names are same as the device pin names. 
+* ----------------------------
+* Parametes and features modeled.
+* 1) UVLO at 4.9V with 0.3V hysterisis.
+* 2) 3.4V Regulator with 13mA current limit.
+* 3) DIM1, DIM2, DIM3 inputs have 2.17 high threshold and 1.66V low threshold
+* 4) LED drivers with 203mV/Rcs current setting, 8mA/uS slew rate and 0.3V dropout voltage.
+* 5) LGC oscillator with 2.53 high threshold and 0.8V low threshold.
+* 6) Open LED check with 0.1V threshold at CS1, CS2, and CS3, 100k pull-up to REG and 20mA pulldown.
+* 7) Pull down of LEDGOOD pin if LED open codition sustains on any channel for 5 clocks periods 
+*    of LGC and LGC clock disable till LED open condition is removed.
+* ----------------------------
+* Parameters and features not modeled.
+* 1) Feedback loop characteristics of the REG regulator.
+* 2) LED drive turn on/off delay times. 
+* ----------------------------
+**************************************************
+.SUBCKT MAX16823 DIM1 DIM2 DIM3 LEDGOOD IN LGC REG GND CS3 CS2 CS1 OUT3 OUT2 OUT1  
+**************************************************
+*UVLO (4.9V-ON,4.6V-OFF, 0.3V Hysterisis)
+VUV VUV2 GND 4.9V 
+GUV GND UV1 POLY(2) IN VUV2 UV1 GND 0 1M 0.3M
+XDUV1 GND UV1 DA1
+CUV UV1 GND 1P
+XDUV2 UV1 V1 DA1
+VUV1 V1 GND 1V
+*************
+*LDO 
+EVIN1 VIN GND IN GND 1 
+RVIN VIN VCC1 10K
+XDVCC1 VCC1 VCC2 DA1
+VCC1A VCC2 GND 3.4V
+EVCC1 VCC3 GND POLY(2)UV1 GND VCC1 GND 0 0 0 0 1
+RVCC1 VCC3 VCC4 15
+IVCC VCC4 VCC5 13M
+XDCC2 VCC5 VCC4 DA1
+VLDCS VCC5 REG 0V
+*************
+*DIM Buffer1(2.17V-High,1.66V-Low, 0.5V Hyst)
+VDIA DIA1 GND 2.17V 
+GDIA GND DIA2 POLY(2) DIM1 DIA1 DIA2 GND 0 1M 0.5M
+XDDIA1 GND DIA2 DA1
+CDIA DIA2 GND 0.5P
+XDDIA2 DIA2 V1 DA1
+EDA DIA GND POLY(2) DIA2 GND UV1 GND 0 0 0 0 1
+*************
+*DIM Buffer2(2.17V-High,1.66V-Low, 0.5V Hyst)
+VDIB DIB1 GND 2.17V 
+GDIB GND DIB2 POLY(2) DIM2 DIB1 DIB2 GND 0 1M 0.5M
+XDDIB1 GND DIB2 DA1
+CDIB DIB2 GND 0.5P
+XDDIB2 DIB2 V1 DA1
+EDB DIB GND POLY(2) DIB2 GND UV1 GND 0 0 0 0 1
+************
+*DIM Buffer3(2.17V-High,1.66V-Low, 0.5V Hyst)
+VDIC DIC1 GND 2.17V 
+GDIC GND DIC2 POLY(2) DIM3 DIC1 DIC2 GND 0 1M 0.5M
+XDDIC1 GND DIC2 DA1
+CDIC DIC2 GND 0.5P
+XDDIC2 DIC2 V1 DA1
+EDC DIC GND POLY(2) DIC2 GND UV1 GND 0 0 0 0 1
+************
+*LED drivers
+XDR1 IN GND CS1 OUT1 DIA DR16823
+XDR2 IN GND CS2 OUT2 DIB DR16823
+XDR3 IN GND CS3 OUT3 DIC DR16823
+************
+*LGC OSCILLATOR
+RPU LGC REG 100K
+EGC3 GC1 GND POLY(1) PR3 GND 2.53 2
+GGC1 GND GC2 POLY(2) LGC GC1 GC2 GND 0 1M 1.73M
+CGC1 GC2 GND 10P
+XDGC1 GND GC2 DA1
+XDGC2 GC2 V1 DA1
+MGC1 LGC GC3 GND GND MN1 L=0.5U W=200U
+EGC1 GC3 GND GC2 GND 2
+****
+*CS COMP
+XOLC1 UV1 GND CS1 OL1 CSC16823
+XOLC2 UV1 GND CS2 OL2 CSC16823
+XOLC3 UV1 GND CS3 OL3 CSC16823
+ROL1 OL4 GND 1MEG
+XDOR1 OL1 OL4 DA1
+XDOR2 OL2 OL4 DA1
+XDOR3 OL3 OL4 DA1
+EOL1 OR_OL GND OL4 GND 1
+****
+EGC2 GC3A GND GC2 GND 1
+XDMS1 GC3A MS DA1
+RMS1 MS MS1 20 
+CMS1 MS1 GND 0.1N
+IMS1 MS1 GND 0.517U
+XDMS2 GND MS1 DA1
+V05A V05 GND 0.5V
+GMS1 GND MS2 POLY(2) MS1 V05 MS2 GND 0 1M 5U
+CMS2 MS2 GND 1P
+XDMD3 GND MS2 DA1
+XDMS4 MS2 V1 DA1
+****
+GG1 GND LG1 POLY(2) MS2 GND OR_OL GND 0 0 0 0 12U
+CG1 LG1 GND 7.27N 
+XDG1 LGX OR_OL DA1
+RDG1 LG1 LGX 1
+XDG2 GND LG1 DA1
+****
+VREF V01 GND 0.05V
+ES S1 GND POLY(2) LG1 V05 GC3A GND 0 0 0 0 25
+GFF GND FF1 FF1 V01 1M
+CFF1 FF1 GND 1P
+XDFF1 GND FF1 DA1
+XDFF2 FF1 V1 DA1
+XDFF3 FF1 OR_OL DA1
+XDFF4 S1 FF1 DA1
+************
+EPR PR1 GND FF1 GND 2
+RPR1 PR1 PR2 1K
+T1 PR2 GND PR3 GND ZO=1K TD=15U
+RPR2 PR3 GND 1K
+************
+ELG1 LGM GND FF1 GND 2
+MLG LEDGOOD LGM GND GND MN1 L=0.5U W=31U
+**************************************************
+.MODEL MP1 PMOS(VTO=-1.0 KP=50E-6)
+.MODEL MN1 NMOS(VTO=1.0 KP=100E-6)
+.MODEL DB D(IS=100E-14)
+**************************************************
+.ENDS MAX16823
+**************************************************
+.SUBCKT CSC16823 UV1 GND CS OL1
+VUV1 V1 GND 1V
+VREF V01 GND 0.1V
+GCS GND OL POLY(2) V01 CS OL GND 0 1M 5U
+XDCS1 GND OL DA1
+XDCS2 OL V1 DA1
+CCS1 OL GND 1P
+EOL1 OL1 GND POLY(2) OL GND UV1 GND 0 0 0 0 1
+.ENDS
+**************************************************
+.SUBCKT DA1 1 2
+D1 1 3 DB
+ED1 3 4 3 1 0.999
+R2 4 2 10M
+RP 1 2 1G
+.MODEL DB D(IS=100E-14)
+.ENDS
+**************************************************
+.SUBCKT DR16823 IN GND CS OUT DIM
+EVIN VIN2 GND IN GND 1
+V05A V05 GND 0.5V
+VR1 V02 GND 0.2025V
+VUV1 V1 GND 1V
+*CUR REF
+GCR GND CR1 DIM V05 1M
+CCR CR1 GND 11.25N
+XDCR1 GND CR1 DA1
+XDCR2 CR1 V1 DA1
+XDCR3 CR1 CR2 DA1
+GEA1 CR2 GND CS V02 1
+DCR4 CR2 V1 DB
+***
+MPA OUT1A G1A IN IN MP1 L=5U W=2.6M
+CB1 IN G1A 20P
+RB1 VIN2 G1A 10K
+VS1 OUT1A OUT 0V
+FS1 GND CV1 VS1 1
+RS1 CV1 GND 5.555
+GEA2 G1A GND CR1 CV1 0.1
+XDB1 GND G1A DA1
+XDB2 G1A VIN2 DA1
+ROUT OUT GND 100K
+***
+GSUP IN GND CR1 GND 1.18M
+RCS CS GND 135.3K
+***
+.MODEL MP1 PMOS(VTO=-1.0 KP=50E-6)
+.MODEL DB D(IS=100E-14)
+.ENDS DR16823
+***************************************************
+
+
+
+
+* Copyright (c) 2003-2015 Maxim Integrated Products.  All Rights Reserved.
