@@ -1,0 +1,20 @@
+*LTspice
+*
+*B57452V5104J062
+*Wheatstone bridge
+*AE01006104
+*
+*netlist
+.include B57452V5104J062.cir
+*
+*params
+.param VSOURCE=12
+.param RREFH1=100K
+.param RREFL1=100K
+.param RREFH2=100K
+*
+*temperature regulation
+.step temp -40 150 1
+*
+.op
+.backanno

@@ -1,0 +1,8 @@
+.title KiCad schematic
+.include "C:/AE/B57452V5104J062/_models/NTC_Library.lib"
+V1 /VIN 0 {VSOURCE}
+R3 /VIN /VREF2 {RREFH2}
+XU1 /VREF2 0 B57452V5104J062
+R1 /VIN /VREF1 {RREFH1}
+R2 /VREF1 0 {RREFL1}
+.end
