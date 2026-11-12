@@ -1,6 +1,7 @@
 # GBU810
+
 8.0A GLASS PASSIVATED BRIDGE RECTIFIER
 
-https://www.diodes.com/part/view/GBU810
-
 AE01011810
+
+https://www.diodes.com/part/view/GBU810
