@@ -1,0 +1,3 @@
+*SRC=GBU810;DI_GBU810;Diodes;Si;  1.00kV  8.00A  3.00us   Diodes Inc. Bridge -- for one element
+.MODEL DI_GBU810 D  ( IS=17.8p RS=7.59m BV=1.00k IBV=5.00u
++ CJO=240p  M=0.333 N=1.25 TT=4.32u )
