@@ -1,0 +1,10 @@
+.title KiCad schematic
+.include "models/C2012X7R2A104K125AA_p.mod"
+.include "models/max6324.lib"
+XU1 VCC 0 /WDI VCC /WDO /RST MAX6324
+XU2 VCC 0 C2012X7R2A104K125AA_p
+V2 /WDI 0 pulse({VL} {VH} {TD} {TR} {TF} {DUTY} {CYCLE} {NCYCLES})
+R2 VCC /WDO {RPU}
+R1 VCC /RST {RPU}
+V1 VCC 0 {VSOURCE}
+.end
