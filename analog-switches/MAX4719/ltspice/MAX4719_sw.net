@@ -1,0 +1,19 @@
+*LTspice
+*
+*MAX4719
+*20ohm, 300MHz Bandwidth, Dual SPDT Analog Switch in UCSP
+*AE01019719
+*
+*netlist
+.include MAX4719_sw.cir
+*
+*params
+.param VSUPPLY=5
+.param RCOM1=100K
+.param RCOM2=100K
+*
+*transient response
+.tran 0 50m 0 uic startup
+*
+*.backanno
+*.op

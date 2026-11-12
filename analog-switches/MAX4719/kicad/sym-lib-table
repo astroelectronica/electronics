@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "MAX4719")(type "KiCad")(uri "C:/AE/MAX4719/_lib/MAX4719.kicad_sym")(options "")(descr ""))
+)
