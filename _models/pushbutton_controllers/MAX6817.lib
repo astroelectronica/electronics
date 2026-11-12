@@ -1,0 +1,143 @@
+*******************************************************************************
+* Copyright (C) Maxim Integrated Products, Inc., All Rights Reserved.
+*
+* Permission is hereby granted, free of charge, to any person obtaining a
+* copy of this software and associated documentation files (the "Software"),
+* to deal in the Software without restriction, including without limitation
+* the rights to use, copy, modify, merge, publish, distribute, sublicense,
+* and/or sell copies of the Software, and to permit persons to whom the
+* Software is furnished to do so, subject to the following conditions:
+*
+* The above copyright notice and this permission notice shall be included
+* in all copies or substantial portions of the Software.
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+* OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+* MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+* IN NO EVENT SHALL MAXIM INTEGRATED BE LIABLE FOR ANY CLAIM, DAMAGES
+* OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+* ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+* OTHER DEALINGS IN THE SOFTWARE.
+*
+* Except as contained in this notice, the name of Maxim Integrated 
+* Products, Inc. shall not be used except as stated in the Maxim Integrated 
+* Products, Inc. Branding Policy.
+*
+* The mere transfer of this software does not imply any licenses
+* of trade secrets, proprietary technology, copyrights, patents,
+* trademarks, maskwork rights, or any other form of intellectual
+* property whatsoever. Maxim Integrated Products, Inc. retains all 
+* ownership rights.
+*******************************************************************************
+.SUBCKT MAX6817 1 2 3 4 5 6
+*				| | | | | |
+*               | | | | | OUT1
+*               | | | | VCC
+*               | | | OUT2
+*               | | IN2
+*               | GND
+*               IN1
+*
+* The MAX6817 is a dual switch debouncer that provide clean interfacing of
+* mechanical switches to digital systems. It accepts bouncing inputs from
+* mechanical switches and produce a clean digital output after a preset
+* qualification delay. 
+*
+* The following devices are covered by this model:
+*		MAX6817
+*
+* Date of model creation: 5/2005
+*
+* Revision History:
+*		v1.0 - Initial Release. Based on Revision 0, 5/2005
+*
+* Recommendations:
+*      Use PSPICE (or SPICE 2G6; other simulators may require translation)
+*      For a quick, effective design, use a combination of: data sheet
+*            specs, bench testing, and simulations with this macromodel
+*      For high impedance circuits, set GMIN=100F in the .OPTIONS statement
+*
+* Supported:
+*      Typical performance for 27 degrees Celsius
+*
+* Not Supported:
+*      Some Variation in specs vs. Power Supply Voltage
+*      Some Temperature analysis
+*      Process variation
+*      Behavior outside normal operating region
+*
+* Known Discrepancies in Model vs. Datasheet:
+*
+***************************************
+ XDEB1 2 1 6 5 MAX6817_S
+ XDEB2 2 3 4 5 MAX6817_S
+.ENDS MAX6817
+***************************************
+.SUBCKT MAX6817_S 1 2 3 4  
+* 1 = GND
+* 2 = IN
+* 3 = OUT
+* 4 = VCC
+***************************************
+*UVLO VDD(2.6V and 100mV hyst)
+VUV 11 1 2.7V 
+GUV 1 12 POLY(2) 4 11 12 1 0 1M 100U
+DUV2 1 12 DA
+CUV 12 1 1P
+DUV1 12 13 DA
+VUV1 13 1 1V
+**************
+*SUPPLY CURRENT
+RSUP 4 1 833K
+**************
+*INPUT (1.75V AND 300mV hyst)
+RPU 4 2 63K
+RIN 2 14 15K
+DIN1 1 14 DB
+DIN2 14 4 DB
+VINTH 15 1 1.75V
+GINTH 1 16 POLY(2) 14 15 16 1 0 1M 300U
+DINTH1 1 16 DA
+CINTH 16 1 1P
+DINTH2 16 13 DA
+**************
+EDL1 17 1 16 1 1
+RDL1 17 18 1
+DDL1 18 19 DA
+RDL2 18 19 1MEG
+CDL1 19 1 31.1N
+**************
+RDL3 17 20 1
+DDL2 21 20 DA
+RDL4 20 21 1MEG
+CDL2 21 1 31.1N
+**************
+VDL1 22 1 0.8
+VDL2 23 1 0.2
+GDL1 1 24 21 22 10M
+DDL3 1 24 DA
+DDL4 24 13 DA
+CDL3 24 1 10P
+******
+GDL2 1 25 19 23 10M
+DDL5 1 25 DA
+DDL6 25 13 DA
+CDL4 25 1 10P
+EDL2 26 1 24 1 1
+EDL3 27 1 25 1 1
+DDL7 26 28 DA
+DDL8 28 27 DA
+RDL5 28 29 1
+CDL 29 1 1U
+EDL4 30 1 POLY(2) 13 29 4 1 0 0 0 0 1
+**************
+*OUTPUT
+MOUT1 3 30 4 4 MP1 L=0.5U W=11U
+MOUT2 3 30 1 1 MN1 L=0.5U W=50U 
+***************************************
+.MODEL DA D(N=0.1M)
+.MODEL DB D(IS=100E-14)
+.MODEL MP1 PMOS(VTO=-0.7 KP=5E-6)
+.MODEL MN1 NMOS(VTO=0.7 KP=10E-6)
+***************************************
+.ENDS MAX6817_S
