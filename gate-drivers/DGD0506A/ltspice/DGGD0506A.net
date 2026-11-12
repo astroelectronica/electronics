@@ -1,0 +1,36 @@
+*LTspice
+*
+*DGD0506A
+*HIGH FREQ HALF-BRIDGE GATE DRIVER WITH PROG DEADTIME
+*AE01014506
+*
+*netlist
+.include DGD0506A.cir
+*
+*params
+*
+.param VCC=12
+.param VBUS=24
+.param RHO=10
+.param RLO=10
+.param RPU=100K
+.param RDT=100K
+.param VPUL=3.3
+.param RLOAD=1K
+*
+.param FREQ=50K
+.param PERCENT=50
+.param DELAY=0
+.param REPEAT=10
+.param TR=10n
+.param TF=10n
+*
+.param CYCLE=1/FREQ
+.param X_BASE=(CYCLE*REPEAT)+DELAY
+.param DUTY=(PERCENT/100)*CYCLE
+*
+*transient response
+.tran 0 {X_BASE} 0 uic startup
+*
+*.backanno
+*.op

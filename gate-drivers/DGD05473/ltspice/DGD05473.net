@@ -1,0 +1,56 @@
+*LTspice
+*
+*DGD05473
+*HIGH-FREQUENCY HIGH-SIDE AND LOW-SIDE GATE DRIVER
+*AE01014473
+*
+*netlist
+.include DGD05473.cir
+*
+*params
+.param VCC=12
+.param VBUS=12
+.param RG1=10
+.param RG2=10
+.param RG3=10
+.param RG4=10
+.param RRG1=50
+.param RRG2=50
+.param RRG3=50
+.param RRG4=50
+.param RCSA=0.01
+.param RCSB=0.01
+.param RPU=100K
+.param CLOAD=100p
+.param LLOAD=100m rser=0.1
+*
+.param VPUL=3.3
+.param FREQ=1K
+.param REPEAT=40
+.param TR=10n
+.param TF=10n
+.param CYCLE=1/FREQ
+*
+*PULSE(0 {VPUL} {DELAY_Q1} {TR} {TF} {DUTY_Q1} {CYCLE}
+.param DELAY_Q1=0
+.param PERCENT_Q1=25
+.param DUTY_Q1=(PERCENT_Q1/100)*CYCLE
+.param X_BASE_Q1=(CYCLE*REPEAT)+DELAY_Q1
+*
+*PULSE(0 {VPUL} {DELAY_Q2} {TR} {TF} {DUTY_Q2} {CYCLE}
+.param DELAY_Q2=DUTY_Q1*2
+.param DUTY_Q2=DUTY_Q1
+*
+*PULSE(0 {VPUL} {DELAY_Q3} {TR} {TF} {DUTY_Q3} {CYCLE}
+.param DELAY_Q3=DELAY_Q2
+.param DUTY_Q3=DUTY_Q2
+*
+*PULSE(0 {VPUL} {DELAY_Q4} {TR} {TF} {DUTY_Q4} {CYCLE}
+.param DELAY_Q4=DELAY_Q1
+.param DUTY_Q4=DUTY_Q1
+*
+*transient response
+.tran 0 {X_BASE_Q1} 0 uic startup
+*
+*.backanno
+*.op
