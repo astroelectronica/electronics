@@ -1,6 +1,6 @@
 # ⚡ Electronics
 
-Designs, code and simulations of electronic components and circuits.
+Schematics, PCB and simulations of electronic components and circuits.
 
 ## Structure
 
