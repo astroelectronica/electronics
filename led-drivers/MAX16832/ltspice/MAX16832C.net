@@ -1,0 +1,37 @@
+*LTspice
+*
+*MAX16832C
+*2Mhz, High-brightness led driver, integrated MOSFET.
+*AE01003832
+*
+*netlist
+.include MAX16832C.cir
+*
+*params
+.param VSOURCE=24
+.param VPUL=5
+.param RSNS=0.5
+.param RNTC=20k
+*
+*.temp 25
+*
+.param FREQ=1000
+.param NCYCLES=2
+.param DELAY=0
+.param TR=100n
+.param TF=100n
+.param PERCENT=80
+*
+.param CYCLE=1/FREQ
+.param DUTY=(PERCENT/100)*CYCLE
+.param X_BASE=(CYCLE*NCYCLES)+DELAY
+*
+*transient response
+.tran 0 {X_BASE} 0 startup uic
+*
+*temperature response
+.step temp list -5 25 50
+*
+*.backanno
+*.end
+
