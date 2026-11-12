@@ -1,0 +1,21 @@
+*LTspice
+*
+*MAX6817
+*±15kV ESD-Protected, Dual, CMOS Switch Debouncer
+*AE01021817
+*
+*netlist
+.include MAX6817_basic.cir
+*
+*params
+.param VSUPPLY=5
+.param ROUT1=100k
+.param ROUT2=100k
+*
+*transient response
+.tran 0 500m 0 startup uic
+*
+.option noopiter
+*.backanno
+*.end
+

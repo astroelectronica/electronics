@@ -1,0 +1,11 @@
+.title KiCad schematic
+.include "C:/AE/MAX6817/_models/C2012X7R2A104M125AA_p.mod"
+.include "C:/AE/MAX6817/_models/MAX6817.lib"
+XU1 /IN1 0 /IN2 /OUT2 VDD /OUT1 MAX6817
+XU2 VDD 0 C2012X7R2A104M125AA_p
+R2 /OUT2 0 {ROUT2}
+V1 /IN1 0 PWL file=PB1.txt
+R1 /OUT1 0 {ROUT1}
+V2 /IN2 0 PWL file=PB2.txt
+V3 VDD 0 {VSUPPLY}
+.end
