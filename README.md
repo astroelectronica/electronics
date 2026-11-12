@@ -17,6 +17,7 @@ Models are shared and live in a single folder.
 | AE01003 | [Led Drivers](https://github.com/astroelectronica/electronics/tree/main/led-drivers) |
 | AE01004 | [Timers](https://github.com/astroelectronica/electronics/tree/main/timers) |
 | AE01005 | [Linear Regulators](https://github.com/astroelectronica/electronics/tree/main/linear-regulators) |
+| AE01006 | [NTC](https://github.com/astroelectronica/electronics/tree/main/ntc) |
 | AE01007 | [Switching Converters](https://github.com/astroelectronica/electronics/tree/main/switching-converters) |
 | AE01009 | [Optocouplers](https://github.com/astroelectronica/electronics/tree/main/optocouplers) |
 | AE01010 | [Operational Amplifiers](https://github.com/astroelectronica/electronics/tree/main/operational-amplifiers) |
