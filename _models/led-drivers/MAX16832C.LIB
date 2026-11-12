@@ -1,0 +1,145 @@
+* MAX16832C MACROMODEL
+* ----------------------------
+* Revision 1.0 4/2009
+* ----------------------------
+* Model Platform: Spice3
+* ----------------------------
+* The MAX16832, step-down constant-current high-brightness LED driver
+* provide a cost effective solution for automotive interior/exterior lighting,
+* architectural and ambient lighting, LED bulbs such as MR16 and other LED 
+* illumination applications. 
+* ----------------------------
+* Connections: Model pin names are same as the device pin names.
+* Short PGND and GND during simulation. 
+* ----------------------------
+* Sub circuit name: MAX16832C 
+* ----------------------------
+***************************************************
+.SUBCKT MAX16832C CS IN GND PGND LX DIM TEMP_I  
+**************************************************
+*UVLO (6.25V-ON,5.75V-OFF, 0.5V Hyst)
+VUV VUV1 GND 6.25V 
+GUV GND UV1 POLY(2) IN VUV1 UV1 GND 0 1M 0.5M
+XDUV1 GND UV1 DA1
+CUV UV1 GND 1P
+XDUV2 UV1 V1 DA1
+VUV1 V1 GND 1V
+*************
+*LDO 
+EVIN1 VIN GND IN GND 1 
+RVIN VIN VCC1 10K
+XDVCC1 VCC1 VCC2 DA1
+VCC1 VCC2 GND 5V
+EVCC1 VCC3 GND POLY(2)UV1 GND VCC1 GND 0 0 0 0 1
+RVCC1 VCC3 VCC5 4
+IVCC VCC5 VCC6 45M
+XDCC2 VCC6 VCC5 DA1
+CVCC VCC6 VCC5 10P
+VLDCS VCC6 VCC 0V
+VLUV LVUV1 GND 4V 
+GLUV GND LUV1 POLY(2) VCC LVUV1 LUV1 GND 0 1M 0.05M
+XDLUV1 GND LUV1 DA1
+CLUV LUV1 GND 1P
+XDLUV2 LUV1 V1 DA1
+*************
+*DIM Buffer(1.7V-High,1.2-Low, 0.5V Hyst)
+VDIM DIM1 GND 1.7V 
+GDIM GND DIM2 POLY(2) DIM DIM1 DIM2 GND 0 1M 0.5M
+XDDIM1 GND DIM2 DA1
+CDIM DIM2 GND 0.5P
+XDDIM2 DIM2 V1 DA1
+*Delay(200nS)
+EDIM1 DIM3 GND DIM2 GND 2
+RDM1 DIM3 DIM4 1K
+TDM1 DIM4 GND DIM5 GND ZO=1K TD=158N
+RDM2 DIM5 GND 1K
+*************
+*CS comparator
+*Input Current
+VCSC CS5 CS 0.2V
+RCSC CS5 CS6 200K
+XDCSC CS6 IN DA1
+******
+VCSREF CSREF IN -230MV
+ETEMP CSREF1 CSREF T5 GND 142.8M
+GCS GND CS1 POLY(2) CSREF1 CS CS1 GND 0 10M 0.6M
+XDCS1 GND CS1 DA1
+CCS CS1 GND 1P
+XDCS2 CS1 V1 DA1
+*****
+ECS1 CS3 GND DRV GND 1
+RCS1 CS3 CS4 1K
+TDM2 CS4 GND CS5 GND ZO=1K TD=300N
+RCS3 CS5 GND 1K
+**************
+*Gate Driver
+EAND1 AND1 GND POLY(2) LUV1 GND DIM5 GND 0 0 0 0 1
+EAND2 AND2 GND POLY(2) AND1 GND V1 CS1 0 0 0 0 1
+EOUT GD1 GND POLY(2) V1 AND2 VCC GND 0 0 0 0 1
+***
+*OUTPUT
+MP1 DRV PG VCC VCC MP1 L=1U W=100U
+MN1 DRV NG GND GND MN1 L=1U W=39U
+CLO1 DRV GND 20P
+***
+CGS1 PG GND 10P
+RG1 GD1 PG 50
+DG1 GD1 PG DB
+***
+CGS2 NG GND 10P
+RD2 GD1 NG 50
+DG2 NG GD1 DB 
+**************
+MCL DRV CG GND GND MN1 L=1U W=50U
+ECG1 CG GND POLY(2) DRV GND V1 LUV1 0 0 0 0 1
+**************
+***Supply current
+GSUP1 IN GND UV1 GND 425U
+GSUP2 IN GND VCC3 VCC5 0.25
+**************
+CVCC1 VCC GND 20n
+XM1 LX DRV PGND PNDEV
+CGD LX DRV 35P
+C1 LX PGND 100P
+**************
+*TEMP_I 
+E5V V5 GND UV1 GND 5
+IPU GND TEMP_I 25U
+XDPU TEMP_I V5 DA1
+V2V T2 GND 2V
+ET1 T3 GND TEMP_I GND 1
+ET2 T4 GND T2 TEMP_I 1 
+XDT1 T4 T5 DA1
+RT1 T5 GND 1K
+CT1 T5 GND 10P 
+**************************************************
+.MODEL MP1 PMOS(VTO=-0.7 KP=50E-6)
+.MODEL MN1 NMOS(VTO=0.7 KP=100E-6)
+.MODEL DB D(IS=1E-12 CJO=1P)
+**************************************************
+.ENDS MAX16832C
+**************************************************
+.SUBCKT PNDEV 4 1 2
+M1  3 1 2 2 NMOS1 W=32m L=0.25u 
+R1  4 3 45m
+DBA 2 4 DBA
+CG1 1 2 450P
+**************************************************************** 
+.MODEL NMOS1 NMOS (VTO=2.5V TOX=4E-8 RS=5E-3 RD=0 NSUB=2.8E17  
++ KP=6.2E-6 UO=620 VMAX=0 XJ=5E-7 KAPPA=1E-2 ETA=1E-4 TPG=1 IS=0 LD=0               
++ CGSO=0 CGDO=0 CGBO=0 NFS=0.8E12 DELTA=0.1 LEVEL=3 )
+**************************************************************** 
+.MODEL DBA D (CJO=22E-12 VJ=0.38 M=0.34
++RS=0.25 FC=0.1 IS=1.3E-11 TT=2.1E-8 N=1 BV=70)
+**************************************************************** 
+.ENDS   
+**************************************************
+.SUBCKT DA1 1 2
+D1 1 3 DB
+ED1 3 4 3 1 0.999
+R2 4 2 1
+RP 1 2 1G
+CSH 1 2 0.5P
+.MODEL DB D(IS=1E-12 CJO=1F)
+.ENDS
+**************************************************
