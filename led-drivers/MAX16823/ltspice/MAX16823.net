@@ -1,0 +1,32 @@
+*LTspice
+*
+*MAX16823
+*3-Channel Linear High-Brightness LED Driver.
+*AE01003823
+*
+*netlist
+.include MAX16823.cir
+*
+*params
+.param VSOURCE=12
+.param VPUL=5
+.param RSENSE=4.06
+.param RPD=100k
+.param RLG=10k
+*
+.param FREQ=1000
+.param NCYCLES=2
+.param DELAY=0
+.param TR=100n
+.param TF=100n
+.param PERCENT=20
+*
+.param CYCLE=1/FREQ
+.param DUTY=(PERCENT/100)*CYCLE
+.param X_BASE=(CYCLE*NCYCLES)+DELAY
+*
+*transient response
+.tran 0 {X_BASE} 0 ;startup uic
+*
+.backanno
+.end
