@@ -13,3 +13,4 @@ A buck LED driver is a highly efficient step-down DC-DC converter designed to de
 | AE01003420 | [BCR420UW6](https://github.com/astroelectronica/electronics/tree/main/led-drivers/BCR420UW6) | 10mA-150mA adj linear led constant current regulator |
 | AE01003421 | [BCR421UW6](https://github.com/astroelectronica/electronics/tree/main/led-drivers/BCR421UW6) | 10mA-350mA adj linear led constant current regulator |
 | AE01003101 | [DLD101](https://github.com/astroelectronica/electronics/tree/main/led-drivers/DLD101) | Linear mode current sink led driver |
+| AE01003823 | [MAX16823](https://github.com/astroelectronica/electronics/tree/main/led-drivers/MAX16823) | 3-Channel Linear High-Brightness LED Driver |
