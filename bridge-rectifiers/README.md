@@ -6,4 +6,4 @@ pending to define
 
 | ID | MPN | Description |
 |---|---|---|
-| AE01011810 | [GBU810](https://github.com/astroelectronica/electronics/edit/main/bridge-rectifiers/gbu810) | 8.0A GLASS PASSIVATED BRIDGE RECTIFIER |
+| AE01011810 | [GBU810](https://github.com/astroelectronica/electronics/tree/main/bridge-rectifiers/GBU810) | 8.0A GLASS PASSIVATED BRIDGE RECTIFIER |
