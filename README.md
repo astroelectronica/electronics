@@ -23,6 +23,7 @@ Models are shared and live in a single folder.
 | AE01010 | [Operational Amplifiers](https://github.com/astroelectronica/electronics/tree/main/operational-amplifiers) |
 | AE01011 | [Bridge Rectifiers](https://github.com/astroelectronica/electronics/tree/main/bridge-rectifiers) |
 | AE01013 | [TVS](https://github.com/astroelectronica/electronics/tree/main/tvs) |
+| AE01014 | [Gate Drivers](https://github.com/astroelectronica/electronics/tree/main/gate-drivers) |
 | AE01015 | [Current Limiters](https://github.com/astroelectronica/electronics/tree/main/current-limiters) |
 | AE01018 | [Relay Drivers](https://github.com/astroelectronica/electronics/tree/main/relay-drivers) |
 | AE01019 | [Analog Switches](https://github.com/astroelectronica/electronics/tree/main/analog-switches) |
