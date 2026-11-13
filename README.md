@@ -19,6 +19,7 @@ Models are shared and live in a single folder.
 | AE01005 | [Linear Regulators](https://github.com/astroelectronica/electronics/tree/main/linear-regulators) |
 | AE01006 | [NTC](https://github.com/astroelectronica/electronics/tree/main/ntc) |
 | AE01007 | [Switching Converters](https://github.com/astroelectronica/electronics/tree/main/switching-converters) |
+| AE01008 | [Hot Swap Controllers](https://github.com/astroelectronica/electronics/tree/main/hot-swap-controllers) |
 | AE01009 | [Optocouplers](https://github.com/astroelectronica/electronics/tree/main/optocouplers) |
 | AE01010 | [Operational Amplifiers](https://github.com/astroelectronica/electronics/tree/main/operational-amplifiers) |
 | AE01011 | [Bridge Rectifiers](https://github.com/astroelectronica/electronics/tree/main/bridge-rectifiers) |
