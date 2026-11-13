@@ -1,0 +1,150 @@
+* MAX5903A MACROMODEL
+* ----------------------------
+* Revision 1.0 2/2005
+* ----------------------------
+* The MAX5903 series hot-swap controllers provide the simplest hot-swap
+* solution and operates from +9V to +72V supply. 
+* ----------------------------
+* Connections
+*       1 = VS
+*       2 = DRAIN
+*       3 = GATE
+*       4 = GND
+*       5 = PGOOD\
+*       6 = 0N/OFF
+*-----------------------------
+**************************************************
+.SUBCKT MAX5903A 1 2 3 4 5 6 
+**************************************************
+*ON/0FF(1.26V and 140mV hyst)
+VON 11 4 1.26V 
+GON 4 12 POLY(2) 6 11 12 4 0 1M 140U
+DON2 4 12 DA
+CON 12 4 1P
+DON1 12 13 DA
+VON1 13 4 1V
+***************
+*UVLO
+RUVH 1 6 828K
+RUVL 6 4 34.5K
+VDD 14 4 5.5V
+RON1 6 18 1035
+RON2 14 15 115.5K
+QP1 4 15 18 14 QP
+QP2 16 16 15 14 QP
+QP3 17 17 16 14 QP
+QP4 4 4 17 14 QP
+***************
+*10mS DELAY(FALLING EDGE)
+EDLA 19 4 12 4 1
+DDLA 19 A20 DA
+RDLA1 A20 20 100
+RDLA 19 20 1MEG 
+CDLA 20 4 10N
+VDLA 22 4 0.38V
+GDLA 4 21 POLY(2) 20 22 21 4 0 1M 10U
+DDLA1 4 21 DA
+CDLA1 21 4 1P
+DDLA2 21 13 DA
+***************
+*SWITCH OFF
+GRST 4 41 21 4 10U
+RRST 4 41 100K
+ERST 49 4 45 44 0.2
+DRST 41 49 DA
+***************
+*150mS DELAY(FALLING EDGE)
+EDLB 23 4 41 4 1
+DDLB 24 A23 DA
+RDLB2 A23 23 1
+RDLB 23 24 1MEG 
+CDLB 24 4 155N
+VDLB 26 4 0.62V
+GDLB 4 25 POLY(2) 24 26 25 4 0 1M 100U
+DDLB1 4 25 DA
+CDLB1 25 4 1P
+DDLB2 25 13 DA
+***************
+*GATE DRIVE
+VGG 27 4 5.25V
+IGB1 30 4 14.4N
+GGB1 4 30 57 58 177.8P
+VGB1 31 4 1V
+DGB1 31 30 DB
+MPGB1 30 28 27 27 MP1 L=5U W=60U
+CGB2 30 4 4P
+RGB1 27 29 103.5K
+MPGB2 32 30 29 27 MP1 L=4U W=240U
+MNGB1 32 32 4 4 MN1 L=5U W=60U
+MNGB2 40 32 4 4 MN1 L=5U W=240U
+RGB2 1 34 69K
+RGB3 34 40 27.6K
+RG3 40 3 105
+MPGB3 3 37 1 1 MP1 L=5U W=143U
+RGB4 2 33 807.3K
+RGB5 33 4 89.7K
+CGB3 32 4 0.1P
+CGB1 33 30 16P
+CG1 28 27 1N
+CG2 37 1 1N
+EG1 38 4 25 0 5
+RG1 28 38 5K
+EG2 1 39 13 25 5
+RG2 39 37 1K
+DO1 4 3 DB
+RDH 2 1 650K
+***************
+*GATE DRV CTRL
+VGB2 1 A35 6.6V
+EGB1 A35 35 58 57 40.74M
+DGB2 35 36 DA
+QPGB1 40 34 36 1 QP
+VSUP1 56 4 36V
+DS1 56 57 DA
+RS1 57 58 1MEG
+ESUP1 58 4 1 4 1 
+***************
+*VDS SENSE
+EVDS 43 4 POLY(2) 1 2 47 4 0 0 0 0 0.635
+RVDS1 43 50 1K
+CVDS2 50 4 1N
+GVDS 4 44 POLY(2) 50 13 44 4 0 1M 10U
+DVDS1 4 44 DA
+DVDS2 44 45 DA
+CVDS1 44 4 1P
+VVDS1 45 4 5V
+***************
+*O/P DRV STATUS
+EPG1 46 4 POLY(2) 30 4 47 4 0 1.1 -0.1
+MPG1 47 46 48 48 MN1 L=5U W=200U
+VPG1 48 4 -30M
+RPG1 27 47 100K
+CPG1 47 4 3P
+****************
+*PGOOD\ DRIVE
+EPG2 51 4 27 47 1
+RPG3 51 52 10K 
+DPG1 52 51 DA
+CPG3 52 4 1N
+VPG2 53 4 2.5V
+GPG1 4 54 POLY(2) 52 53 54 4 0 10M 0.1M
+DPG2 4 54 DA
+DPG3 54 45 DA
+CPG4 54 4 10P
+MPG2 5 54 4 4 MN1 L=5U W=21U
+RPG2 5 4 7.2MEG
+CPG2 5 4 5P
+***************
+*SUPPLY CURRENT
+ISUP 1 4 673u
+RSUP 1 4 240K 
+**************************************************
+.MODEL QP PNP(IS=16E-15 BF=200)
+.MODEL MP1 PMOS(VTO=-1.0 KP=100E-6)
+.MODEL MN1 NMOS(VTO=1.0 KP=200E-6)
+.MODEL DA D(IS=100E-14 N=1M)
+.MODEL DB D(IS=100E-14)
+**************************************************
+.ENDS
+
+* Copyright (c) 2003-2012 Maxim Integrated Products.  All Rights Reserved.
