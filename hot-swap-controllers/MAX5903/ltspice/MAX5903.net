@@ -1,0 +1,31 @@
+*LTspice
+*
+*MAX5903
+*+72V SOT23/TDFN Simple Swapper Hot-Swap Controllers
+*AE01008903
+*
+*netlist
+.include MAX5903.cir
+*
+*params
+.param RPU_A=100K
+.param RON_A=100K
+.param RLOAD_A=60
+.param CLOAD_A=100u
+*
+.param RPU_L=100K
+.param RON_L=100K
+.param RLOAD_L=60
+.param CLOAD_L=100u
+*
+.param VSOURCE_A=50
+.param VSOURCE_L=50
+.param VLOGIC=5
+*.temp 50
+*
+*transient response
+.tran 0 5000m 0 startup uic
+*
+*.backanno
+*.op
+.option gminsteps=0
