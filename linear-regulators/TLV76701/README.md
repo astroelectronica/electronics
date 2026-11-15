@@ -1,6 +1,6 @@
 # TLV76701
 
-+72V SOT23/TDFN Simple Swapper Hot-Swap Controllers
+Adjustable- and fixed-output, 1-A, 16-V, positive-voltage low-dropout (LDO) linear regulator
 
 AE01005701
 
