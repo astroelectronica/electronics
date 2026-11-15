@@ -1,0 +1,34 @@
+*LTspice
+*
+*TLV76701
+*Adjustable- and fixed-output, 1-A, 16-V, positive-voltage low-dropout (LDO) linear regulator
+*AE01005701
+*
+*netlist
+.include TLV76701.cir
+*
+*params
+.param RADJ=51.1K
+
+*
+*load regulation
+*.param RREF=16.2K
+*.param VSOURCE=16
+*.param ILOAD=1
+*.dc I1 0.1 {ILOAD} 1m
+*
+*line regulation
+.param RREF=16.2K
+.step param RREF list 102K 16.2K 9.76K 3.65K
+.param VSOURCE=16
+.param ILOAD=0.1
+.dc V1 0 {VSOURCE} 1m
+*
+*vout regulation
+*.param VSOURCE=16
+*.param ILOAD=0.5
+*.dc V1 0 {VSOURCE} 1m
+*.op
+*
+*.backanno
+*.op
