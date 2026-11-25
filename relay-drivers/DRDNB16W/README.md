@@ -1,0 +1,7 @@
+# DRDNB16W
+
+COMPLEX ARRAY FOR RELAY DRIVERS
+
+AE01018016
+
+https://www.diodes.com/part/view/DRDNB16W
