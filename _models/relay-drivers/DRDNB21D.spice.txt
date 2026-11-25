@@ -12,8 +12,6 @@
 * AND DIODES' TOTAL LIABILITY (WHETHER IN CONTRACT, TORT OR OTHERWISE) WITH REGARD TO THE SM 
 * DATA WILL NOT, IN THE AGGREGATE, EXCEED ANY SUMS PAID BY YOU TO DIODES FOR THE SM DATA.
 
-
-
 *Note:  The following SPICE model is for the individual elements of this device.
 *When applying this SPICE model to your circuit simulation be certain to 
 *add R1 and R2 values per the table found on the data sheet for the pre-biased
