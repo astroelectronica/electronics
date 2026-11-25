@@ -1,0 +1,10 @@
+.title KiCad schematic
+.include "DRDNB16W.spice.txt"
+R1 /CTRL /B {RB}
+Q1 /C /B 0 DI_DRDNB16W_NPN
+L1 VCC /C {L_COIL} RSER={R_COIL}
+V1 /CTRL 0 PULSE(0 {VCTRL} {TDELAY} {TR} {TF} {TDUTY} {TCYCLE})
+D1 /C VCC DI_DRDNB16W_DIODE
+R2 /B 0 {RPD}
+V2 VCC 0 DC {VSOURCE} rser=50
+.end

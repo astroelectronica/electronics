@@ -1,0 +1,4 @@
+(sym_lib_table
+	(version 7)
+	(lib (name "DRDNB16W") (type "KiCad") (uri "${KIPRJMOD}/DRDNB16W.kicad_sym") (options "") (descr ""))
+)
