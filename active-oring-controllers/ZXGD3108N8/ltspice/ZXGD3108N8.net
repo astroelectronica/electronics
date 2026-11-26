@@ -1,0 +1,20 @@
+*LTspice
+*
+*ZXGD3108
+*40V active or'ring mosfet controller
+*AE01012108
+*
+*netlist
+.include ZXGD3108N8.cir
+*
+*params
+.param VSUPPLY_A=5
+.param VSUPPLY_B=5
+*
+.param ILOAD=0.5
+*
+.param VPSU_A=6
+.param VPSU_B=12
+*
+*simulation
+.dc V3 0 {VPSU_B} 1m
