@@ -1,4 +1,4 @@
-# ZXGD3108
+# ZXGD3108N8
 
 40V active or'ring mosfet controller
 
