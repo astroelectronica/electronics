@@ -1,0 +1,20 @@
+*LTspice
+*
+*ZXGD3111N7
+*200V active or'ring mosfet controller
+*AE01012111
+*
+*netlist
+.include ZXGD3111N7.cir
+*
+*params
+.param VSUPPLY_A=10
+.param VSUPPLY_B=10
+*
+.param ILOAD=0.5
+*
+.param VPSU_A=12
+.param VPSU_B=14
+*
+*simulation
+.dc V3 10 {VPSU_B} 10m
