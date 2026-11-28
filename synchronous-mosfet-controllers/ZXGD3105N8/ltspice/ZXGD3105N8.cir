@@ -1,0 +1,11 @@
+.title KiCad schematic
+.include "C:/AE/ZXGD3105N8/DMN6017SK3.spice.txt"
+.include "C:/AE/ZXGD3105N8/ZXGD3105N8.spice.txt"
+XU102 /GND_ISO /GATE Net-_U101-GND_ DMN6017SK3
+R103 Net-_U101-GND_ 0 10
+R104 /OUT Net-_U101-GND_ 20
+C101 /OUT Net-_U101-GND_ 100u
+XU101 /OUT unconnected-_U101-NC-Pad2_ /BIAS /GND_ISO /REF unconnected-_U101-NC-Pad6_ Net-_U101-GND_ /GATE ZXGD3105
+R102 /OUT /BIAS 9.6k
+R101 /OUT /REF 4.3k
+.end
