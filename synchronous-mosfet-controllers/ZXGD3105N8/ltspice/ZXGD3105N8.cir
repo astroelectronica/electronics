@@ -1,6 +1,6 @@
 .title KiCad schematic
-.include "C:/AE/ZXGD3105N8/DMN6017SK3.spice.txt"
-.include "C:/AE/ZXGD3105N8/ZXGD3105N8.spice.txt"
+.include DMN6017SK3.spice.txt
+.include ZXGD3105N8.spice.txt
 XU102 /GND_ISO /GATE Net-_U101-GND_ DMN6017SK3
 R103 Net-_U101-GND_ 0 10
 R104 /OUT Net-_U101-GND_ 20
