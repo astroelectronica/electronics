@@ -27,6 +27,7 @@ Models are shared and live in a single folder.
 | AE01013 | [TVS](https://github.com/astroelectronica/electronics/tree/main/tvs) |
 | AE01014 | [Gate Drivers](https://github.com/astroelectronica/electronics/tree/main/gate-drivers) |
 | AE01015 | [Current Limiters](https://github.com/astroelectronica/electronics/tree/main/current-limiters) |
+| AE01016 | [Synchronous Mosfet Controllers](https://github.com/astroelectronica/electronics/tree/main/synchronous-mosfet-controllers) |
 | AE01018 | [Relay Drivers](https://github.com/astroelectronica/electronics/tree/main/relay-drivers) |
 | AE01019 | [Analog Switches](https://github.com/astroelectronica/electronics/tree/main/analog-switches) |
 | AE01020 | [Voltage Reference](https://github.com/astroelectronica/electronics/tree/main/voltage-reference) |
